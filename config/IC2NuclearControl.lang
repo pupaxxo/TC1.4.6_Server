@@ -1,5 +1,5 @@
 # Configuration file
-# Generated on 18/12/12 18.24
+# Generated on 22/12/12 19.23
 
 ####################
 # locale
@@ -22,6 +22,8 @@ locale {
             S:item.ItemEnergyArrayLocationCard.name=Energy Array Location Card
             S:item.ItemEnergySensorKit.name=Energy Sensor Kit
             S:item.ItemEnergySensorLocationCard.name=Energy Sensor Location Card
+            S:item.ItemLiquidSensorKit.name=Liquid Sensor Kit
+            S:item.ItemLiquidSensorLocationCard.name=Liquid Sensor Location Card
             S:item.ItemRangeUpgrade.name=Range Upgrade
             S:item.ItemRemoteSensorKit.name=Remote Sensor Kit
             S:item.ItemSensorLocationCard.name=Reactor Sensor Location Card
@@ -44,6 +46,11 @@ locale {
             S:msg.nc.InfoPanelEnergyStorageN=#%d Storage: %s
             S:msg.nc.InfoPanelHeat=T: %s
             S:msg.nc.InfoPanelInvalidCard=Invalid Card
+            S:msg.nc.InfoPanelLiquidAmount=Amount: %s
+            S:msg.nc.InfoPanelLiquidCapacity=Capacity: %s
+            S:msg.nc.InfoPanelLiquidFree=Free: %s
+            S:msg.nc.InfoPanelLiquidName=Name: %s
+            S:msg.nc.InfoPanelLiquidPercentage=Fill: %s%%
             S:msg.nc.InfoPanelMaxHeat=MaxHeat: %s
             S:msg.nc.InfoPanelMelting=Melting: %s
             S:msg.nc.InfoPanelNoTarget=Target Not Found
@@ -53,6 +60,7 @@ locale {
             S:msg.nc.InfoPanelOutput=Output: %sEU/t
             S:msg.nc.InfoPanelTime=Time: %s
             S:msg.nc.InfoPanelTimeRemaining=Remaining: %s
+            S:msg.nc.None=N/A
             S:msg.nc.Reset=Reset
             S:msg.nc.ScreenColor=Screen Color
             S:msg.nc.SensorKit=Remote Sensor mounted, Sensor Location Card received
@@ -68,6 +76,11 @@ locale {
             S:msg.nc.cbInfoPanelEnergyStorage=Storage
             S:msg.nc.cbInfoPanelEnergyTotal=Summary
             S:msg.nc.cbInfoPanelHeat=Heat level
+            S:msg.nc.cbInfoPanelLiquidAmount=Amount
+            S:msg.nc.cbInfoPanelLiquidCapacity=Capacity
+            S:msg.nc.cbInfoPanelLiquidFree=Free
+            S:msg.nc.cbInfoPanelLiquidName=Liquid name
+            S:msg.nc.cbInfoPanelLiquidPercentage=Fill percentage
             S:msg.nc.cbInfoPanelMaxHeat=Max heat
             S:msg.nc.cbInfoPanelMelting=Melting temp
             S:msg.nc.cbInfoPanelOnOff=On/Off status
