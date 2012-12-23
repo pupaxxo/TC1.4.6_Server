@@ -1,0 +1,5 @@
+&6&k---&r&l&nPupaxxo's ModPack!&r&6&k---&r
+&4&eWelcome to &c Pupaxxo's &eserver, &b%nm&e!!&0&0&1&2&3&4&5&6&7&e&f
+&9Server capacity: &2%size/%max
+&9Currently online: &2%ol
+You can change it in serverFolder/LoginMessage.txt
