@@ -1,0 +1,69 @@
+{
+  "Window Title" : "Pupaxxo's Server",
+  "Input History Max Size" : 30,
+  "Use Proxy Server" : true,
+  "Proxy External Port" : 25575,
+  "Proxy Internal Port" : 25566,
+  "MC Server Start on GUI Start" : true,
+  "Command Prefix" : "!",
+  "Custom Button 1" : "Edit Tasks",
+  "Custom Button 2" : "Edit Tasks",
+  "Display" : {
+    "Text Color" : "000000",
+    "Background Color" : "FFFFFF",
+    "[INFO] Color" : "339900",
+    "[WARNING] Color" : "CC6600",
+    "[SEVERE] Color" : "FF0000",
+    "Text Size" : 4
+  },
+  "CMD Line" : {
+    "Java Executable" : "java",
+    "Server Jar File" : "minecraft_server.jar",
+    "Bukkit" : false,
+    "Xmx Memory" : "4096M",
+    "Xincgc" : true,
+    "Extra Arguments" : "",
+    "Use Custom Launch" : false,
+    "Custom Launch Line" : "java -Djline.terminal=jline.UnsupportedTerminal -Xmx1024M -Xincgc -jar mcservergui.jar nogui -d \"yyyy-MM-dd HH:mm:ss\" "
+  },
+  "Backups" : {
+    "Path" : "X:\\Server1.4.6\\backup\\",
+    "Zip Backup" : true,
+    "Clear Log" : true,
+    "Paths to Backup" : [ "X:\\Server1.4.6\\LoginMessage.txt", "X:\\Server1.4.6\\banned-ips.txt", "X:\\Server1.4.6\\banned-players.txt", "X:\\Server1.4.6\\fihgu", "X:\\Server1.4.6\\miscperipherals", "X:\\Server1.4.6\\ops.txt", "X:\\Server1.4.6\\server.properties", "X:\\Server1.4.6\\white-list.txt", "X:\\Server1.4.6\\world" ]
+  },
+  "Schedule" : {
+    "Events" : {
+      "Backup" : {
+        "Custom Button" : false,
+        "Cron Expression" : "0 0 21 ? 1,2,3,4,5,6,7,8,9,10,11,12 3",
+        "Task" : "Backup",
+        "Parameters" : [ ],
+        "Warnings" : {
+        }
+      },
+      "AutoRestart" : {
+        "Custom Button" : false,
+        "Cron Expression" : "0 0 * ? 1,2,3,4,5,6,7,8,9,10,11,12 1,2,3,4,5,6,7",
+        "Task" : "Restart Server",
+        "Parameters" : [ "0" ],
+        "Warnings" : {
+        }
+      },
+      "AlertRestarting" : {
+        "Custom Button" : false,
+        "Cron Expression" : "0 59 * ? 1,2,3,4,5,6,7,8,9,10,11,12 1,2,3,4,5,6,7",
+        "Task" : "Send Command",
+        "Parameters" : [ "say ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§dThe server will restart in a minute! / Il server si riavvierÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ  fra un minuto!" ],
+        "Warnings" : {
+        }
+      }
+    }
+  },
+  "Web Interface" : {
+    "Port" : 42424,
+    "Enabled" : false,
+    "Password" : "password",
+    "Disable Get Output Notifications" : false
+  }
+}
