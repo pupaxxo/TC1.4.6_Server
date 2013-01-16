@@ -1,0 +1,60 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>9.&nbsp;DBMS specific features</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="using.html" title="8.&nbsp;Using SQL Workbench/J"><link rel="next" href="using-variables.html" title="10.&nbsp;Variable substitution in SQL statements"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="dbms-specific.html#dbms-specific-postgres" title="9.1.&nbsp;PostgreSQL specific features"><link rel="subsection" href="dbms-specific.html#dbms-specific-oracle" title="9.2.&nbsp;Oracle specific features"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.&nbsp;DBMS specific features</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="using.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="using-variables.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="dbms-specific">9.&nbsp;DBMS specific features</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="dbms-specific.html#dbms-specific-postgres">9.1. PostgreSQL specific features</a></span></dt><dt><span class="section"><a href="dbms-specific.html#dbms-specific-oracle">9.2. Oracle specific features</a></span></dt></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="dbms-specific-postgres">9.1.&nbsp;PostgreSQL specific features</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="postgres-open-trans">9.1.1.&nbsp;Checking for un-committed changes</h4></div></div></div><a name="N114EF" class="indexterm"></a><p>
+         Before a SQL panel (or the application) is closed, SQL Workbench/J will check if the current connection
+         has any un-committed changes (e.g. an <code class="literal">INSERT</code> without a <code class="literal">COMMIT</code>).
+         This is done by checking the <a class="ulink" href="http://www.postgresql.org/docs/current/static/view-pg-locks.html" target="_top"><code class="literal">pg_locks</code></a>
+         system view. The information in this view might not always be 100% correct and can report open transactions even though
+         there are none.
+       </p><p>
+         The checking for un-committed changes can be controlled through the <a class="link" href="profiles.html#profile-open-trans" title="6.5.13.&nbsp;Check for uncommitted changes">connection profile</a>.
+       </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="postgres-copy-api">9.1.2.&nbsp;Using the COPY API for client side files</h4></div></div></div><a name="N1150F" class="indexterm"></a><p>
+         <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a> can make use of PostgreSQL's <code class="literal">COPY</code> API
+         to send client side files to the server. <code class="literal">COPY from stdin</code> does not work through
+         the JDBC API, but when using WbImport, the file contents can be <a class="link" href="command-import.html#import-pg-copy">sent through the COPY API</a>
+       </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="dbms-specific-oracle">9.2.&nbsp;Oracle specific features</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-open-trans">9.2.1.&nbsp;Checking for un-committed changes</h4></div></div></div><a name="N1152F" class="indexterm"></a><p>
+         Before a SQL panel (or the application) is closed, SQL Workbench/J will check if the current connection
+         has any un-committed changes (e.g. an <code class="literal">INSERT</code> without a <code class="literal">COMMIT</code>).
+         This is done by checking the <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e25513/dynviews_3114.htm" target="_top"><code class="literal">V$TRANSACTION</code></a>
+         system view.
+       </p><p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">By default a regular user does not have <code class="literal">SELECT</code> privilege on <code class="literal">V$TRANSACTION</code>,
+         please grant the privilege before enabling this feature.</td></tr></table></div>
+       </p><p>
+         The checking for un-committed changes can be controlled through the <a class="link" href="profiles.html#profile-open-trans" title="6.5.13.&nbsp;Check for uncommitted changes">connection profile</a>.
+       </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-autotrace">9.2.2.&nbsp;SQL*Plus autotrace mode</h4></div></div></div><a name="N1155C" class="indexterm"></a><p>
+         SQL Workbench/J supports the a mode similar to <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_twelve040.htm#i2698680" target="_top">"autotrace"</a> mode in SQL*Plus.
+         The command to turn on autotrace is the same as in SQL*Plus and supports the same options.
+         For details see the description of the <a class="link" href="wb-commands.html#command-set-autotrace" title="17.17.2.&nbsp;AUTOTRACE">SET</a> command.
+       </p><p>
+         The current user needs to have the <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_eight.htm#i1037226" target="_top"><code class="literal">PLUSTRACE</code></a>
+         role in order to be able to see statement statistics (which is required by SQL*Plus as well).
+         The <code class="literal">PLUSTRACE</code> role grants the <code class="literal">SELECT</code>
+         privilege on the system views: <code class="literal">V$SESSTAT</code>, <code class="literal">V$STATNAME</code> and <code class="literal">V$MYSTAT</code>. The role
+         is not required for the <code class="literal">traceonly explain</code> option.
+       </p><p>
+         As an extension to the Oracle syntax, SQL Workbench/J supports the keyword <code class="literal">realplan</code> as a
+         substiture for <code class="literal">explain</code>. In that case the execution plan is also displayed but not by
+         using <code class="literal">EXPLAIN PLAN</code> but by retrieving the actual execution plan that is available
+         via <code class="literal">dbms_xplan.display_cursor()</code>. In order to use that package, the execute SQL
+         will be changed by SQL Workbench/J. It will prepend it with a unique identifier so that the SQL can be
+         found again in Oracle's system views and it will add the <code class="literal">gather_plan_statistics</code> hint
+         to the statement in order to get more detailed statistics in the execution plan.
+       </p><p>
+         In order to see the "real" execution plan, use <code class="literal">set autotrace traceonly realplan</code> instead
+         of <code class="literal">set autotrace traceonly explain</code>.
+       </p><p>
+         When using <code class="literal">statistics</code> together with <code class="literal">explain</code> or <code class="literal">realplan</code>,
+         SQL Workbench/J will have to retrieve the generated <code class="literal">SQL_ID</code> in order to get the
+         execution plan using <code class="literal">dbms_xplan.display_cursor()</code>. To use that function the SQL_ID is required
+         which is retrieved from <code class="literal">V$SQL</code> using a unique comment that is added to the SQL statement
+         before it is sent to the database. Querying <code class="literal">V$SQL</code> based on the column <code class="literal">SQL_TEXT</code>
+         is quite an expensive operation and might create unwanted latch contention on the server. If you want to
+         avoid that overhead do not use the <code class="literal">statistics</code> option when also displaying the execution plan.
+       </p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title" id="ora-autotrace-examples">9.2.2.1.&nbsp;Examples</h5></div></div></div><p>
+           Show statistics without retrieving the actual data:
+         </p><pre class="programlisting">set autotrace traceonly statistics</pre><p>
+           Retrieve the data and show statistics
+         </p><pre class="programlisting">set autotrace on statistics</pre><p>
+           Display the statistics and the execution plan but do not retrieve the data
+         </p><pre class="programlisting">set autotrace traceonly explain statistics</pre><p>
+           Display the statistics and the actual execution plan but do not retrieve the data
+         </p><pre class="programlisting">set autotrace traceonly realplan statistics</pre></div></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="using.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="using-variables.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">8.&nbsp;Using SQL Workbench/J&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;10.&nbsp;Variable substitution in SQL statements</td></tr></table></div></body></html>

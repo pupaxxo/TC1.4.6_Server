@@ -1,0 +1,1000 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>8.&nbsp;Using SQL Workbench/J</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="editor.html" title="7.&nbsp;Editing SQL Statements"><link rel="next" href="dbms-specific.html" title="9.&nbsp;DBMS specific features"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="using.html#displaying-help" title="8.1.&nbsp;Displaying help"><link rel="subsection" href="using.html#window-sizes" title="8.2.&nbsp;Resizing windows"><link rel="subsection" href="using.html#executing-sql-statements" title="8.3.&nbsp;Executing SQL statements"><link rel="subsection" href="using.html#display-result" title="8.4.&nbsp;Displaying results"><link rel="subsection" href="using.html#understand-alternate-delim" title="8.5.&nbsp;Creating stored procedures and triggers"><link rel="subsection" href="using.html#blob-support" title="8.6.&nbsp;Dealing with BLOB and CLOB columns"><link rel="subsection" href="using.html#sql-performance" title="8.7.&nbsp;Performance tuning when executing SQL"><link rel="subsection" href="using.html#macros" title="8.8.&nbsp;Macros and text clips"><link rel="subsection" href="using.html#using-workspaces" title="8.9.&nbsp;Using workspaces"><link rel="subsection" href="using.html#manage-scripts" title="8.10.&nbsp;Saving and loading SQL scripts"><link rel="subsection" href="using.html#server-messages" title="8.11.&nbsp;Viewing server messages"><link rel="subsection" href="using.html#edit-data" title="8.12.&nbsp;Editing data"><link rel="subsection" href="using.html#edit-fk-lookup" title="8.13.&nbsp;Selecting values from referenced tables"><link rel="subsection" href="using.html#edit-data-delete" title="8.14.&nbsp;Deleting rows from the result"><link rel="subsection" href="using.html#edit-data-delete-referenced" title="8.15.&nbsp;Deleting rows with foreign keys"><link rel="subsection" href="using.html#fk-navigation" title="8.16.&nbsp;Navigating referenced rows"><link rel="subsection" href="using.html#sorting-data" title="8.17.&nbsp;Sorting the result"><link rel="subsection" href="using.html#filter-data" title="8.18.&nbsp;Filtering the result"><link rel="subsection" href="using.html#using-procs" title="8.19.&nbsp;Running stored procedures"><link rel="subsection" href="using.html#export" title="8.20.&nbsp;Export result data"><link rel="subsection" href="using.html#export-clipboard" title="8.21.&nbsp;Copy data to the clipboard"><link rel="subsection" href="using.html#import-resultset" title="8.22.&nbsp;Import data into the result set"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">8.&nbsp;Using SQL Workbench/J</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="editor.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="dbms-specific.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="using">8.&nbsp;Using SQL Workbench/J</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="using.html#displaying-help">8.1. Displaying help</a></span></dt><dt><span class="section"><a href="using.html#window-sizes">8.2. Resizing windows</a></span></dt><dt><span class="section"><a href="using.html#executing-sql-statements">8.3. Executing SQL statements</a></span></dt><dt><span class="section"><a href="using.html#display-result">8.4. Displaying results</a></span></dt><dt><span class="section"><a href="using.html#understand-alternate-delim">8.5. Creating stored procedures and triggers</a></span></dt><dt><span class="section"><a href="using.html#blob-support">8.6. Dealing with BLOB and CLOB columns</a></span></dt><dt><span class="section"><a href="using.html#sql-performance">8.7. Performance tuning when executing SQL</a></span></dt><dt><span class="section"><a href="using.html#macros">8.8. Macros and text clips</a></span></dt><dt><span class="section"><a href="using.html#using-workspaces">8.9. Using workspaces</a></span></dt><dt><span class="section"><a href="using.html#manage-scripts">8.10. Saving and loading SQL scripts</a></span></dt><dt><span class="section"><a href="using.html#server-messages">8.11. Viewing server messages</a></span></dt><dt><span class="section"><a href="using.html#edit-data">8.12. Editing data</a></span></dt><dt><span class="section"><a href="using.html#edit-fk-lookup">8.13. Selecting values from referenced tables</a></span></dt><dt><span class="section"><a href="using.html#edit-data-delete">8.14. Deleting rows from the result</a></span></dt><dt><span class="section"><a href="using.html#edit-data-delete-referenced">8.15. Deleting rows with foreign keys</a></span></dt><dt><span class="section"><a href="using.html#fk-navigation">8.16. Navigating referenced rows</a></span></dt><dt><span class="section"><a href="using.html#sorting-data">8.17. Sorting the result</a></span></dt><dt><span class="section"><a href="using.html#filter-data">8.18. Filtering the result</a></span></dt><dt><span class="section"><a href="using.html#using-procs">8.19. Running stored procedures</a></span></dt><dt><span class="section"><a href="using.html#export">8.20. Export result data</a></span></dt><dt><span class="section"><a href="using.html#export-clipboard">8.21. Copy data to the clipboard</a></span></dt><dt><span class="section"><a href="using.html#import-resultset">8.22. Import data into the result set</a></span></dt></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="displaying-help">8.1.&nbsp;Displaying help</h3></div></div></div><p>
+			You have two possibilities to display help for SQL Workbench/J: a HTML a PDF version of the manual.
+		</p><p>
+			The HTML help is available through the menu item
+			<span class="guimenu">Help</span> &rarr; <span class="guimenuitem">Contents</span>
+			It is expected that the HTML manual is stored in a directory called <code class="literal">manual</code>
+			in the same directory where <code class="literal">sqlworkbench.jar</code> is located. This is automatically the case
+			when you extract the distribution archive with sub-directories.
+		</p><p>
+			You can choose to display a single-page version of the HTML help (easier to search) or a multi-page
+			version of the help that is easier to navigate. This can be changed in the options dialog, that is
+			accessible from <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Option</span>.
+		</p><p>
+			The PDF manual can be displayed by selecting <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">Manual</span>.
+			In order to be able to display the PDF manual, you need to define the path to the executable for the PDF
+			reader in the <a class="link" href="options.html#options-general" title="21.1.&nbsp;General options">General options</a> section of the options dialog.
+		</p><p>
+			The file <code class="literal">SQLWorkbench-Manual.pdf</code> must be available in the
+			directory where <code class="literal">sqlworkbench.jar</code> is located.
+		</p><p>
+      When connected to a database, the menu item
+      <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">DBMS Manual</span> will display the
+      online manual for the current DBMS (if there is one). Where possible the link will display the manual that
+      corresponds to the version of the current connection.
+    </p><p>
+      The URL that is used to display the manual can be <a class="link" href="settings.html#db-settings-online-manual" title="URL for online manual">changed</a> in the
+      configuration file <a class="link" href="settings.html" title="23.&nbsp;Advanced configuration options"><code class="literal">workbench.settings</code></a>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="window-sizes">8.2.&nbsp;Resizing windows</h3></div></div></div><p>
+      Every window that is opened by SQL Workbench/J for the first time is
+      displayed with a default size. In certain cases it can happen that not
+      all labels are readable or all controls are visible on the window. This can
+      happen, e.g. when a large default font is selected (or defined through the
+      look and feel).
+    </p><p>
+      Every window in SQL Workbench/J can be resized and will remember its
+      size. So in case not everything is readable on a dialog, just resize the
+      window so that the missing parts become visible, and that size will
+      be kept for the future.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="executing-sql-statements">8.3.&nbsp;Executing SQL statements</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="execute-sql-commands">8.3.1.&nbsp;Control the statement to be executed</h4></div></div></div><p>There are three different ways to execute a SQL command</p><p><span class="bold"><strong>Execute the selected text</strong></span></p><p>
+				When you press <span class="keycap"><strong>Ctrl-E</strong></span> or select
+				<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Execute selected</span>
+				the currently selected text will be send to the DBMS for execution. If no text is
+				selected the complete contents of the editor will be send to the database.
+			</p><p><a name="execute-current"></a><span class="bold"><strong>Execute current statement</strong></span></p><p>
+				When you press <span class="keycap"><strong>Ctrl-Enter</strong></span> or select
+				<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Execute current</span>
+				the current statement will be executed. The "current" statement will be the text
+				between the next delimiter before the current cursor position and the delimiter
+				after the cursor position.
+			</p><p>Example (| indicating the cursor position)</p><pre class="programlisting">SELECT firstname, lastname FROM person;
+
+DELETE FROM person| WHERE lastname = 'Dent';
+COMMIT;</pre><p>When pressing Ctrl-Enter the <code class="literal">DELETE</code> statement will be exectuted</p><p>
+				You can configure SQL Workbench/J to automatically jump to the next statement,
+				after executing the current statement. Simply select <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Auto advance to next</span>
+				The check mark next to the menu item indicates if this option is enabled.
+				This option can also be changed through the <a class="link" href="options.html#options-autojump-statement" title="21.2.16.&nbsp;Auto advance to next statement">Options dialog</a>
+			</p><p><span class="bold"><strong>Execute All</strong></span></p><p>
+				If you want to execute the complete text in the editor regardless
+				of the current selection, use the <span class="guimenuitem">Execute all</span> command.
+				Either by pressing <span class="keycap"><strong>Ctrl-Shift-E</strong></span> or selecting
+				<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Execute All</span>
+			</p><p>
+				When executing all statements in the editor you have to delimit each statement, so
+				that SQL Workbench/J can identify each statement. If your statements are not delimited
+				using a semicolon, the whole editor text is sent as a single statement to the database.
+				Some DBMS support this (e.g. Microsoft SQL Server), but most DBMS will throw an error
+				in that case.
+			</p><p>A script with two statements could look like this:</p><pre class="programlisting">UPDATE person SET numheads = 2 WHERE name='Beeblebrox';
+COMMIT;</pre><p>or:</p><pre class="programlisting">DELETE FROM person;
+DELETE FROM address;
+COMMIT;
+
+INSERT INTO person
+(id, firstname, lastname)
+VALUES
+(1, 'Arthur', 'Dent');
+
+INSERT INTO person
+(id, firstname, lastname)
+VALUES
+(4, 'Mary', 'Moviestar');
+
+INSERT INTO person
+(id, firstname, lastname)
+VALUES
+(2, 'Zaphod', 'Beeblebrox');
+
+INSERT INTO person
+(id, firstname, lastname)
+VALUES
+(3, 'Tricia', 'McMillian');
+
+COMMIT;
+</pre><p>
+				You can specifiy an <a class="link" href="options.html#options-alternate-delimiter" title="21.2.3.&nbsp;Alternate Delimiter">alternate delimiter</a>
+				that can be used instead of the semicolon. See the description
+				of the <a class="link" href="using.html#understand-alternate-delim" title="8.5.&nbsp;Creating stored procedures and triggers">alternate delimiter</a> for details.
+				This is also needed when running DDL scripts (e.g. for stored procedures) that contain
+				semicolons that should not delimit the statements.
+			</p><p>
+				As long as at least one statement is running the title of the main window
+				will be prefixed with the &raquo; sign. Even if the main window is minimized
+				you can still see if a statement is running by looking at the window title.
+			</p><p>
+				You can use variables in your SQL statements that are replaced when
+				the statement is executed. Details on how to use variables can be found in
+				the chapter <a class="xref" href="using-variables.html" title="10.&nbsp;Variable substitution in SQL statements">Variable substitution</a>.
+			</p><p>
+				JDBC drivers do not support multi-threaded execution of statements on the same physical
+				connection. If you want to run two statements at the same time, you will need to enable the
+				<a class="link" href="profiles.html" title="6.&nbsp;Connecting to the database">Separate connection per tab</a> option in your connection profile.
+				In this case SQL Workbench/J will open a physical connection for each SQL tab, so that
+				statements in the different tabs can run concurrently.
+			</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title" id="statement-history">8.3.1.1.&nbsp;Statement history</h5></div></div></div><p>
+					When executing a statement the contents of the editor is put
+					into an internal buffer together with the information about the
+					text selection and the cursor position. Even when you select a part of the current
+					text and execute that statement, the whole text is stored in the history buffer together
+					with the selection information. When you select and execute different parts of the text
+					and then move through the history you will see the selection change for each history
+					entry.
+				</p><p>
+					The previous statement can be
+					recalled by pressing <span class="keycap"><strong>Alt-Left</strong></span> or choosing
+					<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Previous Statement</span>
+					statement from the menu. Once the previous statement(s) have been
+					recalled the next statement can be shown using <span class="keycap"><strong>Alt-Right</strong></span> or choosing
+					<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Next Statement</span>
+					from the menu. This is similar to browsing through the history of a web browser.
+				</p><p>
+					You can clear the statement history for the current tab, but selecting
+					<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Clear history</span>
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+					When you clear the content of the editor (e.g. by selecting the whole text
+					and then pressing the <span class="keycap"><strong>Del</strong></span> key) this will not clear the statement
+					history. When you load the associated workspace the next time, the editor will
+					automatically display the last statement from the history. You need to manually
+					clear the statement history, if you want an empty editor the next time you
+					load the workspace.
+					</p></td></tr></table></div></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="display-result">8.4.&nbsp;Displaying results</h3></div></div></div><p>
+			When you run SQL statements that produce a result (such as a <code class="literal">SELECT</code>
+			statement) these results will be displayed in the lower pane of the window, next to
+			the message panel. For each result that is returned from the server, one tab
+			(labelled "Result") will be created. If you select and execute three <code class="literal">SELECT</code>
+			statements, the lower pane will show three result tabs and the message tab. If your
+			statement(s) did not produce any result, only the messages tab will be displayed.
+		</p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Caution]" src="./images/caution.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        SQL Workbench/J will read all rows returned by your statement into memory. When
+        retrieving large results you might run out of memory. To adjust the memory available
+        to SQL Workbench/J please refer to <a class="link" href="install.html#install-increase-memory" title="4.8.&nbsp;Increasing the memory available to the application">this chapter</a>.
+      </p></td></tr></table></div><p>
+			When you run a SQL statement, the current results will be cleared and
+			replaced by the new results. You can turn this off by selecting
+			<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Append new results</span>.
+			Every result that is retrieved while this option is turned on, will be added to the
+			set of result tabs, until you de-select this option. This can also be
+			toggled using the button on the toolbar. Additional result tabs can be closed using
+			<span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Close result</span>
+		</p><p>
+			You can also run stored procedures that return result sets. These result will be
+			displayed in the same way. For DBMS's that support mulitple result sets from
+			a single stored procedure (e.g. Microsoft SQL Server), one result tab will be displayed
+			for each result returned.
+		</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="max-rows-display">8.4.1.&nbsp;Limiting result sizes</h4></div></div></div><p>
+        To prevent retrieving an large amount of rows (and possibly running out of memory), the maximum number of rows
+        that are retrieved can be defined for each SQL panel in the "Max. Rows" input field of the status bar. This
+        value will be stored in the <a class="link" href="using.html#using-workspaces" title="8.9.&nbsp;Using workspaces">workspace</a> that is associated with the
+        connection profile.
+      </p><p>
+        A default value that will be used for newly opened SQL tabs can be defined in the
+        <a class="link" href="options.html#options-def-max-rows" title="21.7.5.&nbsp;Default max. Rows">options dialog</a>.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="display-multiline">8.4.2.&nbsp;Displaying values with embedded newlines</h4></div></div></div><p>
+				Data from <code class="literal">VARCHAR</code> or <code class="literal">CHAR</code> columns is
+				displayed as a single-line if the column's max. size is below 250 characters.
+				If you have data in smaller columns that contains newlines (linebreaks) and you want
+				to display directly in the result set, please adjust the limit to match your needs.
+				The limit can be changed in the <a class="link" href="options.html#options-multiline" title="21.7.3.&nbsp;Displaying multi-line values">Data Display Options</a>.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="result-names">8.4.3.&nbsp;Naming result tabs</h4></div></div></div><p>
+				You can change the name of the result tab associated with a statement. To give a result
+				set a name you have to provide a comment before the SQL statement that contains the
+				keyword <code class="literal">@wbresult</code> followed by a whitespace and then the name that should
+				appear as the result's name. The keywords must be specified in lowercase!
+			</p><p>
+				The following examples executes two statements. The result for the first will be labelled
+				"List of contacts" and the second will be labelled "List of companies":
+			</p><pre class="programlisting">-- @wbresult List of contacts
+SELECT * FROM person;
+
+/*
+ @wbresult List of companies
+ this will retrieve all companies from the database
+*/
+SELECT * FROM company;</pre><p>
+				As you can see, you can put the <code class="literal">@wbresult</code> keyword into a single-line
+				or multi-line comment. The name that is used, will be everything after the keyword
+				until the end of the line.
+			</p><p>
+				For the second select (with the multi-line comment), the name of the result tab will be
+				<code class="literal">List of companies</code>, the comment on the second line will not be considered.
+			</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="understand-alternate-delim">8.5.&nbsp;Creating stored procedures and triggers</h3></div></div></div><a name="N10DF2" class="indexterm"></a><a name="N10DF8" class="indexterm"></a><a name="N10DFE" class="indexterm"></a><p>
+			SQL Workbench/J will send the contents of the editor unaltered to the DBMS, so
+			executing DDL statements (<code class="literal">CREATE TABLE</code>, ...) is possible.
+		</p><p>
+			However when executing statements such as <code class="literal">CREATE PROCEDURE</code> which
+			in turn contain valid SQL statement, delimited with a ; the SQL Workbench/J
+			will send everything up to the first semicolon to the
+			backend. In case of a <code class="literal">CREATE PROCEDURE</code> statement this will obviously
+			result in an error as the statement is not complete.
+		</p><p>
+			This is an example of a <code class="literal">CREATE PROCEDURE</code> which will
+			<span class="bold"><strong>not</strong></span> work due to the embedded semicolon in
+			the procedure source itself.
+		</p><pre class="programlisting">CREATE OR REPLACE FUNCTION proc_sample RETURN INTEGER
+IS
+  result INTEGER;
+BEGIN
+  SELECT max(col1) INTO result FROM sometable;
+  RETURN result;
+END;</pre><p>
+			When executing this script, Oracle would return an error because SQL Workbench/J will
+			send everything up to the keyword <code class="literal">INTEGER</code> to the database. Obviously that
+			fragment would not be correct.
+		</p><p>
+			The solution is to terminate the script with a character
+			sequence called the "<a class="link" href="options.html#options-alternate-delimiter" title="21.2.3.&nbsp;Alternate Delimiter">alternate delimiter</a>".
+			The value of this sequence can be configured in the <a class="link" href="options.html" title="21.&nbsp;Options dialog">options dialog</a>
+			as a global default, or per <a class="link" href="profiles.html#profile-alternate-delimiter" title="6.5.15.&nbsp;Alternate delimiter">connection profile</a>
+			(so you can use different alternate delimiters for different database systems).
+			The default is the forward slash <span class="bold"><strong>/</strong></span> defined as a single
+			line delimiter.
+		</p><p>
+			If a SQL statement is terminated with the alternate delimiter,
+			that delimiter is used instead of a semicolon. This way the semicolons embedded in
+			<code class="literal">CREATE PROCEDURE</code> statements will be sent correctly to the backend
+			DBMS.
+		</p><p>So the solution to the above problem is the following script:</p><pre class="programlisting">CREATE OR REPLACE FUNCTION proc_sample RETURN INTEGER
+IS
+  result INTEGER;
+BEGIN
+  SELECT max(col1) INTO result FROM sometable;
+  RETURN result;
+END;
+/</pre><p>
+			Note the trailing forward slash (<code class="literal">/</code>) at the end in order to "turn on" the
+			use of the alternate delimiter. If you run scripts with embedded semicolons and you get
+			an error, please verify the setting for your alternate delimiter.
+		</p><p><a name="alternate-delimiter-usage"></a><span class="bold"><strong>When is the alternate delimiter used?</strong></span></p><p>
+			As soon as the statement (or script) that you execute is terminated with the
+			alternate delimiter, the alternate delimiter is used to separate the individual
+			SQL statements. When you execute selected text from the editor, be sure to
+			select the alternate delimiter as well, otherwise it will not be
+			recognized (if the alternate delimiter is not selected, the statement to be executed
+			does not end with the alternate delimiter).
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			You cannot mix the standard semicolon and the alternate delimiter inside
+			one script.
+			</p></td></tr></table></div><p>
+			If you use the alternate delimiter (by terminating the whole script with it), then
+			<span class="bold"><strong>all</strong></span> statements have to be delimited with it.
+			You cannot mix the use	of the normal semicolon and the alternate delimiter for one execution.
+			The following statement (when executed completely) would produce an error message:
+		</p><pre class="programlisting">SELECT sysdate FROM DUAL;
+
+CREATE OR REPLACE FUNCTION proc_sample RETURN INTEGER
+IS
+  result INTEGER;
+BEGIN
+  SELECT max(col1) INTO result FROM sometable;
+  RETURN result;
+END;
+/</pre><p>
+			SQL Workbench/J will use the alternate delimiter present, the <code class="literal">SELECT</code> statement
+			at the beginning will also be sent to the database together with the <code class="literal">CREATE</code>
+			statement. This of course is an invalid statement. You will need to either select and run each statement
+			individually or change the delimiter after the <code class="literal">SELECT</code> to the alternate delimiter.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="blob-support">8.6.&nbsp;Dealing with BLOB and CLOB columns</h3></div></div></div><p>
+			SQL Workbench/J supports reading and writing <code class="literal">BLOB</code> (Binary Large OBject)
+			or <code class="literal">CLOB</code> (Character Large OBject) columns from and to external files.
+			BLOB clumns are sometimes also referred to as binary data. CLOB columns
+			are sometimes also referred to as <code class="literal">LONG VARCHAR</code>. The exact data type
+			depends on the DBMS used.
+		</p><p>
+			To insert and update LOB columns the usual <code class="literal">INSERT</code> and
+			<code class="literal">UPDATE</code> statements can be used by using a special
+			placeholder to define the source for the LOB data. When updating the
+			LOB column, a different placeholder for BLOB and CLOB columns has to be used as
+			the process of reading and sending the data is different for binary and character
+			data.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			When working with Oracle, only the 10g driver supports the standard JDBC calls used by SQL Workbench/J
+			to read and write the LOB data. Earlier drivers will not work as described in this chapter.
+		</p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="using-update-blob">8.6.1.&nbsp;Updating BLOB data through SQL</h4></div></div></div><p>
+				To update a BLOB (or binary) column, use the placeholder
+				<code class="literal">{$blobfile=path_to_file}</code> in the place where the
+				actual value has to occur in the <code class="literal">INSERT</code> or <code class="literal">UPDATE</code>
+				statement:
+			</p><pre class="programlisting">UPDATE theTable
+  SET blob_col = {$blobfile=c:/data/image.bmp}
+WHERE id=24;</pre><p>
+				SQL Workbench/J will rewrite the UPDATE statement and send the contents
+				of the file located in <code class="literal">c:/data/image.bmp</code> to the database. The syntax
+				for inserting BLOB data is similar. Note that some DBMS might not allow you to
+				supply a value for the blob column during an insert. In this case you need to
+				first insert the row without the blob column, then use an <code class="literal">UPDATE</code>
+				to send the blob data. You should make sure to update only one row by specifying an
+				approriate <code class="literal">WHERE</code> clause.
+			</p><pre class="programlisting">INSERT INTO theTable
+(id, blob_col)
+VALUES
+(42,{$blobfile=c:/data/image.bmp});</pre><p>
+				This will create a new record with id=42 and the content of <code class="literal">c:/data/image.bmp</code> in
+				the column <code class="literal">blob_col</code>
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="using-update-clob">8.6.2.&nbsp;Updating CLOB data through SQL</h4></div></div></div><p>
+				The process of updating or inserting <code class="literal">CLOB</code> data is identical to the
+				process for <code class="literal">BLOB</code> data. The only difference is in the syntax of
+				the placeholder used to specify the source file. Firstly, the placeholder has
+				to start with <code class="literal">{$clobfile=</code> and can optionally contain
+				a parameter to define the encoding of the source file.
+			</p><pre class="programlisting">UPDATE theTable
+  SET clob_col = {$clobfile=c:/data/manual.html encoding=utf8}
+WHERE id=42;</pre><p>
+				If you ommit the encoding parameter, SQL Workbench/J will leave the data conversion
+				to the JDBC driver (technically, it will use the <code class="literal">PreapredStatement.setAsciiStream()</code> method
+				whereas with an encoding it will use the <code class="literal">PreparedStatement.setCharacterStream()</code> method).
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+				The format of the <code class="literal">{$clobfile=}</code> or <code class="literal">{$blobfile=}</code> parameter
+				has to be entered exactly as described here. You may not put e.g. spaces before or after
+				the equal sign or the braces. If you do this, SQL Workbench/J will not recognize the parameter and
+				will pass the statement "as is" to the JDBC driver.
+			</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="read-blob">8.6.3.&nbsp;Saving BLOB data to a file using SQL</h4></div></div></div><p>
+				To save the data stored in a BLOB column, the command <a class="link" href="wb-commands.html#command-selectblob" title="17.14.&nbsp;Extracting BLOB content - WbSelectBlob">WbSelectBlob</a>
+				can be used. The syntax of this command is similar to the regular <code class="literal">SELECT</code> command
+				except that a target file has to be specified where the read data should be stored.
+			</p><p>
+				You can also use the <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> command to export
+				data. The contents of the BLOB columns will be saved into separate files. This works for both
+				export formats (XML and Text).
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="update-blob-editmode">8.6.4.&nbsp;BLOB data in the result set</h4></div></div></div><p>
+				When the result of your <code class="literal">SELECT</code> query contains BLOB columns,
+				they will be displayed as <code class="literal">(BLOB)</code>
+				together with a button.
+				When you click on the button a dialog will be displayed allowing
+				you to save the data to a file, view the data as text (using the selected encoding),
+				display the blob as an image or display a hex view of the blob.
+			</p><p>
+				When displaying the BLOB content as a text, you can edit the text. When saving
+				the data, the entered text will be converted to raw data using the selected encoding.
+			</p><p>
+				The window will also let you open the contents of the BLOB data with a predefined
+				<a class="link" href="options.html#options-external-tools" title="21.15.&nbsp;External tools">external tool</a>. The tools that
+				are defined in the options dialog can be selected from a dropdown. To open
+				the BLOB content with one of the tools, select the tool from the dropdown list,
+				then click on the button <span class="guibutton">Open with</span> next to the external
+				tools dropdown. SQL Workbench/J will then retrieve the BLOB data from the server,
+				store it in a temporary file on your harddisk, and run the selected application,
+				passing the temporary file as a parameter.
+			</p><p>
+				From within this information dialog, you can also upload a file to be stored
+				in that BLOB column. The file contents will not be sent to the database server
+				until you actually save the changes to your result set (this is the same for all
+				changes you make directly in the result set, for details please refer
+				to <a class="xref" href="using.html#edit-data" title="8.12.&nbsp;Editing data">Editing the data</a>)
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+				When using the upload function in the BLOB info dialog, SQL Workbench/J
+				will use the file content for any subsequent display of the binary data or the
+				the size information in the information dialog.
+				You will need to re-retrieve the data, in order to use
+				the blob data from the server.
+			</p></td></tr></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="sql-performance">8.7.&nbsp;Performance tuning when executing SQL</h3></div></div></div><p>
+			There are some configuration settings that affect the performance
+			of SQL Workbench/J. On slow computers it is recommended to turn off
+			the usage of the <a class="link" href="options.html#option-animated-icon" title="21.1.11.&nbsp;Enable animated icons">animated icon</a>
+			as the indicator for a running statement.
+		</p><p>
+			When running large scripts, the feedback which statement is executed
+			can also slow down the execution. It is recommended to either turn off
+			the feedback using <a class="link" href="wb-commands.html#command-wbfeedback" title="17.15.&nbsp;Control feedback messages - WbFeedback">WBFEEDBACK OFF</a> or by
+			<a class="link" href="options.html#options-consolidate-log" title="21.1.7.&nbsp;Consolidate script log">consolidating the script log</a>
+		</p><p>
+			When running <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">imports</a> or
+			<a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">exports</a> it is recommended to turn
+			off the progress display in the statusbar that shows the current row
+			that is imported/exported because this will slow down the process as
+			well. In both cases you can use <code class="literal">-showProgress</code>
+			to turn off the display (or set it to a high number such as 1000) in
+			order to reduce the overhead caused by updating the screen.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="macros">8.8.&nbsp;Macros and text clips</h3></div></div></div><p>
+      SQL macros and text clips can help writing and executing SQL statements that you use frequently.
+    </p><p>
+      There are two types of macros:
+
+      <div class="itemizedlist"><ul type="disc"><li>executable macros</li><li>expandable macros</li></ul></div>
+
+      Executable macros are intended for complete SQL statements that are executed once you select the macro.
+      They can also be used as an abbriviated SQL statement, by typing the macro's name and executing this
+      as a SQL statement.
+    </p><p>
+      Expandable macros are intended for SQL fragments (or "clips"). The text of the macro is inserted into
+      the editor if the name is typed or the macro is selected from the menu.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="define-macro">8.8.1.&nbsp;Defining Macros</h4></div></div></div><p>There are two ways to define a SQL macro.</p><p>
+        If the current statement in the editor should be defined as a macro, select (highlight) the statement's text
+        and select  <span class="guimenu">Macros</span> &rarr; <span class="guimenuitem">Add SQL macro</span> from the main
+        menu. You will be prompted to supply a name for the new macro. If you supply the name of an existing
+        macro, the existing macro will be overwritten.
+      </p><p>
+        Alternatively you can add a new macro through
+        <span class="guimenu">Macros</span> &rarr; <span class="guimenuitem">Manage Macros...</span>.
+        This dialog can also be used to delete and and edit existing macros.
+        You can put macros into separate groups (e.g. one for PostgreSQL macros, one for Oracle etc).
+        If you have only one group defined (or only one visible group), all macros of that group
+        will be listed in the menu directly. If you define more than one group, each group will appear
+        as a separate sub-menu.
+      </p><p>
+        The order in which the macros (or groups) appear in the menu can be changed by
+        dragging them to the desired position in the manage macro dialog.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="executable-macros">8.8.2.&nbsp;Executable macros</h4></div></div></div><p>
+        There are two ways to run an executable macro: use it's name as a SQL command by typing it into the editor
+        and executing it like any other SQL statement. Or by selecting the corresponding menu entry from the
+        <span class="guimenu">Macros</span> menu.
+      </p><p>
+        Note that the macro name needs to be unique to be used as a "SQL Statement". If you have
+        two different macros in two different macro groups with the same name, it is not
+        defined which of them will be executed.
+      </p><p>
+        To view the complete list of
+        macros select <span class="guimenu">Macros</span> &rarr; <span class="guimenuitem">Manage Macros...</span>
+        After selecting a macro, it can be executed by clicking on the Run <span class="guibutton">Run</span> button. If you check the
+        option "Replace current SQL", then the text in the editor will be replaced with the
+        text from the macro when you click on the run button.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        Macros will not be evaluated when running in batch mode.
+      </p></td></tr></table></div><p>
+        Apart from the SQL Workbench/J <a class="link" href="using-variables.html" title="10.&nbsp;Variable substitution in SQL statements">script variables</a> for SQL Statements,
+        additional "parameters" can be used inside a macro definition. These parameters will be replaced <span class="emphasis"><em>before</em></span> replacing
+        the script variables.
+      </p><div class="informaltable"><a name="macro-parameters"></a><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left"><col align="left"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">${selection}$</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  This parameter will be replaced with the currently selected text. The
+                  selected text will not be altered in any way.
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">${selected_statement}$</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  This behaves similar to <code class="literal">${selection}$</code> except that
+                  any trailing semicolon will be removed from the selection. Thus the
+                  macro definition can always contain the semicolon (e.g. when the
+                  macro actually defines a script with multiple statements) but
+                  when selecting the text, you do not need to worry whether a semicolon
+                  is selected or not (and would potentially break the script).
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">${current_statement}$</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  This key will be replaced with the current statement (without the trailing
+                  delimiter). The current statement is defined by the cursor location
+                  and is the statement that would be executed when using
+                  <a class="link" href="using.html#execute-current"><span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Execute current</span></a>
+                </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">${text}$</td><td style="" align="left" valign="top">
+                    This key will be replaced with the complete text from the editor (regardless
+                    of any selection).
+                </td></tr></tbody></table></div><p>
+        The SQL statement that is eventually executed will be logged into the message panel
+        when invoking the macro from the menu. Macros that use the above paramters
+        cannot correctly be executed by entering the macro alias in the SQL editor (and
+        then executing the "statement").
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        The parameter keywords are case sensitiv, i.e.
+        the text <code class="literal">${SELECTION}$</code> will not be replaced!
+      </p></td></tr></table></div><p>
+        This feature can be used to create SQL scripts that work only with
+        with an additional statement. e.g. for Oracle you could define
+        a macro to run an explain plan for the current statement:
+      </p><pre class="programlisting">EXPLAIN PLAN FOR
+${current_statement}$
+;
+COMMIT;
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);</pre><p>
+        When you run this macro, it will run an <code class="literal">EXPLAIN PLAN</code>
+        for the statement in which the cursor is currently located, and will
+        immediately display the results for the explain. Note that the
+        <code class="literal">${current_statement}$</code> keyword is terminated with
+        a semicolon, as the replacement for <code class="literal">${current_statement}$</code>
+        will never add the semicolon. If you use <code class="literal">${selection}$</code>
+        instead, you have to pay attention to not select the semicolon in the
+        editor before running this macro.
+      </p><p>
+        For PostgreSQL you can define a similar macro that will automatically run
+        the <code class="literal">EXPLAIN</code> command for a statemet:
+        <pre class="programlisting">explain ${current_statement}$</pre>
+      </p><p>
+        Another usage of the parameter replacement could be a SQL Statement that
+        retrieves the rowcount that would be returned by the current statement:
+      </p><pre class="programlisting">SELECT count(*) FROM
+(
+  ${current_statement}$
+)</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="expandable-macro">8.8.3.&nbsp;Expandable macros</h4></div></div></div><a name="N10FFB" class="indexterm"></a><p>
+        Expandable macros are not intended to be run directly. They serve as code templates for writing
+        statements.
+      </p><p>
+        When typing the name of the macro in the editor and completing this name with the "Macro expansion key",
+        the typed word will be replaced with the macro's text. The name of a such a macro is not case sensitive. So
+        <code class="literal">slt</code> and <code class="literal">SLT</code> are detected as the same macro name.
+      </p><p>
+        The macro expansion is only triggered if the <a class="link" href="options.html#macro-expansion-keystroke" title="21.2.10.&nbsp;Macro expansion key">macro expansion key</a> is typed
+        quickly after the word. If there is a longer pause between typing the last character of the macro's name
+        and typing the expansion key, the macro will not be expanded.
+      </p><p>
+        For expandable macros, two special placeholders in the macro text are supported. Both placeholders
+        are deleting when the macro text is inserted.
+        <div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left"><col align="left"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">${c}</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                    This parameter marks the location of the cursor after the macro is expanded.
+                  </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">${s}</td><td style="" align="left" valign="top">
+                    This parameter also marks the position of the cursor after expansion. Additionally
+                    the word on the right hand side of the parameter will automatically be selected.
+                  </td></tr></tbody></table></div>
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="using-workspaces">8.9.&nbsp;Using workspaces</h3></div></div></div><p>
+			The complete history for all editor tabs is saved and loaded
+			into one file, called a workspace. These workspaces can be saved and loaded
+			to restore a specific editing context.
+			You can assign a saved workspace to a <a class="link" href="profiles.html" title="6.&nbsp;Connecting to the database">connection profile</a>.
+			When the connection is established, the workspace is loaded into SQL Workbench/J. Using this feature
+			you can maintain a completely different set of statements for different connections.
+		</p><p>
+			If you do not assign a workspace to a connection profile, a workspace with the
+			name <code class="filename">Default.wksp</code> will be used for storing the statement history.
+			This default workspace is shared between <span class="bold"><strong>all</strong></span> profiles
+			that have no workspace assigned.
+		</p><p>
+			To save the current SQL statement history and the visible tabs into a new workspace,
+			select <span class="guimenu">Workspace</span> &rarr; <span class="guimenuitem">Save Workspace as....</span>
+		</p><p>
+			The default file extension for workspaces is <code class="filename">wksp</code>.
+		</p><p>
+			Once you have loaded a workspace, you can save it with
+			<span class="guimenu">Workspace</span> &rarr; <span class="guimenuitem">Save Workspace</span>.
+			The current workspace is automatically
+			saved, when you exit SQL Workbench/J.
+		</p><p>
+			An existing workspace can be loaded with
+			<span class="guimenu">Workspace</span> &rarr; <span class="guimenuitem">Load Workspace</span>
+		</p><p>
+			If you have an external file open in one of the editor tabs, the filename itself
+			will be stored in workspace. When loading the workspace SQL Workbench/J will try to load
+			the external file again. If the file does not exist, the last history entry from the saved
+			history for that tab will be displayed.
+		</p><p>
+			The workspace file itself is a normal ZIP file, which contains one file with the
+			statement history for each tab. The individual files can be extracted from the workspace
+			using your favorite UNZIP tool.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="manage-scripts">8.10.&nbsp;Saving and loading SQL scripts</h3></div></div></div><p>
+			The text from the current editor can be saved to an external file,
+			by choosing <span class="guimenu">File</span> &rarr; <span class="guimenuitem">Save</span> or
+			<span class="guimenu">File</span> &rarr; <span class="guimenuitem">Save as</span>. The filename for the
+			current editor will be remembered. To close the current file, select <span class="guimenu">File</span> &rarr; <span class="guimenuitem">Discard file</span>
+			<span class="keycap"><strong>(Ctrl-F4)</strong></span> or use the context menu on the tab label itself.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			Detaching a file from the editor will remove the text from editor as well.
+			If you only want to detach the filename from the editor
+			but keep the text, then press <span class="keycap"><strong>Ctrl-Shift-F4</strong></span> or hold down the <span class="keycap"><strong>Shift</strong></span> key
+			while selecting the Discard menu item.
+		</p></td></tr></table></div><p>
+			When you load a SQL script and execute the statements, be aware that due to the history management
+			in SQL Workbench/J the content of the external file will be placed into the history buffer. If you load
+			large files, this might lead to massive memory consumption. Currently only the <span class="emphasis"><em>number</em></span> of
+			statements put into the history can be controlled, but not the total size of the history itself. You can prevent
+      files from being put into the history by unchecking the option "Files in history" in the Editor section
+      of the <a class="link" href="options.html#options-files-in-history" title="21.2.5.&nbsp;Files in history">options dialog</a>.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="server-messages">8.11.&nbsp;Viewing server messages</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="server-msg-pg">8.11.1.&nbsp;PostgreSQL</h4></div></div></div><p>
+				PostgreSQL supports sending of messages to the client using the <code class="literal">RAISE</code> statement in PL/pgSQL.
+        The following function will display a result set (with the number 42) and the message area will contain the
+        message <span class="emphasis"><em>Thinking hard...</em></span>
+			</p><pre class="programlisting">CREATE OR REPLACE FUNCTION the_answer()
+  RETURNS integer
+  LANGUAGE plpgsql
+AS
+$body$
+BEGIN
+  RAISE NOTICE 'Thinking hard...';
+  RETURN 42;
+END;
+$body$
+/</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="server-msg-ora">8.11.2.&nbsp;Oracle</h4></div></div></div><p>
+				For Oracle the <code class="literal">DBMS_OUTPUT</code> package is supported. Support for this
+				package can be turned on with the <a class="xref" href="wb-commands.html#command-dbms-output" title="17.32.&nbsp;Using Oracle's DBMS_OUTPUT package">ENABLEOUT</a> command.
+				If this support is not turned on, the messages will not be displayed. This is the same
+				as using the <code class="literal">SET SERVEROUTPUT ON</code> command in SQL*Plus.
+			</p><p>
+				If you want to turn on support for <code class="literal">DBMS_OUTPUT</code> automatically when
+				connecting to an Oracle database, you can put the <code class="literal">ENABLEOUT</code> command
+				into the <a class="link" href="profiles.html#profile-connect-scripts" title="6.5.17.&nbsp;Connect scripts">pre-connect</a> script.
+			</p><p>
+				Any message "printed" with <code class="literal">DBMS_OUTPUT.put_line()</code> will
+				be displayed in the message part after the SQL command has finished. Please
+				refer to the Oracle documentation if you want to learn more about the
+				<code class="literal">DBMS_OUTPUT</code> package.
+			</p><pre class="programlisting">dbms_output.put_line("The answer is 42");</pre><p>
+				Once the command has finished, the following will be displayed in the
+				<code class="literal">Messages</code> tab.
+			</p><pre class="programlisting">The answer is 42</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="server-msg-mssql">8.11.3.&nbsp;MS SQL Server</h4></div></div></div><p>
+				For MS SQL Server, any message written with the <code class="literal">PRINT</code>
+				command will be displayed in the <code class="literal">Messages</code> tab after the
+				SQL command has finished. The <code class="literal">PRINT</code> command is usually
+				used in stored procedures for logging purposes, but it can also be used
+				as a command on its own:
+			</p><pre class="programlisting">PRINT "Deleting records...";
+DELETE from my_table WHERE value = 42;
+PRINT "Done."</pre><p>
+				This will execute the <code class="literal">DELETE</code>. Once this script has
+				finished, the <code class="literal">Messages</code> tab will contain the text:
+			</p><pre class="programlisting">Deleting records...
+Done.</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="server-msg-other">8.11.4.&nbsp;Other database systems</h4></div></div></div><p>
+				If your DBMS supports something similar, please let me know. I will try
+				to implement it - provided I have free access to the DBMS. Please send your
+				request to <code class="email">&lt;<a class="email" href=mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#113;&#108;&#45;&#119;&#111;&#114;&#107;&#98;&#101;&#110;&#99;&#104;&#46;&#110;&#101;&#116;>&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#113;&#108;&#45;&#119;&#111;&#114;&#107;&#98;&#101;&#110;&#99;&#104;&#46;&#110;&#101;&#116;</a>&gt;</code>.
+			</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="edit-data">8.12.&nbsp;Editing data</h3></div></div></div><p>
+			Once the data has been retrieved from the database, it can be
+			edited directly in the result set. SQL Workbench/J assumes that enough
+			columns have been retrieved from the table so that at a unique
+			identifier is available to identify the rows to be updated.
+		</p><p>
+			If you have primary keys defined for the underlying tables, those primary key columns will be used for the
+			<code class="literal">WHERE</code> statements for <code class="literal">UPDATE</code> and <code class="literal">DELETE</code>.
+			If no primary key columns are found, the JDBC driver is asked for a <span class="emphasis"><em>best row identifier</em></span>. If
+			that doesn't return any information, your defined <a class="link" href="options.html#options-pkmapping" title="21.10.5.&nbsp;Default PK Map">PK Mapping</a> will
+			be queried. If still no PK columns can be found, you will be prompted to select
+			the key columns based on the current result set.
+		</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        The changes (modified, new or deleted rows) will not be saved to the database until
+        you choose <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Save Changes to Database</span>.
+      </p></td></tr></table></div><p>
+			If the update is successful (no database errors) a <code class="literal">COMMIT</code> will be
+			sent to the database automatically.
+    </p><p>
+			If your <code class="literal">SELECT</code> was based
+			on more than one table, you will be prompted to specify which table should be
+			updated. Only columns for the chosen table will be included in the <code class="literal">UPDATE</code> or
+			<code class="literal">INSERT</code> statements.
+			If no primary key can be found for the update table, you will be prompted to select the
+			columns that should be used to uniquel identify a row in the update table.
+		</p><p>
+			If an error is reported during the
+			update, a <code class="literal">ROLLBACK</code> will be sent to the database. The <code class="literal">COMMIT</code>
+			or <code class="literal">ROLLBACK</code> will only be sent if <a class="link" href="profiles.html#profile-autocommit">autocommit</a> is turned off.
+		</p><p>
+			Columns containing BLOB data will be displayed with a <span class="guibutton">...</span> button.
+			By clicking on that button, you can view the blob data, save it to a file or upload
+			the content of a file to the DBMS. Please refer to <a class="xref" href="using.html#blob-support" title="8.6.&nbsp;Dealing with BLOB and CLOB columns">BLOB support</a>
+			for details.
+		</p><p>
+			When editing, SQL Workbench/J will highlight columns that are defined as <code class="literal">NOT NULL</code>
+			in the database. You can turn this feature off, or change the color that is used in the
+			<a class="link" href="options.html#options-required-field-color" title="21.10.4.&nbsp;Color for required fields">options dialog</a>.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			When editing date, timestamp or time fields, the format specified
+			in the <a class="link" href="options.html#options-date-format" title="21.8.1.&nbsp;Date, timestamp and time formats">options dialog</a> is used
+			for parsing the entered value and converting that into the internal representation
+			of a date. The value entered must match the format defined there.
+		</p></td></tr></table></div><p><a name="editing-date-keywords"></a>
+			If you want to input the current date and time you can use <code class="literal">now, today, sysdate,
+			current_timestamp, current_date</code> instead. This will then use the current
+			date &amp; time and will convert this to the approriate data type for that column.
+			e.g. <code class="literal">now</code> will be converted to the current time for a time column,
+			the current date for a date column and the current date/time for a timestamp column.
+			These keywords also work when importing text files using <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a>
+			or importing a text file into the result set. The exact keywords that are recognized can be
+			configure in the <a class="link" href="settings.html#settings-date-keywords" title="Defining keywords for date or timestamp input">settings file</a>
+		</p><p><a name="edit-set-null"></a>
+      If the option <a class="link" href="profiles.html#profile-empty-string-is-null" title="6.5.7.&nbsp;Empty string is NULL">Empty String is NULL</a> is disabled for the current connection profile, you can
+      still set a column's value to null when editing it. To do this, double click the current value, so that you can
+      edit it. In the context menu (right mouse button) the option "Set to NULL" is available. This will clear the
+      value and set it to <code class="literal">NULL</code>. You can assign a shortcut to this action, but the shortcut will only
+      be active when editing a value inside a column.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="edit-fk-lookup">8.13.&nbsp;Selecting values from referenced tables</h3></div></div></div><a name="N111AA" class="indexterm"></a><p>
+      After starting to edit a cell, the context contains an item <span class="guimenuitem">Select FK value</span>. Once this
+      item is selected SQL Workbench/J will detect the table that the current column references. If a foreign
+      key is detected a dialog window will be shown containing the data from the rerenced table. For performance reasons
+      the check if the current column is referencing another table is only done <span class="emphasis"><em>after</em></span> the item has been selected.
+      If no foreign key could be found, a message is displayed in the status bar.
+    </p><p>
+      By default the dialog will not load more than 150 rows from that table. The number of retrieved rows can be
+      configured through the "Max. Rows" input field.
+    </p><p>
+      There are two ways to find the desired target row which can be selected using the radio buttons
+      above the input field.
+      <div class="itemizedlist"><ul type="disc"><li><p><a name="filter-fk-lookup"></a>Applying a filter</p><p>
+            This mode is intended for small lookup tables. All rows are loaded into memory and the
+            rows are filtered immediately when typing. The typed value is searched in all columns of the
+            result set. Clicking on the reload button will always re-retrieve all rows.
+          </p></li><li><p><a name="retrieve-fk-lookup"></a>Retrieving data</p><p>
+        This mode is intended for large tables where not all rows can be loaded into memory. After
+        entering a search term and hitting the <span class="keycap"><strong>ENTER</strong></span> key (or clicking on the
+        reload button), a SQL statement to retrieve the rows containing the search statement will be executed.
+        The returned rows are then displayed.
+      </p></li></ul></div>
+    </p><p>
+      Once you have selected the desired row, clicking the <span class="guibutton">OK</span> will put the value
+      of the corresponding primary key column into the currently edited cell.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="fk-lookup-limits">8.13.1.&nbsp;Limitations of the foreign key lookup</h4></div></div></div><p>
+        Currently the lookup has the following limitations:
+        <div class="itemizedlist"><ul type="disc"><li><p>Only result sets for a single table are supported</p></li><li><p>
+              To select the values for a multi-column foreign key, you need to do this for each column
+              individually. The dialog will not automatically fill all foreign key columns in the result set.
+            </p></li></ul></div>
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="edit-data-delete">8.14.&nbsp;Deleting rows from the result</h3></div></div></div><a name="N111E7" class="indexterm"></a><p>
+			To delete a row from the result, select <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Delete Row</span>
+			from the menu. This will remove the currently selected row(s) from the result and will
+			mark them for deletion once the changes are saved. No foreign key checks will be done
+			when using this option.
+		</p><p>
+			The generated <code class="literal">DELETE</code> statements will fail if the deleted row(s) are still
+			referenced by another table. In that case, you can use <span class="guimenuitem">Delete With Dependencies</span>.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="edit-data-delete-referenced">8.15.&nbsp;Deleting rows with foreign keys</h3></div></div></div><a name="N11206" class="indexterm"></a><p>
+			To delete rows including all dependent rows, choose
+			<span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Delete With Dependencies</span>.
+			In this case SQL Workbench/J will analyze all foreign keys referencing the update table, and will
+			generate the necessary <code class="literal">DELETE</code> statements to delete the dependent rows, before
+			sending the <code class="literal">DELETE</code> for the selected row(s).
+		</p><p>
+			<span class="guimenuitem">Delete With Dependencies</span> might take some time to detect all
+			foreign key dependencies for the current update table. During this time a message will
+			be displayed in the status bar. The selected row(s) will not be removed from the result
+			set until the dependency check has finished.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        Note that the generated SQL statements to delete the dependent rows will only
+        be shown if you have enabled the preview of generated DML statements
+        in the <a class="link" href="options.html#options-confirm-update" title="21.10.1.&nbsp;Confirm result set updates">options dialog</a>
+      </p></td></tr></table></div><p>
+		 You can also generate a script to delete the selected and all depending rows through
+		 <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Generate delete script</span>.
+		 This will not remove any rows from the current result set, but instead create and display
+		 a script that you can run at a later time.
+	 </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="fk-navigation">8.16.&nbsp;Navigating referenced rows</h3></div></div></div><p>
+			Once you have retrieved data from a table that has foreign key relations to
+			other tables, you can navigate the relationship for specific rows in the result set.
+			Select the rows for which you want to find the data in the related tables, then
+			right click inside the result set. In the context menu two items are available:
+			<table summary="Simple list" border="0" class="simplelist"><tr><td>Referenced rows</td></tr><tr><td>Referencing rows</td></tr></table>
+		</p><p>
+			Consider the following tables:
+			<table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">BASE(b_id, name)</code> </td></tr><tr><td><code class="literal">DETAIL(d_id, base_id, description)</code> with <code class="literal">base_id</code>
+				referencing <code class="literal">BASE(b_id)</code> </td></tr><tr><td><code class="literal">MORE_DETAIL(md_id, detail_id, description)</code> with <code class="literal">detail_id</code>
+				referencing <code class="literal">DETAIL(d_id)</code></td></tr></table>
+		</p><p>
+			The context menu for the selected rows will give you the choice in
+			which SQL tab you want the generated <code class="literal">SELECT</code> to be pasted. This is similar
+			to the <a class="link" href="dbexplorer.html#dbexplorer-select-data" title="Put SELECT into">Put SELECT into</a> feature in the table list
+			of the DbExplorer.
+		</p><p>
+			Once you have obtained a result set from the table <code class="literal">BASE</code>, select
+			(mark) the rows for which you want to retrieve the related rows, e.g. the one where id=1. Using
+			<span class="guimenu">Referencing rows</span> &rarr; <span class="guimenuitem">DETAIL</span>
+			SQL Workbench/J will create the following statement:
+<pre class="programlisting">SELECT *
+FROM DETAIL
+WHERE base_id = 1;</pre>
+			The result of the generated statement will always be added to the existing results of the chosen
+			SQL panel. By default the generated SQL statement will be appended to the text editor.
+			If you don't want the generated statement to be appended to the editor,
+			hold down the <code class="literal">Ctrl</code> key while selecting the desired menu item.
+			In that case, the generated statement will only be written to the messages
+			panel of the SQL tab. If the target tab contains an external file, the statement will never
+			be appended to the editor's text.
+		</p><p>
+			To navigate from the child data to the "parent" data, use
+			<span class="guimenu">Referenced rows</span>
+		</p><p>
+			The additional result tabs can be closed using
+			<span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Close result</span>
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="sorting-data">8.17.&nbsp;Sorting the result</h3></div></div></div><p>
+			The result will be displayed in the order returned by the DBMS (i.e.
+			if you use an <code class="literal">ORDER BY</code> in your <code class="literal">SELECT</code>
+			the display will be displayed as sorted by the DBMS).
+		</p><p>
+			You can change the sorting of the displayed data by clicking on the header
+			of the column that should be used for sorting. After the first click the data will be
+			sorted ascending (lower values at the top). If you click on the column again
+			the sort order will be reversed. The sort order will be indicated by a little
+			triangle in the column header. If the triangle points upward the data is sorted
+			ascending, if it points downward the data is sorted descending.
+			Clicking on a column will remove any previous sorting (including the secondary
+			columns) and apply the new sorting.
+		</p><p>
+			If you want to sort by more than one column, hold down the <span class="keycap"><strong>Ctrl</strong></span> key
+			will clicking on the (second) header. The initial sort order is ascending for that additional column.
+			To switch the sort order hold down the <span class="keycap"><strong>Ctrl</strong></span> key and click on the column
+			header again. The sort order for all "secondary" sort columns will be indicated
+			with a slightly smaller triangle than the one for the primary sort column.
+		</p><p>
+			To define a different secondary sort column, you first have to remove
+			the current secondary column. This can be done by holding down the <span class="keycap"><strong>Shift</strong></span> key
+			and clicking on the secondary column again. Note that the data will not be resorted. Once you
+			have removed the secondary column, you can define a different secondary sort column.
+		</p><p>
+			By default SQL Workbench/J will use "ASCII" sorting which is case-sensitive and will not
+			sort special characters according to your language. You can change the locale that is used
+			for sorting data in the <a class="link" href="options.html#option-sort-collator" title="21.7.1.&nbsp;Sort Locale">options dialog</a> under the category
+			"Data Display". Sorting using a locale is a bit slower than "ASCII" sorting.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="filter-data">8.18.&nbsp;Filtering the result</h3></div></div></div><p>
+			Once the data has been retrieved from the server it can be filtered
+			without re-retrieving it. You can define the filter in two
+			ways: either select the filter columns and their filter values manually, or create
+			a filter from the currently selected values in the result set.
+		</p><p>
+      <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+        The filter is applied on the data that is retrieved from the database. The data will <span class="bold"><strong>not</strong></span>
+        be reloaded from the database when you define a filter.
+      </td></tr></table></div>
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="filter-manual">8.18.1.&nbsp;Defining a filter manually</h4></div></div></div><p>
+				To define a filter, click on the <code class="literal">Filter</code> button (<span class="guiicon"><img src="./images/filter16.gif" width="16"></span>)
+				in the toolbar or select <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Filter data</span>.
+				A dialog will appear where you can define a filter for the current result set. Each line
+				in the filter dialog defines an expression that will be applied to the column selected
+				in the first dropdown. If you select <code class="literal">*</code> for the column, the filter
+				condition will be applied to all columns of the result set.
+			</p><p>
+        <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+          The value expression for a column does not accept SQL expressions! You can only compare the column
+          to a constant, not to the result of a SQL function (such as <code class="literal">CURRENT_DATE</code> or <code class="literal">now()</code>)
+          If you need this kind of filter, you have to use a SQL statement with the approriate <code class="literal">WHERE</code> condition.
+        </td></tr></table></div>
+      </p><p>
+				To add a multi-column expression, press the <span class="guibutton">More</span> button, to create
+				a new line. To remove a column expression from the filter, click the <code class="literal">Remove</code>
+				(<span class="guiicon"><img src="./images/Remove16.gif" width="16"></span>) button.
+				For character based column data, you can select to ignore the case of the column's data
+				when applying the expression, i.e. when <code class="literal">Ignore case</code> is selected, the
+				expression <code class="literal">'NAME = arthur'</code> will match the column value '<code class="literal">Arthur</code>',
+				and '<code class="literal">ARTHUR</code>'.
+			</p><p>
+				By default, the column expressions are combined with an <code class="literal">OR</code>, i.e.
+				that a row will be displayed if at least one of the column expressions evaluates
+				to true. If you want to view only rows where <span class="bold"><strong>all</strong></span>
+				column expressions must match, select the <code class="literal">AND</code> radio button
+				at the top of the dialog.
+			</p><p>
+				Once you have saved a filter to an external file, this filter will be available
+				in the pick list, next to the filter icon. The list will show the last filters
+				that were saved. The number of items displayed in this drop down can be
+				controlled in the <a class="link" href="settings.html#filter-picklist-size" title="Controlling the number of items in the pick list">settings file</a>.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="filter-quick-filter">8.18.2.&nbsp;Defining a filter from the selection</h4></div></div></div><p>
+				You can also quickly filter the data based on the value(s) of the currenlty
+				selected column(s). To apply the filter, select the column values by which
+				you want to filter then click on the <code class="literal">Quickfilter</code> button
+				(<span class="guiicon"><img src="./images/colfilter16.gif" width="16"></span>)
+				in the toolbar or select
+				<span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Filter by value</span>
+				from the menu bar.
+			</p><p>
+				Using the <span class="keycap"><strong>Alt</strong></span> key you can select individual columns of one or
+				more rows. Together with the <span class="keycap"><strong>Ctrl</strong></span> key you can select e.g. the first,
+				third and fourth column. You can also select the e.g. second column of the first, second
+				and fifth row.
+			</p><p>
+				Whether the quick filter is available depends on the selected rows
+				and columns. It will be enabled when:
+				<div class="itemizedlist"><ul type="disc"><li>You have selected one or more columns in a single row</li><li>You have selected one column in multiple rows</li></ul></div>
+			</p><p>
+				If only a single row is selected, the quick filter will use
+				the values of the selected columns combined with <code class="literal">AND</code> to
+				define the filter (e.g. username = 'Bob' AND job = 'Clerk'). Which columns
+				are used depends on the way you select the row and columns.
+				If the whole row in the result is selected, the quick filter will use the
+				value of the focused column (the one with the yellow rectangle), otherwise
+				the individually selected columns will be used.
+			</p><p>
+				If you select a single column in multiple rows, this will
+				create a filter for that column, but with the values will be combined with
+				<code class="literal">OR</code> (e.g. name = 'Dent' OR name = 'Prefect').
+				The quick filter will not be available if you select more than one column in
+				multiple rows.
+			</p><p>
+				Once you have applied a quick filter, you can use the regular filter definition
+				dialog to check the definition of the filter or to further modify it.
+			</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="using-procs">8.19.&nbsp;Running stored procedures</h3></div></div></div><p>
+      Stored procedures can be executed by using the SQL Workbench/J command <code class="literal">WbCall</code>
+      which replaces the standard commands available for the DBMS (e.g. <code class="literal">CALL</code> or
+      <code class="literal">EXECUTE</code>). By using a special command, additional checks can be
+      carried out by SQL Workbench/J. This is especially necessary when dealing with OUT parameters
+      or REF CURSORS.
+    </p><p>
+      The simplest way to run a stored procedure is:
+    </p><pre class="programlisting">WbCall my_proc();</pre><p>
+      When using Microsoft SQL Server, WbCall is not necessary as long as the stored procedure does not
+      have OUT or REF CURSOR parameters. So with SQL Server you can simply write:
+    </p><pre class="programlisting">sp_who2;</pre><p>
+      To run the stored procedure <code class="literal">sp_who2</code> and to display it's results.
+    </p><p>
+      For more details on running a stored procedure with <code class="literal">OUT</code> parameters or <code class="literal">REF CURSORS</code>
+      please refer to the description of the <a class="link" href="wb-commands.html#command-wbcall" title="17.8.&nbsp;Run a stored procedure with OUT parameters - WbCall">WbCall</a> command.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="export">8.20.&nbsp;Export result data</h3></div></div></div><a name="N113A7" class="indexterm"></a><a name="N113AD" class="indexterm"></a><p>
+    You can export the data of the result set into local files of the following formats:
+	</p><div class="itemizedlist"><ul type="disc"><li>HTML</li><li>SQL statements (INSERT, UPDATE or DELETE &amp; INSERT)</li><li>XML format</li><li>Tab separated text file. Columns are separated with a tab, rows are separated with a newline character</li><li>Spreadsheet Format (OpenDocument, Microsoft Excel)</li></ul></div><p>
+    In order to write the proprietary Microsoft Excel format, additional libraries are needed. Please
+    refer to <a class="link" href="command-export.html#poi-installation" title="13.2.&nbsp;Exporting Excel files">Exporting Excel files</a> for details.
+  </p><p>
+		To save the data from the current result set into an external file,
+		choose <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Save Data as</span>
+		You will be prompted for the filename. On the right side of the file dialog
+		you will have the possibility to define the type of the export.
+		The export parameters on the right side of the dialog are split into two parts.
+		The upper part defines parameters that are available for all export types.
+		These are the encoding for the file, the format for date and date/time data
+		and the columns that should be exported.
+	</p><p>
+			All format specific options that are available in the lower part, are also
+			available when using the <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> command.
+			For a detailed discussion of the individual options please refer to that section.
+	</p><p>
+		The options <code class="literal">SQL UPDATE</code> and <code class="literal">SQL DELETE/INSERT</code>
+		are only available when the current result has a single table that can
+		be updated, and the primary key columns for that table could be retrieved.
+		If the current result does not have key columns defined, you can select
+		the key columns that should be used when creating the file. If the current
+		result is retrieved from multiple tables, you have to supply a table name
+		to be used for the SQL statements.
+	</p><p>
+		Please keep in mind that exporting the data from the result set
+		requires you to load everything into memory. If you need to export
+		data sets which are too big to fit into memory, you should use the
+		<a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> command to either
+		create SQL scripts or to save the data as text or XML files that
+		can be imported into the database using the <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a>
+		command. You can also use <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Export query result</span>
+		to export the result of the currently selected SQL statement.
+	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="export-clipboard">8.21.&nbsp;Copy data to the clipboard</h3></div></div></div><a name="N113FD" class="indexterm"></a><p>
+    You can also copy the data from the result into the system clipboard in four different formats.
+		<div class="itemizedlist"><ul type="disc"><li><p>Text (tab separated)</p><p>
+					This will use a tab as the column separator, and will not quote any values.
+					The end-of-line sequence will be a newline (Unix style) and
+					the column headers will be part of the copied data. Special
+					characters (e.g. newlines) in the actual data will not
+					be replaced (as it is possible with the
+					<a class="link" href="command-export.html#text-escape-switch">WbExport</a> command).
+				</p><p>
+					When you hold down the <span class="keycap"><strong>Shift</strong></span> key when you
+					select the menu item, the column headers will not be copied
+					to the clipboard. When you hold down the <span class="keycap"><strong>Ctrl</strong></span> key when selecting
+					the menu item, you can choose which columns should be copied
+					to the clipboard. Pressing <span class="keycap"><strong>Shift</strong></span> and <span class="keycap"><strong>Ctrl</strong></span>
+					together is also supported.
+				</p></li><li><p>SQL (INSERT, UPDATE, or DELETE &amp; INSERT)</p><p>
+					The end-of-line sequence will be a newline (Unix style).
+					No cleanup of data will be done as it is possible with the
+					<a class="link" href="command-export.html#export-sql-cleanup">WbExport</a> command, apart from
+					correctly quoting single quotes inside the values (which is required to
+					generate valid SQL)
+				</p></li></ul></div>
+	</p><p>
+		As with the <code class="literal">Save Data as</code> command, the options <code class="literal">SQL UPDATE</code>
+		and	<code class="literal">SQL DELETE/INSERT</code> are only available when the current result set is
+		updateable. If no key columns could be retrieved for the current result, you can manually
+		define the key columns to be used, using <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Define key columns</span>
+	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			If you do not want to copy all columns to the clipboard, hold down the
+			the <span class="keycap"><strong>CTRL</strong></span> key while selecting one of the
+			menu items related to the clipboard. A dialog will then let you select the
+			columns that you want to copy.
+		</p></td></tr></table></div><p>
+		Alternatively you can hold down the <span class="keycap"><strong>Alt</strong></span> key while
+		selecting rows/columns in the result set. This will allow you to
+		select only the columns and rows that you want to copy. If you then use
+		one of the formats available in the <span class="guimenu">Copy selected</span>
+		submenu, only the selected cells will be copied. If you choose to
+		copy the data as <code class="literal">UPDATE</code> or <code class="literal">DELETE/INSERT</code>
+		statements, the generated SQL statements will not be correct if you did not
+		select the primary key of the underlying update table.
+	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="import-resultset">8.22.&nbsp;Import data into the result set</h3></div></div></div><a name="N1145F" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-resultset-file">8.22.1.&nbsp;Import a file into the current result set</h4></div></div></div><p>
+			SQL Workbench/J can import tab separated text files into the current
+			result set. This means, that you need to issue the approriate <code class="literal">SELECT</code>
+			statement first. The structure of the file has to match the structure of the result set,
+			otherwise an error will occur. To initiate the import select
+			<span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Import file</span>
+		</p><p>When selecting the file, you can change some parameters for the
+		import:
+		</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left"><col align="left"></colgroup><thead valign="top"><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Option</th><th style="border-bottom: 1px solid ; " align="left" valign="top">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Header</td><td style="border-bottom: 1px solid ; " align="left" valign="top">if this option this is checked, the first line of the import file will be ignored</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Delimiter</td><td style="border-bottom: 1px solid ; " align="left" valign="top">the delimiter used to separate column values. Enter \t for the tab character</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Date Format</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							The <a class="link" href="options.html#options-date-format" title="21.8.1.&nbsp;Date, timestamp and time formats">format</a> in which date fields are specified.
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Decimal char</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							The character that is used to indicate the decimals
+							in numeric values (typically a dot or a comma)
+						</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">Quote char</td><td style="" align="left" valign="top">
+							The character used to quote values with special
+							characters. Make sure that each opening quote is followed by a
+							closing quote in your text file.
+						</td></tr></tbody></table></div><p>
+			You can also import text and XML files using the
+			<a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a>
+			command. Using the <code class="literal">WbImport</code> command is the recommended way to import
+			data, as it is much more flexible, and - more important - it does not read the
+			data into memory.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-clipboard">8.22.2.&nbsp;Import the clipboard into the current result</h4></div></div></div><a name="N114B7" class="indexterm"></a><a name="N114BD" class="indexterm"></a><p>
+      You can import the contents of the <a name="N114C7" class="indexterm"></a> clipboard into the current result,
+      if the format matches the result set. When you select <span class="guimenu">Data</span> &rarr; <span class="guimenuitem">Import from Clipboard</span>
+			SQL Workbench/J will check if the current clipboard contents can be imported into the current
+			result. The data can automatically be imported if the first row of the data contains
+			the column names. One of the following two conditions must be true in order for the import to succeed
+		</p><p>
+			<div class="itemizedlist"><ul type="disc"><li>The columns are delimited with a tab character and the first row contains column names. All
+					matching columns will then be imported</li><li>If no column name matches (i.e. no header row is present) but the number of columns (identified
+					by the number of tab characters in the first row) is identical to the number of columns
+					in the current result.</li></ul></div>
+			If SQL Workbench/J cannot identify the format of the clipboard a dialog will be opened
+			where you can specify the format of the clipboard contents. This is mainly necessary
+			if the delimiter is not the tab character. You can manually open that dialog, by holding
+      down the <span class="keycap"><strong>Ctrl</strong></span> key when clicking on the menu item.
+		</p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="editor.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="dbms-specific.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">7.&nbsp;Editing SQL Statements&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;9.&nbsp;DBMS specific features</td></tr></table></div></body></html>

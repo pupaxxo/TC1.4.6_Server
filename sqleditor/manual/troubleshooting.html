@@ -1,0 +1,333 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>20.&nbsp;Common problems</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="dbexplorer.html" title="19.&nbsp;Database Object Explorer"><link rel="next" href="options.html" title="21.&nbsp;Options dialog"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="troubleshooting.html#driver-not-found" title="20.1.&nbsp;The driver class was not found"><link rel="subsection" href="troubleshooting.html#error-create-procedure" title="20.2.&nbsp;Syntax error when creating stored procedures"><link rel="subsection" href="troubleshooting.html#wrong-tz-display" title="20.3.&nbsp;Timestamps with timezone information are not displayed correctly"><link rel="subsection" href="troubleshooting.html#excel-export" title="20.4.&nbsp;Excel export not available"><link rel="subsection" href="troubleshooting.html#out-of-memory-error" title="20.5.&nbsp;Out of memory errors"><link rel="subsection" href="troubleshooting.html#hi-cpu-usage" title="20.6.&nbsp;High CPU usage when executing statements"><link rel="subsection" href="troubleshooting.html#oracle-problems" title="20.7.&nbsp;Oracle Problems"><link rel="subsection" href="troubleshooting.html#mysql-problems" title="20.8.&nbsp;MySQL Problems"><link rel="subsection" href="troubleshooting.html#mssql-problems" title="20.9.&nbsp;Microsoft SQL Server Problems"><link rel="subsection" href="troubleshooting.html#db2-problems" title="20.10.&nbsp;DB2 Problems"><link rel="subsection" href="troubleshooting.html#pg-problems" title="20.11.&nbsp;PostgreSQL Problems"><link rel="subsection" href="troubleshooting.html#sqlanywhere-problems" title="20.12.&nbsp;Sybase SQL Anywhere Problems"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">20.&nbsp;Common problems</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="dbexplorer.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="options.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="troubleshooting">20.&nbsp;Common problems</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="troubleshooting.html#driver-not-found">20.1. The driver class was not found</a></span></dt><dt><span class="section"><a href="troubleshooting.html#error-create-procedure">20.2. Syntax error when creating stored procedures</a></span></dt><dt><span class="section"><a href="troubleshooting.html#wrong-tz-display">20.3. Timestamps with timezone information are not displayed correctly</a></span></dt><dt><span class="section"><a href="troubleshooting.html#excel-export">20.4. Excel export not available</a></span></dt><dt><span class="section"><a href="troubleshooting.html#out-of-memory-error">20.5. Out of memory errors</a></span></dt><dt><span class="section"><a href="troubleshooting.html#hi-cpu-usage">20.6. High CPU usage when executing statements</a></span></dt><dt><span class="section"><a href="troubleshooting.html#oracle-problems">20.7. Oracle Problems</a></span></dt><dt><span class="section"><a href="troubleshooting.html#mysql-problems">20.8. MySQL Problems</a></span></dt><dt><span class="section"><a href="troubleshooting.html#mssql-problems">20.9. Microsoft SQL Server Problems</a></span></dt><dt><span class="section"><a href="troubleshooting.html#db2-problems">20.10. DB2 Problems</a></span></dt><dt><span class="section"><a href="troubleshooting.html#pg-problems">20.11. PostgreSQL Problems</a></span></dt><dt><span class="section"><a href="troubleshooting.html#sqlanywhere-problems">20.12. Sybase SQL Anywhere Problems</a></span></dt></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="driver-not-found">20.1.&nbsp;The driver class was not found</h3></div></div></div><a name="N14375" class="indexterm"></a><p>
+      If you get an error <code class="literal">"Driver class not registered"</code> or
+      <code class="literal">"Driver not found"</code> please check the following settings:
+      <div class="itemizedlist"><ul type="disc"><li><p>Make sure you have specified the correct location of the jar file. Some drivers (e.g. for IBM DB2)
+        may require more than one jar file.</p></li><li><p>Check the spelling of the driver's class name. Remember that it's case sensitive. If you don't know
+        the driver's class name, simply press the <span class="keycap"><strong>Enter</strong></span> key inside the input field of the jar file location.
+        SQL Workbench/J will then scan the jar file(s) to find the JDBC driver</p></li></ul></div>
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="error-create-procedure">20.2.&nbsp;Syntax error when creating stored procedures</h3></div></div></div><a name="N14395" class="indexterm"></a><a name="N1439B" class="indexterm"></a><p>
+      When creating a stored procedure (trigger, function) it is necessary to use a delimiter other than
+      the normal semicolon because SQL Workbench/J does not know if a semicolon inisde the stored procedure
+      ends the procedure or simply a single statement inside the procedure.
+    </p><p>
+      Therefor you must use an alternate delimiter when running a DDL statement that contains "embedded" semicolons.
+      For details please refer to <a class="link" href="using.html#understand-alternate-delim" title="8.5.&nbsp;Creating stored procedures and triggers">using the alternate delimiter</a>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="wrong-tz-display">20.3.&nbsp;Timestamps with timezone information are not displayed correctly</h3></div></div></div><a name="N143AD" class="indexterm"></a><a name="N143B3" class="indexterm"></a><p>
+      When using databases that support timestamps or time data with a timezone, the display in SQL Workbench/J might not
+      always be correct. Especially when daylight savings time (DST) is in effect.
+    </p><p>
+      This is caused by the handling of time data in Java and is usually <span class="emphasis"><em>not</em></span> caused by the database, the driver or SQL Workbench/J
+    </p><p>
+      If your time data is not displayed correctly, you might try to explicitely specify the timezone when starting the application.
+      This is done by passing the system property <code class="literal">-Duser.timezone=XYZ</code> to the application, where XYZ
+      is the timezone where the computer is located that runs SQL Workbench/J
+    </p><p>
+      The timezone should be specified relativ to GMT and not with a logical name. If you are in Germany and DST is active, you need
+      to use <code class="literal">-Duser.timezone=GMT+2</code>. Specifying <code class="literal">-Duser.timezone=Europe/Berlin</code> does usually
+      <span class="bold"><strong>not</strong></span> work.
+    </p><p>
+      When using the <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher">Windows launcher</a> you have to prefix the paramter with -J to identify it as a parameter
+      for the Java runtime not for the application.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="excel-export">20.4.&nbsp;Excel export not available</h3></div></div></div><a name="N143DE" class="indexterm"></a><a name="N143E4" class="indexterm"></a><p>
+      In order to write the proprietary Microsoft Excel format, additional libraries are needed. Please
+      refer to <a class="link" href="command-export.html#poi-installation" title="13.2.&nbsp;Exporting Excel files">Exporting Excel files</a> for details.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="out-of-memory-error">20.5.&nbsp;Out of memory errors</h3></div></div></div><a name="N143F4" class="indexterm"></a><p>
+      The memory that is available to the application is limited by
+      the Java virtual machine to ensure that applications don't use all
+      available memory which could potentially make a system unusable.
+    </p><p>
+      If you retrieve large resultsets from the database, you may receive
+      an error message indicating that the application does not have
+      enough memory to store the data.
+    </p><p>
+      Please refer to <a class="link" href="install.html#install-increase-memory" title="4.8.&nbsp;Increasing the memory available to the application">Increasing the memory</a> for details
+      on how to increase the memory that is available to SQL Workbench/J
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="hi-cpu-usage">20.6.&nbsp;High CPU usage when executing statements</h3></div></div></div><p>
+      If you experience a high CPU usage when running a SQL statement,
+      this might be caused by a combination of the graphics driver, the JDK and
+      the Windows&reg; version you are using. This is usually caused by the animated
+      icon which indicates a running statement (the yellow smiley). This animation can
+      be turned off in <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Options</span>
+      See <a class="xref" href="options.html#option-animated-icon" title="21.1.11.&nbsp;Enable animated icons">Enable animated icons</a> for details. A different
+      icon (not animated) will be used if that option is disabled.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="oracle-problems">20.7.&nbsp;Oracle Problems</h3></div></div></div><a name="N1441B" class="indexterm"></a><a name="N14421" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-db-exp-tables">20.7.1.&nbsp;No Views or tables visible in the DbExplorer</h4></div></div></div><a name="N1442B" class="indexterm"></a><a name="N14431" class="indexterm"></a><p>
+        Since Build 112 it is possible that the DbExplorer does no longer display views or tables if the
+        selected schema (username) contains an underscore. This is caused by a bug in older Oracle JDBC drivers.
+			</p><p>
+        The driver calls used to display the list of tables and views in a specific schema expects a wildcard expression.
+        To avoid listing the objects for <code class="literal">USERX1</code> when displaying the objects for <code class="literal">USER_1</code>
+        the underscore must be escaped. The driver will create an expression similar to <code class="literal">AND onwer LIKE 'USER_1' ESCAPE '\'</code>
+        (which would return tables for <code class="literal">USERA1</code>, <code class="literal">USERB1</code> and so on, including of course
+        <code class="literal">USER_1</code>).
+      </p><p>
+        The character that is used to escape the wildcards is reported by the driver. SQL Workbench/J sends e.g. the
+        value <code class="literal">USER\_1</code> if the driver reports that a backslash is used to escape wildcards.
+      </p><p>
+        However some older Oracle drivers report the wrong escape character, so the value sent to the database results in
+        <code class="literal">AND onwer LIKE 'USER\_1' ESCAPE '/'</code>. The backslash in the expression is the character
+        <span class="emphasis"><em>reported</em></span> by the driver, whereas the forward slash in the expression is the character
+        actually <span class="emphasis"><em>used</em></span> by the driver.
+      </p><p>
+        To fix this problem, the escape character reported by the driver can be overridden by setting a property in <code class="literal">workbench.settings</code>:
+      </p><p>
+        <code class="literal">workbench.db.oracle.searchstringescape=/</code>
+      </p><p>You can also change this property by running</p><pre class="programlisting">WbSetConfig workbench.db.oracle.searchstringescape=/</pre><p>
+        This bug was fixed in the 11.2 drivers.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-long-problems">20.7.2.&nbsp;Error: "Stream has already been closed"</h4></div></div></div><p>
+				Due to a bug in Oracle's JDBC driver, you cannot retrieve columns with
+				the <code class="literal">LONG</code> or <code class="literal">LONG RAW</code> data type if the <code class="literal">DBMS_OUTPUT</code>
+				package is enabled.
+				In order to be able to display these columns, the support for <code class="literal">DBMS_OUTPUT</code>
+				has to be switched off using the <a class="link" href="wb-commands.html#command-dbms-output" title="17.32.&nbsp;Using Oracle's DBMS_OUTPUT package">DISABLEOUT</a> command
+				before runnnig a <code class="literal">SELECT</code> statement that returns <code class="literal">LONG</code>
+				or <code class="literal">LONG RAW</code> columns.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-blob-problems">20.7.3.&nbsp;BLOB support is not working properly</h4></div></div></div><p>
+				SQL Workbench/J supports reading and writing BLOB data in
+				various ways. The implementation relies on standard JDBC API calls
+				to work properly in the driver. If you experience problems when updating
+				BLOB columns (e.g. using the <a class="link" href="using.html#blob-support" title="8.6.&nbsp;Dealing with BLOB and CLOB columns">enhanced</a> <code class="literal">UPDATE, INSERT</code>
+				syntax or the <a class="link" href="data-pumper.html" title="18.&nbsp;DataPumper">DataPumper</a>)
+				then please check the version of your Oracle JDBC driver. Only 10.x drivers
+				implement the necessary JDBC functions properly. The version of your driver
+				is reported in the log file when you make a connection to your Oracle server.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-enable-remarks">20.7.4.&nbsp;Table and column comments are not displayed</h4></div></div></div><a name="N144B4" class="indexterm"></a><p>
+				By default Oracle's JDBC driver does not return comments made on columns or tables
+				(<code class="literal">COMMENT ON ..</code>). Thus your comments will not be shown in the database
+				explorer.
+			</p><p>
+				To enable the display of column comments, you need to pass the property <code class="literal">remarksReporting</code>
+				to the driver.
+			</p><p>
+				In the profile dialog, click on the <span class="guibutton">Extended Properties</span> button.
+				Add a new property in the following window with the name <code class="literal">remarksReporting</code>
+				and the value <code class="literal">true</code>. Now close the dialog by clicking on the OK button.
+			</p><p>
+				Turning on this features slows down the retrieval of table information e.g. in the Database Explorer.
+			</p><p>
+				When you have comments defined in your Oracle database and use the <a class="link" href="wb-commands.html#command-schema-report" title="17.1.&nbsp;Create a report of the database objects - WbSchemaReport">WbSchemaReport</a>
+				command, then you have to enable the remarks reporting, otherwise the comments will not show up in the report.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-date-time">20.7.5.&nbsp;Time for DATE columns is not displayed</h4></div></div></div><p>
+        A <code class="literal">DATE</code> column in Oracle always contains a time as well. If you are not seeing
+        the time (or just 00:00:00) for a date column but you know there is a different time stored, please enable the
+        option "Oracle DATE as Timestamp" in the "Data formatting" section of the Options dialog
+        (<span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Options</span>)
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-display-xml">20.7.6.&nbsp;Content of XMLTYPE columns is not displayed</h4></div></div></div><p>
+        The content of columns with the data type <code class="literal">XMLTYPE</code> cannot be displayed by SQL Workbench/J because
+        the Oracle JDBC driver does not support JDBC's XMLType and returns a proprietary implementation that can only be
+        used with Oracle's XDB extension classes.
+      </p><p>
+        The only way to retrieve and update XMLType columns using SQL Workbench/J is to cast the columns to a CLOB
+        value e.g. <code class="literal">CAST(xml_column AS CLOB)</code> or <code class="literal">to_clob(xml_column)</code>
+      </p><p>
+        In the DbExplorer you can customize the generated SQL statement to automatically convert the XMLType to a
+        CLOB. Please refer to the chapter <a class="link" href="dbexplorer.html#customize-dbexplorer-retrieval" title="19.6.&nbsp;Customize data retrieval">Customize data retrieval in the DbExplorer</a>
+        for details.
+      </p><p>
+        Note
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="oracle-comment-problems">20.7.7.&nbsp;Error: "missing mandatory parameter"</h4></div></div></div><p>
+        When running statements that contain single line comments that are not followed by a space
+        the following Oracle error may occur:
+        <code class="literal">ORA-01009: missing mandatory parameter [SQL State=72000, DB Errorcode=1009]</code>.
+      </p><pre class="programlisting">--This is a comment
+SELECT 42 FROM dual;</pre><p>When adding a space after the two dashes the statement works:</p><pre class="programlisting">-- This is a comment
+SELECT 42 FROM dual;</pre><p>
+        This seems to be a problem with old Oracle JDBC drivers (such as the 8.x drivers). It is
+        highly recommend to upgrade the driver to a more recent version (10.x or 11.x) as they not
+        only fix this problems, but are in general much better than the old versions.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="mysql-problems">20.8.&nbsp;MySQL Problems</h3></div></div></div><a name="N14523" class="indexterm"></a><a name="N14529" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mysql-no-info-schema">20.8.1.&nbsp;INFORMATION_SCHEMA tables not displayed in DbExplorer</h4></div></div></div><p>
+				It seems that the necessary API calls to list the tables of the <code class="literal">INFORMATION_SCHEMA</code>
+				database (which is a database, not a schema - contrary to its name) are not implemented correctly
+				in earlier JDBC drivers of MySQL. Only the driver with the version 5.1.7 returns the list of tables
+				of the <code class="literal">INFORMATION_SCHEMA</code> database.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mysql-select-problems">20.8.2.&nbsp;"Operation not allowed" error message</h4></div></div></div><p>
+				In case you receive an error message "<code class="literal">Operation not allowed after ResultSet closed</code>"
+				please upgrade your JDBC driver to a more recent version. This problem was fixed with the MySQL JDBC
+				driver version 3.1. So upgrading to that or any later version will fix this problem.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mysql-zero-date-problems">20.8.3.&nbsp;Problems with zero dates with MySQL</h4></div></div></div><p>
+				MySQL allows the user to store invalid dates in the database (0000-00-00). Since
+				version 3.1 of the JDBC driver, the driver will throw an exception when trying to retrieve
+				such an invalid date. This behaviour can be controlled by adding an <a class="link" href="profiles.html#profile-extended-properties" title="6.4.&nbsp;Extended properties for the JDBC driver">extended property</a>
+				to the connection profile. The property should be named <code class="literal">zeroDateTimeBehavior</code>. You can
+				set this value to either <code class="literal">convertToNull</code> or to <code class="literal">round</code>. For details
+				see <a class="ulink" href="http://dev.mysql.com/doc/refman/4.1/en/connector-j-installing-upgrading.html" target="_top">http://dev.mysql.com/doc/refman/4.1/en/connector-j-installing-upgrading.html</a>
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mysql-no-view-source">20.8.4.&nbsp;The SQL source for views is not displayed</h4></div></div></div><p>
+				SQL Workbench/J retrieves the view definitioin from <code class="literal">INFORMATION_SCHEMA.VIEWS</code>.
+        For some unknown reason, the column <code class="literal">VIEW_DEFINITION</code> sometimes does not contain the view definition
+        and the source is not displayed in the DbExplorer.
+			</p><p>
+        To make SQL Workbench/J use MySQL's <span style="color: red">&lt;tt&gt;SHOW CREATE VIEW&lt;/tt&gt;</span> statement instead of the <span style="color: red">&lt;tt&gt;INFORMATION_SCHEMA&lt;/tt&gt;</span>,
+        you can set the property <span style="color: red">&lt;tt&gt;workbench.db.mysql.use.showcreate.view&lt;/tt&gt;</span> to true, e.g. by running
+        <span style="color: red">&lt;tt&gt;WbSetConfig workbench.db.mysql.use.showcreate.view=true&lt;/tt&gt;</span>
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="mssql-problems">20.9.&nbsp;Microsoft SQL Server Problems</h3></div></div></div><a name="N14580" class="indexterm"></a><a name="N14586" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-remarks-nodisplay">20.9.1.&nbsp;Column and table comments are not displayed</h4></div></div></div><p>
+        SQL Server does not support standard object remarks using <code class="literal">COMMENT ON</code> and the
+        JDBC drivers (jTDS and Microsoft's driver) do not return the so called "extended attributes"
+        through the JDBC API calls. To retrieve table and column remarks that are defined through
+        the stored procedure <code class="literal">sp_addextendedproperty()</code>, SQL Workbench/J must
+        run additional statements to retrieve the extended properties. As these statements
+        can impact the performance of the DbExplorer, this is turned off by default.
+		  </p><p>
+        To turn the retrieval of the extended properties on, please configure the necessary properties.
+        For details, see the section <a class="link" href="settings.html#dbexplorer-ms-remarks" title="Retrieving remarks for Microsoft SQL Server">Retrieving remarks for Microsoft SQL Server</a>.
+		  </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-nt-authentication">20.9.2.&nbsp;Using Windows authentication to connect to a SQL Server</h4></div></div></div><p>
+        In order to use the integrated Windows authentication (as opposed SQL Server Authentication) the Microsoft
+        JDBC driver is <span class="bold"><strong>required</strong></span>. It does not work with the jTDS driver.
+		  </p><p>
+        When using Windows authentication the JDBC driver will try to load a Windows DLL named <code class="literal">sqljdbc_auth.dll</code>.
+        This DLL either needs to be on the Windows <code class="literal">PATH</code> definition or in the directory where <code class="literal">SQLWorkbench.exe</code>
+        is located. You need to make sure that you use the correct "bit" version of the DLL. If you are running a 32bit Java Runtime you have to use
+        the 32bit DLL. For a 64bit Java Runtime you need to use the 64bit DLL (the architecture of the server is not relevant).
+		  </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-showplan-exception">20.9.3.&nbsp;The Microsoft Driver throws an Exception when using SET SHOWPLAN_ALL</h4></div></div></div><a name="N145BC" class="indexterm"></a><p>
+        When displaying an execution plan using <code class="literal">SET SHOWPLAN_ALL ON</code> and the following error is thrown:
+        <code class="literal">The TDS protocol stream is not valid. Unexpected token TDS_COLMETADATA (0x81).</code> please
+        set "Max. Rows" to 0 for that SQL panel. Apparently the driver cannot handle showing the execution plan and
+        having the result limited.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-locking-problems">20.9.4.&nbsp;Dealing with locking problems</h4></div></div></div><a name="N145D0" class="indexterm"></a><p>
+				Microsoft SQL Server (at least up to 2000) does not support concurrent reads and writes
+				to the database very well. Especially when using DDL statements, this can lead to
+				database locks that can freeze the application. This affects e.g. the display of the tables
+				in the DbExplorer.	As the JDBC driver needs to issue a SELECT statement to retrieve the table
+				information, this can be blocked by e.g. a non-committed <code class="literal">CREATE ... </code>
+				statement as that will lock the system table(s) that store the meta information about tables
+				and views.
+		  </p><p>
+				Unfortunately there is no real solution to blocking transactions e.g. between a SQL tab and the
+				DbExplorer. One (highly discouraged) solution is to run in autocommit mode, the other to have
+				only one connection for all tabs (thus all of them share the same transaction an the DbExplorer
+				cannot be blocked by a different SQL tab).
+			</p><p>
+				The Microsoft JDBC Driver supports a connection property called <code class="literal">lockTimeout</code>.
+				It is recommended to set that to 0 (zero) (or a similar low value). If that is done, calls
+				to the driver's API will through an error if they encounter a lock rather than waiting
+				until the lock is released. The jTDS driver does not support such a property. If you are using
+				the jTDS driver, you can define a <a class="link" href="profiles.html#profile-connect-scripts" title="6.5.17.&nbsp;Connect scripts">post-connect script</a> that
+				runs <code class="literal">SET LOCK_TIMEOUT 0</code>.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-cloned-connection">20.9.5.&nbsp;Can't start a cloned connection while in manual transaction mode</h4></div></div></div><p>
+		    This error usually occurs in the DbExplorer if an older Microsoft JDBC Driver is used
+		    and the connection does not use autocommit mode. There are three ways to fix this problem:
+		    <div class="itemizedlist"><ul type="disc"><li>Upgrade to a newer Microsoft driver (e.g. the one for <a class="ulink" href="http://www.microsoft.com/sql/technologies/jdbc/default.mspx" target="_top">SQL Server 2005</a>)</li><li>Enable autocommit in the connection profile</li><li>Add the parameter <code class="literal">;SelectMethod=Cursor</code> to your JDBC URL</li></ul></div>
+		    This <a class="ulink" href="http://support.microsoft.com/?scid=kb;en-us;313181&x=9&y=11" target="_top">article</a>
+		    in Microsoft's Knowledgebase gives more information regarding this problem.
+		  </p><p>
+		    The possible parameters for the SQL Server 2005 driver are listed here:
+        <a class="ulink" href="http://msdn2.microsoft.com/en-us/library/ms378988.aspx" target="_top">http://msdn2.microsoft.com/en-us/library/ms378988.aspx</a>
+		  </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="mssql-result-buffer">20.9.6.&nbsp;WbExport or WbCopy using a lot of memory</h4></div></div></div><a name="N14612" class="indexterm"></a><a name="N14618" class="indexterm"></a><p>
+        The jTDS driver and the Microsoft JDBC driver read the complete result set into memory
+        before returning it to the calling application. This means that when retrieving
+        data, SQL Workbench/J uses (for a short amount of time) twice as much memory as really
+        needed. This also means that <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> or <a class="link" href="command-copy.html" title="15.&nbsp;Copy data across databases">WbCopy</a> will
+        effectively read the entire result into memory before writing it into the output file.
+        For large exports this us usually not wanted.
+      </p><p>
+        This behaviour of the drivers can be changed by adding an additional parameter to the
+        JDBC URL that is used to connect to the database. For the jTDS driver append
+        <code class="literal">useCursors=true</code> to the URL, e.g.
+        <code class="literal">jdbc:jtds:sqlserver://localhost:2068;useCursors=true</code>
+      </p><p>
+        The URL parameters for the jTDS driver are listed here: <a class="ulink" href="http://jtds.sourceforge.net/faq.html#urlFormat" target="_top">http://jtds.sourceforge.net/faq.html#urlFormat</a>
+      </p><p>
+        For the Microsoft driver, use the parameter <code class="literal">selectMethod=cursor</code> to
+        switch to a cursor based retrieval that does not buffer all rows within the driver, e.g.
+        <code class="literal">jdbc:sqlserver://localhost:2068;selectMethod=cursor</code>
+      </p><p>
+        The URL parameters for the Microsoft driver are listed here:
+        <a class="ulink" href="http://msdn2.microsoft.com/en-us/library/ms378988.aspx" target="_top">http://msdn2.microsoft.com/en-us/library/ms378988.aspx</a>
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="db2-problems">20.10.&nbsp;DB2 Problems</h3></div></div></div><a name="N1464A" class="indexterm"></a><a name="N14650" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db2-date-before">20.10.1.&nbsp;Dates before 1940-01-01 are not displayed</h4></div></div></div><p>
+        If date values before 1940-01-01 are not displayed in the results at all, you have to
+        add the parameter <code class="literal">;date format=iso</code> to your JDBC connection url. Note the
+        blank between <code class="literal">date</code> and <code class="literal">format</code>.
+			</p><p>
+        See IBM's FAQ for details: <a class="ulink" href="http://www-03.ibm.com/systems/i/software/toolbox/faqjdbc.html#faqB5" target="_top">http://www-03.ibm.com/systems/i/software/toolbox/faqjdbc.html#faqB5</a>
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db2-connection-closed">20.10.2.&nbsp;"Connection closed" errors</h4></div></div></div><p>
+				When using the DB2 JDBC drivers it is important that the <code class="literal">charsets.jar</code>
+				is part of the used JDK (or JRE). Apparently the DB2 JDBC driver needs this library in
+				order to correctly convert the EBCDIC characterset (used in the database) into the
+				Unicode encoding that is used by Java.
+				The library <code class="literal">charsets.jar</code> is usually included in all multi-language
+				JDK/JRE installations.
+			</p><p>
+				If you experience intermittent "Connection closed" errors when running SQL statements,
+				please verify that <code class="literal">charsets.jar</code> is part of your JDK/JRE installation.
+				This file is usually installed in <code class="literal">jre\lib\charsets.jar</code>.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db2-display-xml">20.10.3.&nbsp;XML columns are not displayed properly in the DbExplorer</h4></div></div></div><p>
+        The content of columns with the data type <code class="literal">XML </code> are not displayed in the DbExplorer
+        (but something like <code class="literal">com.ibm.db2.jcc.am.ie@1cee792</code> instead) because the driver does not convert
+        them to a character datatype. To customize the retrieval for those columns, please
+        refer to the chapter <a class="link" href="dbexplorer.html#customize-dbexplorer-retrieval" title="19.6.&nbsp;Customize data retrieval">Customize data retrieval in the DbExplorer</a>.
+      </p><p>
+        When using a JDBC4 driver for DB2 (and Java 6), together with SQL Workbench/J build 107, XML content will be displayed directly
+        without the need to cast the result.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db2-error-text">20.10.4.&nbsp;No error text is displayed</h4></div></div></div><p>
+        When running SQL statements in SQL Workbench/J and an error occurs, DB2 does not show a proper error message.
+        To enable the retrieval of error messages by the driver you have to set the <a class="link" href="profiles.html#profile-extended-properties" title="6.4.&nbsp;Extended properties for the JDBC driver">extended
+        connection property</a> <code class="literal">retrieveMessagesFromServerOnGetMessage</code> to <code class="literal">true</code>.
+      </p><p>
+        The connection properties for the DB2 JDBC driver are documented here:
+        <table summary="Simple list" border="0" class="simplelist"><tr><td><a class="ulink" href="http://publib.boulder.ibm.com/infocenter/db2luw/v9r7/index.jsp?topic=/com.ibm.db2.luw.apdv.java.doc/doc/r0052038.html" target="_top">http://publib.boulder.ibm.com/infocenter/db2luw/v9r7/index.jsp?topic=/com.ibm.db2.luw.apdv.java.doc/doc/r0052038.html</a></td></tr><tr><td><a class="ulink" href="http://publib.boulder.ibm.com/infocenter/db2luw/v9r7/topic/com.ibm.db2.luw.apdv.java.doc/doc/r0052607.html" target="_top">http://publib.boulder.ibm.com/infocenter/db2luw/v9r7/topic/com.ibm.db2.luw.apdv.java.doc/doc/r0052607.html</a></td></tr></table>
+        The <a class="ulink" href="http://publib.boulder.ibm.com/infocenter/db2luw/v9r7/topic/com.ibm.db2.luw.apdv.java.doc/doc/tjvjcerr.html" target="_top">example</a>
+        claims that this property is only needed for z/OS, but it works as described for LUW as well.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db2-run-command">20.10.5.&nbsp;DB2 commands like REORG cannot be run</h4></div></div></div><p>
+        REORG, RUNSTATS and other db2 command line commands cannot be be run directly through a JDBC interface because
+        those are not SQL statements, but DB2 commands. To run such a command within SQL Workbench/J you have to use the
+        function <code class="literal">sysproc.admin_cmd()</code>. To run e.g. a REORG on a table you have to run the following statement:
+      </p><pre class="programlisting">call sysproc.admin_cmd('REORG TABLE my_table');</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="pg-problems">20.11.&nbsp;PostgreSQL Problems</h3></div></div></div><a name="N146CB" class="indexterm"></a><a name="N146D1" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="pg-result-buffer">20.11.1.&nbsp;WbExport or WbCopy using a lot of memory</h4></div></div></div><a name="N146DB" class="indexterm"></a><a name="N146E1" class="indexterm"></a><p>
+        The PostgreSQL JDBC driver defaults to buffer the results obtained from the database
+        in memory before returning them to the application. This means that when retrieving
+        data, SQL Workbench/J uses (for a short amount of time) twice as much memory as really
+        needed. This also means that <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> or <a class="link" href="command-copy.html" title="15.&nbsp;Copy data across databases">WbCopy</a> will
+        effectively read the entire result into memory before writing it into the output file.
+        For large exports this us usually not wanted.
+      </p><p>
+        This behaviour of the driver can be changed so that the driver uses cursor based retrieval.
+        To do this, the connection profile must disable the "Autocommit" option, and must define
+        a default fetch size that is greater than zero. A recommended value is e.g. 10, it might be
+        that higher numbers give a better performance. The number defined for the fetch size,
+        defines the number of rows the driver keeps in its internal buffer before requesting more
+        rows from the backend.
+      </p><p>
+        More details can be found in the driver's manual:  <a class="ulink" href="http://jdbc.postgresql.org/documentation/83/query.html#query-with-cursor" target="_top">http://jdbc.postgresql.org/documentation/83/query.html#query-with-cursor</a>
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="pg-statement-savepoint">20.11.2.&nbsp;Getting the error: Current transaction is aborted</h4></div></div></div><p>
+				PostgreSQL marks a complete transaction as failed if a only single statement fails.
+        In such a case the transaction cannot be committed, e.g.
+				consider the following script:
+			</p><pre class="programlisting">INSERT INTO person (id, firstname, lastname) VALUES (1, 'Arthur', 'Dent');
+INSERT INTO person (id, firstname, lastname) VALUES (2, 'Zaphod', 'Beeblebrox');
+INSERT INTO person (id, firstname, lastname) VALUES (2, 'Ford', 'Prefect');
+COMMIT;</pre><p>
+				As the ID column is the primary key, the third insert will fail with a unique key violation.
+				In PostgreSQL you cannot commit anyway and thus persist the first two <code class="literal">INSERT</code>s.
+			</p><p>
+				This problem can only be solved by using a SAVEPOINT before and after each
+				statement. In case that statement fails, the transaction can be rolled back to the state
+				before the statement and the reminder of the script can execute.
+			</p><p>
+				Doing this manually is quite tedious, so you can tell SQL Workbench/J to do this
+				automatically for you by setting the properties:
+			</p><pre class="programlisting">workbench.db.postgresql.ddl.usesavepoint=true
+workbench.db.postgresql.sql.usesavepoint=true
+</pre><p>
+				in the file <a class="link" href="settings.html" title="23.&nbsp;Advanced configuration options">workbench.settings</a>. If this is enabled,
+        SQL Workbench/J will issue a <code class="literal">SET SAVEPOINT</code> before running each statement
+        and will release the savepoint after the statement. If the statement failed, a rollback to the
+        savepoint will be issued that will mark the transaction as "clean" again. So in the above
+        example (with <code class="literal">sql.usesavepoint</code> set to <code class="literal">true</code>), the last
+        statement would be rolled back automatically but the first two <code class="literal">INSERT</code>s
+        can be committed (this will also required to turn on the "Ignore errors" option is enabled).
+      </p><p>
+        If you want to use the modes <a class="link" href="command-import.html#import-update-mode" title="14.7.&nbsp;Update mode"><code class="literal">update/insert</code></a> or
+				<a class="link" href="command-import.html#import-update-mode" title="14.7.&nbsp;Update mode"><code class="literal">insert/update</code></a>
+				for <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a>, you should also add the
+				property:
+			</p><pre class="programlisting">workbench.db.postgresql.import.usesavepoint=true</pre><p>
+        to enable the usage of savepoints during imports. This setting also affects
+        the <code class="literal">WbCopy</code> command.
+      </p><p>
+        You can also use the parameter <code class="literal">-useSavepoint</code> for the
+        <code class="literal">WbImport</code> and <code class="literal">WbCopy</code> commands to control the use of
+        savepoints for each import.
+      </p><p>
+        Using savepoints can slow down the import substantially.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="sqlanywhere-problems">20.12.&nbsp;Sybase SQL Anywhere Problems</h3></div></div></div><a name="N14753" class="indexterm"></a><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="sqa-nchar">20.12.1.&nbsp;Columns with type <code class="literal">nvarchar</code> are not displayed properly</h4></div></div></div><p>
+        The jConnect driver seems to have a problem with <code class="literal">nvarchar</code> columns. The data type is not reported properly by the driver,
+        so the display of the table structure in the DbExplorer will be wrong for those columns.
+
+      </p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="dbexplorer.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="options.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">19.&nbsp;Database Object Explorer&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;21.&nbsp;Options dialog</td></tr></table></div></body></html>

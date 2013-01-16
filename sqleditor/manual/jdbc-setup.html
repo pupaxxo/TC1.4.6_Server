@@ -1,0 +1,105 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>5.&nbsp;JDBC Drivers</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="install.html" title="4.&nbsp;Installing and starting SQL Workbench/J"><link rel="next" href="profiles.html" title="6.&nbsp;Connecting to the database"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="jdbc-setup.html#configure-drivers" title="5.1.&nbsp;Configuring JDBC drivers"><link rel="subsection" href="jdbc-setup.html#odbc-connection" title="5.2.&nbsp;Connecting through ODBC"><link rel="subsection" href="jdbc-setup.html#jdbc-lib-dir" title="5.3.&nbsp;Specifying a library directory"><link rel="subsection" href="jdbc-setup.html#jdbc-drivers" title="5.4.&nbsp;Popular JDBC drivers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">5.&nbsp;JDBC Drivers</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="install.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="profiles.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="jdbc-setup">5.&nbsp;JDBC Drivers</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="jdbc-setup.html#configure-drivers">5.1. Configuring JDBC drivers</a></span></dt><dt><span class="section"><a href="jdbc-setup.html#odbc-connection">5.2. Connecting through ODBC</a></span></dt><dt><span class="section"><a href="jdbc-setup.html#jdbc-lib-dir">5.3. Specifying a library directory</a></span></dt><dt><span class="section"><a href="jdbc-setup.html#jdbc-drivers">5.4. Popular JDBC drivers</a></span></dt></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="configure-drivers">5.1.&nbsp;Configuring JDBC drivers</h3></div></div></div><p>
+      <a name="N1051E" class="indexterm"></a>
+			Before you can connect to a DBMS you have to configure the JDBC driver to be used.
+      The driver configuration is available in the connection
+			dialog or through <span class="guimenu">File</span> &rarr; <span class="guimenuitem">Manage Drivers</span>
+		</p><p>
+      The JDBC driver is a file with the extension <code class="literal">.jar</code> (some drivers need more than one file).
+      See the end of this section for a list of download locations. Once you have downloaded the driver you
+      can store the .jar file in any directory you like.
+    </p><p>To register a driver with SQL Workbench/J you need to specify the following details:</p><a name="N10536" class="indexterm"></a><a name="N1053C" class="indexterm"></a><a name="N10542" class="indexterm"></a><div class="itemizedlist"><ul type="disc"><li>the driver's class name</li><li>the library ("JAR file") where to find the driver (class)</li></ul></div><p>
+			After you have selected the .jar file for a driver (by clicking on the <span class="guibutton">...</span> button),
+      SQL Workbench/J will scan the jar file looking for a JDBC driver. If only a single driver is found,
+      the classname is automatically put into the entry field. If more than one class is found that is a driver implementation, you
+			will be prompted to select one. In that case, please refer to the manual of your driver or database, to choose the correct one.
+		</p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Caution]" src="./images/caution.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        If you enter the class name of the driver manually, remember that it's case-sensitive.
+        <code class="literal">org.postgresql.driver</code> is different to <code class="literal">org.postgresql.Driver</code>
+        (note the capital D for Driver)
+      </p></td></tr></table></div><p>
+			The name of the library has to contain the full path to the driver's jar file, so that
+			SQL Workbench/J can find it. Some drivers are distributed in several jar files. In that case,
+			select all necessary files in the file open dialog, or enter all the
+			filenames separated by a semicolon (or a colon on Unix style operating systems).
+			This is also true for drivers that require a license file that is contained in a jar file.
+			In this case you have to include the license jar in the list of files. Basically this list defines
+			the classpath for the classloader that is used to load and instantiate the driver.
+		</p><p>
+			If the driver accesses files through its classpath definition that are not
+			contained in a jar library, you have to include that directory as part
+			of the library definition (e.g: <code class="literal">"c:\etc\TheDriver\jdbcDriver.jar;c:\etc\TheDriver"</code>).
+			The file selection dialog will not let you select a directory, so you have
+			to add it manually to the library definition.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			SQL Workbench/J is <span class="bold"><strong>not</strong></span> using
+			the system CLASSPATH definition (i.e. environment variable) to load the
+			driver classes. Changing the CLASSPATH environment variable to include
+			your driver's library will not work. Using the <code class="literal">-cp</code> switch
+			to add a driver to the classpath when starting the application through a batch file
+			will also not work.
+		</p></td></tr></table></div><p>
+			You do not need to specify a library for the JDBC-ODBC bridge, as
+			the necessary drivers are already part of the Java runtime.
+		</p><p>
+      <a name="N10577" class="indexterm"></a>
+      You can assign a sample URL to each driver, which will be put into
+			the URL property of the profile, when the driver class is selected.
+		</p><p>
+			SQL Workbench/J comes with some sample URLs pre-configured.
+			Some of these sample URLs use brackets to indicate a parameters that need
+			to be replaced with the actual value for your connection: (servername)
+			In this case the entire sequence including the brackets need to be replaced with the
+			actual value.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="odbc-connection">5.2.&nbsp;Connecting through ODBC</h3></div></div></div><a name="N10584" class="indexterm"></a><a name="N1058A" class="indexterm"></a><a name="N10590" class="indexterm"></a><p>
+      To connect to a database using an ODBC driver, you must first setup an ODBC datasource
+      with the tools of your operating system (e.g. the control panel in Windows&reg;)
+    </p><p>
+      Once you have set up the ODBC datasource, select the ODBC Bridge as the driver
+      in the connection dialog. The JDBC URL for the datasource connection then is
+      <code class="literal">jdbc:odbc:name_of_your_datasource</code>.
+    </p><p>
+      If you named your ODBC datasource <code class="literal">ProductDB</code>, then the JDBC url for SQL Workbench/J would be
+      <code class="literal">jdbc:odbc:ProductDB</code>
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="jdbc-lib-dir">5.3.&nbsp;Specifying a library directory</h3></div></div></div><p>
+			When defining the location of the driver's .jar file, you can use the placeholder
+			<code class="literal">%LibDir%</code> instead of the using the directory's name directly.
+			This way your <code class="literal">WbDrivers.xml</code> is portable across installations.
+			To specify the library directory, either set it in the <a class="link" href="settings.html#settings-libdir" title="Defining a base directory for JDBC libraries"><code class="literal">workbench.settings</code></a>
+			file, or specify the directory using the <a class="link" href="install.html#cmdline-parameter-libdir" title="4.9.2.&nbsp;Specify a base directory for JDBC driver libraries">-libdir</a>
+			switch when starting the application.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="jdbc-drivers">5.4.&nbsp;Popular JDBC drivers</h3></div></div></div><p>
+			Here is an overview of common JDBC drivers, and the classname that need
+			to be used. SQL Workbench/J contains predefined JDBC drivers with sample URLs
+      for connecting to the database.
+		</p><p>
+			Most drivers accept additional configuration parameters either in the URL
+			or through the <a class="link" href="profiles.html#profile-extended-properties" title="6.4.&nbsp;Extended properties for the JDBC driver">extended properties</a>.
+			Please consult the manual of your driver for more detailed information on these
+			additional parameters.
+		</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead valign="top"><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">DBMS</th><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Driver class</th><th style="border-bottom: 1px solid ; " align="left" valign="top">Library name</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">PostgreSQL</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">org.postgresql.Driver</td><td style="border-bottom: 1px solid ; " align="left" valign="top"> <table summary="Simple list" border="0" class="simplelist"><tr><td>postgresql-8.4-701.jdbc4.jar (exact name depends on PostgreSQL version)</td></tr><tr><td><a class="ulink" href="http://jdbc.postgresql.org" target="_top">http://jdbc.postgresql.org</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Firebird SQL</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">org.firebirdsql.jdbc.FBDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>firebirdsql-full.jar</td></tr><tr><td><a class="ulink" href="http://www.firebirdsql.org/" target="_top">http://www.firebirdsql.org/</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Oracle</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">oracle.jdbc.OracleDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>ojdbc6.jar</td></tr><tr><td><a class="ulink" href="http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html" target="_top">http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">H2 Database Engine</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">org.h2.Driver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>h2.jar</td></tr><tr><td><a class="ulink" href="http://www.h2database.com" target="_top">http://www.h2database.com</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">HSQLDB</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">org.hsqldb.jdbcDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>hsqldb.jar</td></tr><tr><td><a class="ulink" href="http://hsqldb.sourceforge.net" target="_top">http://hsqldb.sourceforge.net</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">IBM DB2</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.ibm.db2.jcc.DB2Driver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>db2jcc4.jar</td></tr><tr><td><a class="ulink" href="http://www-01.ibm.com/software/data/db2/linux-unix-windows/download.html" target="_top">http://www-01.ibm.com/software/data/db2/linux-unix-windows/download.html</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">IBM DB2 for iSeries</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.ibm.as400.access.AS400JDBCDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>jt400.jar</td></tr><tr><td><a class="ulink" href="http://www-01.ibm.com/software/data/db2/java/" target="_top">http://www-01.ibm.com/software/data/db2/java/</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Apache Derby</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">org.apache.derby.jdbc.EmbeddedDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>derby.jar</td></tr><tr><td><a class="ulink" href="http://db.apache.org/derby/" target="_top">http://db.apache.org/derby/</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Teradata</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.teradata.jdbc.TeraDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>terajdbc4.jar</td></tr><tr><td><a class="ulink" href="http://www.teradata.com/DownloadCenter/Forum158-1.aspx" target="_top">http://www.teradata.com/DownloadCenter/Forum158-1.aspx</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">Sybase SQL Anywhere</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.sybase.jdbc3.jdbc.SybDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>jconnect.jar</td></tr><tr><td><a class="ulink" href="http://www.sybase.com/products/allproductsa-z/softwaredeveloperkit/jconnect" target="_top">http://www.sybase.com/products/allproductsa-z/softwaredeveloperkit/jconnect</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">MySQL</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.mysql.jdbc.Driver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>mysql-connector-java-5.1.5-bin.jar (exact name depends on version)</td></tr><tr><td><a class="ulink" href="http://www.mysql.com/downloads/connector/j/" target="_top">http://www.mysql.com/downloads/connector/j/</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">SQL Server (Microsoft driver)</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">com.microsoft.sqlserver.jdbc.SQLServerDriver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>sqljdbc4.jar</td></tr><tr><td><a class="ulink" href="http://msdn.microsoft.com/en-gb/data/aa937724%28en-us%29.aspx" target="_top">http://msdn.microsoft.com/en-gb/data/aa937724%28en-us%29.aspx</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">SQL Server (jTDS driver)</td><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">net.sourceforge.jtds.jdbc.Driver</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							<table summary="Simple list" border="0" class="simplelist"><tr><td>jtds.jar</td></tr><tr><td><a class="ulink" href="http://jtds.sourceforge.net" target="_top">http://jtds.sourceforge.net</a></td></tr></table>
+						</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">ODBC Bridge</td><td style="border-right: 1px solid ; " align="left" valign="top">sun.jdbc.odbc.JdbcOdbcDriver</td><td style="" align="left" valign="top"><table summary="Simple list" border="0" class="simplelist"><tr><td>Included in the JDK</td></tr></table>
+						</td></tr></tbody></table></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="install.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="profiles.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">4.&nbsp;Installing and starting SQL Workbench/J&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;6.&nbsp;Connecting to the database</td></tr></table></div></body></html>

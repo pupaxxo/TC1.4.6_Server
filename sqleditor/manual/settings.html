@@ -1,0 +1,477 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>23.&nbsp;Advanced configuration options</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="shortcuts.html" title="22.&nbsp;Configuring keyboard shortcuts"><link rel="next" href="ix01.html" title="Index"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="settings.html#dbms-identifier" title="23.1.&nbsp;Database Identifier"><link rel="subsection" href="settings.html#dbid" title="23.2.&nbsp;DBID"><link rel="subsection" href="settings.html#gui-settings" title="23.3.&nbsp;GUI related settings"><link rel="subsection" href="settings.html#editor-settings" title="23.4.&nbsp;Editor related settings"><link rel="subsection" href="settings.html#db-explorer-settings" title="23.5.&nbsp;DbExplorer Settings"><link rel="subsection" href="settings.html#settings-db" title="23.6.&nbsp;Database related settings"><link rel="subsection" href="settings.html#sql-execution-settings" title="23.7.&nbsp;SQL Execution related settings"><link rel="subsection" href="settings.html#import-export-default" title="23.8.&nbsp;Default settings for Export/Import"><link rel="subsection" href="settings.html#log-setting" title="23.9.&nbsp;Controlling the log file"><link rel="subsection" href="settings.html#settings-log4j" title="23.10.&nbsp;Configure Log4J logging"><link rel="subsection" href="settings.html#setting-sql-generation" title="23.11.&nbsp;Settings related to SQL statement generation"><link rel="subsection" href="settings.html#settings-table-source-retrieval" title="23.12.&nbsp;Customize table source retrieval"><link rel="subsection" href="settings.html#filter-settings" title="23.13.&nbsp;Filter settings"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">23.&nbsp;Advanced configuration options</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="shortcuts.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="ix01.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="settings">23.&nbsp;Advanced configuration options</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="settings.html#dbms-identifier">23.1. Database Identifier</a></span></dt><dt><span class="section"><a href="settings.html#dbid">23.2. DBID</a></span></dt><dt><span class="section"><a href="settings.html#gui-settings">23.3. GUI related settings</a></span></dt><dt><span class="section"><a href="settings.html#editor-settings">23.4. Editor related settings</a></span></dt><dt><span class="section"><a href="settings.html#db-explorer-settings">23.5. DbExplorer Settings</a></span></dt><dt><span class="section"><a href="settings.html#settings-db">23.6. Database related settings</a></span></dt><dt><span class="section"><a href="settings.html#sql-execution-settings">23.7. SQL Execution related settings</a></span></dt><dt><span class="section"><a href="settings.html#import-export-default">23.8. Default settings for Export/Import</a></span></dt><dt><span class="section"><a href="settings.html#log-setting">23.9. Controlling the log file</a></span></dt><dt><span class="section"><a href="settings.html#settings-log4j">23.10. Configure Log4J logging</a></span></dt><dt><span class="section"><a href="settings.html#setting-sql-generation">23.11. Settings related to SQL statement generation</a></span></dt><dt><span class="section"><a href="settings.html#settings-table-source-retrieval">23.12. Customize table source retrieval</a></span></dt><dt><span class="section"><a href="settings.html#filter-settings">23.13. Filter settings</a></span></dt></dl></div><a name="N14DB9" class="indexterm"></a><p>
+		This section describes the additional options for SQL Workbench/J which
+    are not (yet) available in the options dialog.
+	</p><p>
+		The name of the setting refers to the entry in the file <code class="literal">workbench.settings</code>
+		which is located in the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">configuration directory</a>. Not all
+		listed properties will be present in <code class="literal">workbench.settings</code>. In this case,
+		simply create a new line with the property name and the value as described here.
+		The position where you add this entry does not matter.
+	</p><p>
+    You can also change the values for these properties while the application is running by using the
+    command <a class="link" href="wb-commands.html#command-setconfig" title="17.33.&nbsp;Change an internal configuration paramter - WbSetConfig">WbSetConfig</a>.
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      Every property can also be specified on the commandline when starting SQL Workbench/J by setting a system
+      property with that name using the <code class="literal">-Dworkbench.property=value</code> switch. When using one of the Windows launchers (.exe)
+      you have to use <code class="literal">-J-Dworkbench.property=value</code>. See the section about
+      <a class="link" href="install.html#launcher-parameters" title="4.6.1.&nbsp;Parameters for the Windows launcher">Java options</a> in the description of the Windows launcher.
+    </p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="dbms-identifier">23.1.&nbsp;Database Identifier</h3></div></div></div><p>
+			Some parameters are used such that a list of "Database Identifiers" is expected.
+			The identifier that needs to be put there can be obtained by hovering the mouse over the connection
+			URL information in the main window, or from the log file.
+			After a successful connect to a database, there will be an entry in the log file similar to this:
+		</p><pre class="programlisting">INFO  15.08.2004 10:24:42 Connected to: [HSQL Database Engine]</pre><p>
+			If the description for a property in this chapter refers to
+			a "Database Identifier", the text between (but not including) the square brackets has to be used.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="dbid">23.2.&nbsp;DBID</h3></div></div></div><p>
+			For some settings, where the ID is part of the property's key, a "clean" version of
+			the Database Identifer, called the DBID, is used. This DBID is displayed in the connection
+			info dialog (right click on the connection URL in the main window, then choose "Connection Info").
+		</p><p>
+			The DBID is also reported in the log file:
+		</p><pre class="programlisting">INFO  15.08.2004 10:24:42 Using DBID=hsql_database_engine</pre><p>
+			If the description for a property in this chapter refers to the "DBID", then this value has to be used.
+		</p><p>
+			If the DBID is part of a property key this will be referred to as <code class="literal">[dbid]</code> in this chapter.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="gui-settings">23.3.&nbsp;GUI related settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-show-acc-menu">Showing accelerator in menu</h4></div></div></div><p>Property: <code class="literal">workbench.gui.showmnemonics</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+        Usually the mnemonic (aka. Accelerator) for a menu item is not shown under
+        Windows 2000 or later. It will only be shown, when you press the
+        ALT key. With this settings, this JDK behaviour can be controlled.
+      </p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="setting-native-print-dialog">Controlling the type of print dialog</h4></div></div></div><p>Property: <code class="literal">workbench.print.nativepagedialog</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				When printing the contents of a table, this settings controls the type
+				of print dialog to be used. The default setting will open the
+				native print dialog of the operating system. If you experience problems
+				when trying to print, set this property to false. SQL Workbench/J will
+				then open a cross-platform print dialog.
+			</p><p>Default value: <code class="literal">true</code></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="editor-settings">23.4.&nbsp;Editor related settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="editor-default-tab-name">Define the default name for new tabs</h4></div></div></div><p>Property: <code class="literal">workbench.gui.tabs.defaultlabel</code></p><p>
+        When adding a new editor tab, the value of this property will be used to set the new tab's title.
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="auto-completion-public-syn">Include Oracle public synonyms in auto-completion of tables</h4></div></div></div><p>Property: <code class="literal">workbench.editor.autocompletion.oracle.public_synonyms</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				When using auto completion for table columns and table names, Oracle's public synonyms
+				are not included by default. This has two reasons: first, the author believes that public
+				synonyms shouldn't be used (it's just as bad as global variables in programming) and
+				second, Oracle defines a huge number of public synonyms that would make the
+				popup with all available tables very long and hard to use. Setting this property
+				to <code class="literal">true</code>, will include public synonyms in the popup. Please
+				refer to <a class="link" href="settings.html#db-oracle-filter-syns" title="Filtering synonyms">filtering synonyms</a> for
+				details on how to filter out unwanted synonyms from this list.
+			</p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="editor-rect-selection">Set the modifier key for rectangular selections in the edior</h4></div></div></div><p>Property: <code class="literal">workbench.editor.rectselection.modifier</code></p><p>
+				These properties control the modifier key that needs to be pressed to enable
+				rectangular selections in the editor. Possible values are <code class="literal">alt</code> for
+				setting the <span class="keycap"><strong>Alt</strong></span> key as the modifier, or <code class="literal">ctrl</code>
+				for setting the <span class="keycap"><strong>Ctrl</strong></span> key as the modifier.
+      </p><p>Default value: <code class="literal">alt</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="default-file-encoding">Default file encoding</h4></div></div></div><p>Property: <code class="literal">workbench.file.encoding</code></p><p>
+				Several internal commands use an encoding when writing external text files
+				(e.g. <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a>). If no encoding is
+				specified for those commands, the default platform encoding as reported
+				by the Java runtime system is used. You can overwrite the default encoding
+				that Java assumes by setting this property.
+			</p><p>Default value: empty, the Java runtime default is used</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="editor-history-text-size">Limitting size of the text put into the history</h4></div></div></div><p>Property: <code class="literal">workbench.sql.history.maxtextlength</code></p><p>
+				When you execute a SQL statement in the editor, the current content of the
+				editor is put into the history buffer. If you are editing large scripts, this
+				can lead to memory problems. This property controls the max. size of the
+				editor text that is put into the history.
+			</p><p>
+				If the current editor text is bigger than the size defined in this property
+				the text is not put into the history.
+			</p><p>Default value: 10485760 (10MB)</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="manual-setting-snippet-no-newline">Controlling newlines in code snippets</h4></div></div></div><p>Property: <code class="literal">workbench.clipcreate.includenewline</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				When creating a <a class="link" href="editor.html#editor-copy-java-code-snippet" title="7.8.1.&nbsp;Copy Code Snippet">Java code snippet</a>,
+				the newlines inside the editor are preserved by putting a <code class="literal">\n</code>
+				character into the String declaration. Setting this property to false, will
+				tell SQL Workbench/J not put any <code class="literal">\n</code> characters into the Java string.
+			</p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="manual-setting-snippet-concat">Controlling the concatenation character for code snippets</h4></div></div></div><p>Property: <code class="literal">workbench.clipcreate.concat</code></p><p>
+				When creating a <a class="link" href="editor.html#editor-copy-java-code-snippet" title="7.8.1.&nbsp;Copy Code Snippet">Java code snippet</a>,
+				each line is concatenated using the standard + operator. If your programming language
+				uses a different concatenation character (e.g. &amp;), this can be changed with this
+				property.
+			</p><p>Default: <code class="literal">+</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="manual-setting-snippet-prefix">Controlling the prefix for code snippets</h4></div></div></div><p>Property: <code class="literal">workbench.clipcreate.codeprefix</code></p><p>
+				When creating a <a class="link" href="editor.html#editor-copy-java-code-snippet" title="7.8.1.&nbsp;Copy Code Snippet">Java code snippet</a>,
+				this is prefixed with <code class="literal">String sql = </code>. With this property you can
+				adjust this prefix.
+			</p><p>Default: <code class="literal">String sql =</code></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="db-explorer-settings">23.5.&nbsp;DbExplorer Settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="selectable-objects-setting">Controlling data display in the DbExplorer</h4></div></div></div><p>Property: <code class="literal">workbench.db.objecttype.selectable.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>=value1,value2,...</code></p><p>
+				The DbExplorer makes the "data" tab available based on the type of the selected object
+				in the object list (second column). If the type returned by the JDBC driver
+				is one of the types listed in this property, SQL Workbench/J assumes that
+				it can issue a <code class="literal">SELECT * FROM</code> to retrieve data from that object.
+      </p><p>Default values:
+        <table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">.defaultt=view,table,system view,system table</code></td></tr><tr><td><code class="literal">.postgresql=view,table,system view,system table,sequence</code></td></tr><tr><td><code class="literal">.rdb=view,table,system,system view</code></td></tr></table>
+				The values in this property are not case-sensitiv (TABLE is the same as table)
+      </p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="dbexplorer-focus">Customizing the SELECT to be used for the data tab</h4></div></div></div><p>
+				You can customize the generated SELECT that is used to display the table
+				data depending on the column type. Please refer to the
+				<a class="link" href="dbexplorer.html#customize-dbexplorer-retrieval" title="19.6.&nbsp;Customize data retrieval">DbExplorer chapter</a> for details.
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="dbexplorer-searchable-types">Customizing columns that can be searched</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.datatypes.searchable</code></p><p>
+        <a class="link" href="dbexplorer.html#search-table-data" title="19.10.&nbsp;Search table data">DbExplorer's "Search table data"</a> feature only includes
+        columns with the datatypes <code class="literal">CHAR</code> and <code class="literal">VARCHAR</code>
+        into the WHERE clause for searching.
+			</p><p>
+        Some database systems allow CLOB columns to be searched using a <code class="literal">LIKE</code> expression
+        as well. This property can be used to list all datatypes that can be used in a <code class="literal">LIKE</code>
+        condition.
+      </p><p>Default values:
+        <table summary="Simple list" border="0" class="simplelist"><tr><td>For PostgreSQL: <code class="literal">text</code></td></tr><tr><td>For MySQL: <code class="literal">longtext,tinytext,mediumtext</code></td></tr></table>
+      </p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="dbexplorer-mysql-table-comments">Displaying table comments for MySQL</h4></div></div></div><a name="N14F64" class="indexterm"></a><p>Property: <code class="literal">workbench.db.mysql.tablecomments.retrieve</code></p><p>
+        By default the MySQL JDBC driver does not return comments defined on tables. If you use table comments, you can enable their display
+        by setting this property to <code class="literal">true</code>. This might also show comments generated by MsSQL itself.
+      </p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="dbexplorer-ms-remarks-prop">Microsoft SQL Server extended property for remarks</h4></div></div></div><p>Property: <code class="literal">workbench.db.microsoft_sql_server.remarks.propertyname</code></p><p>
+        Defines the name of the extended property that is queried in order to retrieve table or column remarks
+        for SQL Server.
+      </p><p>
+        SQL Workbench/J will use the table function <a class="ulink" href="http://msdn.microsoft.com/en-us/library/ms179853%28SQL.90%29.aspx" target="_top">fn_listextendedproperty </a>
+        to retrieve the extended property defined by this configuration setting to retrieve remarks.
+      </p><p>Default value: <code class="literal">MS_DESCRIPTION</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="dbexplorer-ms-remarks">Retrieving remarks for Microsoft SQL Server</h4></div></div></div><p>Property:
+        <table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">workbench.db.microsoft_sql_server.remarks.object.retrieve</code></td></tr><tr><td><code class="literal">workbench.db.microsoft_sql_server.remarks.column.retrieve</code></td></tr></table>
+      </p><p>
+        Enables/disables the retrieval of extended properties as a replacement for the standard SQL <code class="literal">COMMENT ON ...</code> capability.
+      </p><p>
+        SQL Workbench/J will use SQL Server's <a class="ulink" href="http://msdn.microsoft.com/en-us/library/ms179853%28SQL.90%29.aspx" target="_top">fn_listextendedproperty </a>
+        table function to retrieve table or column remarks. As this can have a performance impact on the retrieval of tables or columns,
+        this retrieval can be disabled using this configuration setting.
+      </p><p>
+        The name of the extended property can be configured using
+        <a class="link" href="settings.html#dbexplorer-ms-remarks-prop" title="Microsoft SQL Server extended property for remarks"><code class="literal">workbench.db.microsoft_sql_server.remarks.propertyname</code></a>
+      </p><p>Default value: <code class="literal">false</code> for both properties</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="settings-db">23.6.&nbsp;Database related settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="manual-setting-datapumper-autoconnect">Automatically connect the DataPumper</h4></div></div></div><p>Property: <code class="literal">workbench.datapumper.autoconnect</code></p><p>
+				When opening the <a class="link" href="data-pumper.html" title="18.&nbsp;DataPumper">DataPumper</a> it will
+				connect to the current profile as the source connection. If you do not want the DataPumper to
+				connect automatically set this property to <code class="literal">false</code>
+      </p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-ddl-commit">Controlling COMMIT for DDL statements</h4></div></div></div><p>Property <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.ddlneedscommit</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				Defines if the DBMS supports transactional DDL (CREATE TABLE, DROP TABLE, ...)
+      </p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-commit">COMMIT/ROLLBACK behaviour</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.usejdbccommit</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				Some DBMS return an error when <code class="literal">COMMIT</code> or <code class="literal">ROLLBACK</code> is sent as
+				a regular command through the JDBC interface. If the DBMS is listed here,
+				the JDBC functions <code class="literal">commit()</code> or <code class="literal">rollback()</code> will
+				be used instead.
+      </p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-constraint-gen">Generating constraints for SQL source</h4></div></div></div><p>Property: <code class="literal">workbench.db.inlineconstraints</code></p><p>
+				This setting controls the generation of the <code class="literal">CREATE TABLE</code>
+				source in the <a class="link" href="dbexplorer.html" title="19.&nbsp;Database Object Explorer">DbExplorer</a>. This is a comma separated
+				list of <a class="link" href="settings.html#dbms-identifier" title="23.1.&nbsp;Database Identifier">Database Identifiers</a> that only support defining
+				primary and foreign keys inside the <code class="literal">CREATE TABLE</code> statement.
+      </p><p>
+				If a DBMS is not listed here, the table constraints will be re-created using
+				 <code class="literal">ALTER TABLE</code>.
+			</p><p>Default: <code class="literal">FirstSQL/J</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-case-sensitiv">Case sensitivity when comparing values</h4></div></div></div><p>Property <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.casesensitive</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				The search panel of the DbExplorer highlights matching values in the result
+				tables. The highlighter needs to know whether string comparisons in the database
+				are case sensitive in order to highlight the correct values.
+      </p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-updatingcommands">Definining SQL commands that may change the database</h4></div></div></div><p>Property: <code class="literal">workbench.db.updatingcommands</code> for general SQL statements</p><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.updatingcommands</code> for DBMS specific update statements</p><p>
+				When enabling the <a class="link" href="profiles.html#profile-readonly" title="6.5.6.&nbsp;Read only">read only</a> or <a class="link" href="profiles.html#profile-confirm-updates" title="6.5.5.&nbsp;Confirm updates">confirm update</a>
+				option in a connection profile, SQL Workbench/J assumes a default set of SQL commands that
+				will change the database. With this property you can add additional keywords that
+				should be considered as "updating commands". This is a comma separated list of keywords.
+				The keywords may not contain whitespace.
+      </p><p>No default</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-switch-catalog">Database switch in DbExplorer</h4></div></div></div><p>Property: <code class="literal">workbench.dbexplorer.switchcatalog</code></p><p>
+				When connected to a DBMS that supports multiple databases (catalogs) for the
+				same connection, the DbExplorer displays a dropdown list with the available
+				databases. Switching the selected catalog in the dropdown will trigger a switch
+				of the current catalog/database if the DbExplorer uses
+				its <a class="link" href="profiles.html#profile-separate-connection" title="6.5.2.&nbsp;Separate connection per tab">own connection</a>.
+				If you do not want to switch the database, but merely apply the new
+				selection as a filter (which is always done, if the DbExplorer shares the connection
+				with the other SQL panels) set this property to <code class="literal">false</code>.
+      </p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-filter-tables">Filtering tables</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.exclude.tables</code></p><p>
+				Whenever SQL Workbench/J retrieves a list of tables (e.g. the DbExplorer,
+				auto completion, <a class="link" href="wb-commands.html#command-schema-report" title="17.1.&nbsp;Create a report of the database objects - WbSchemaReport">WbSchemaReport</a>)
+				certain tables can be filtered out by supplying a regular expression in
+				this property. The default setting will filter Oracle tables that reside
+				in the "Recycle bin". This setting can be applied on a per DBMS basis
+			</p><p>
+				Default value: <code class="literal">workbench.db.oracle.exclude.tables=^BIN\\$.*</code>
+			</p><p>Note that you need to use two backslashes in the RegeEx.</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-settings-online-manual">URL for online manual</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.manual</code></p><p>
+        This defines the URL of the online manual for that DBMS. This URL is shown
+        in the browser when using the menu item:
+        <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">DBMS Manual</span> will display the
+
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-oracle-filter-syns">Filtering synonyms</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.exclude.synonyms</code></p><p>
+				The <a class="link" href="dbexplorer.html" title="19.&nbsp;Database Object Explorer">database explorer</a> and the
+				<a class="link" href="editor.html#command-completion" title="7.2.&nbsp;Command completion">auto completion</a> can display (Oracle public) synonyms.
+				Some of these are usually not of interest to the end user. Therefor the
+				list of displayed synonyms can be controlled. This property defines
+				a regular expression. Each synonym that matches this regular expression,
+				will be excluded from the list presented in the GUI.
+			</p><p>Default value (for Oracle): <code class="literal">^AQ\\$.*|^MGMT\\$.*|^GV\\$.*|^EXF\\$.*|^KU\\$_.*|^WM\\$.*|^MRV_.*|^CWM_.*|^CWM2_.*|^WK\\$_.*|^CTX_.*</code></p><p>Note that you need to use two backslashes in the RegeEx.</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-oracle-detect-snapshots">Support for Oracle materialized views (snapshots)</h4></div></div></div><p>Property: <code class="literal">workbench.db.oracle.detectsnapshots</code></p><p>
+				When displaying the list of tables in the <a class="link" href="dbexplorer.html" title="19.&nbsp;Database Object Explorer">database explorer</a>
+				Oracle materialized views (snapshots) are identified as tables by the Oracle JDBC driver.
+				To identify a specific "table" as a materialized view, a second request to the database
+				is necessary (accessing the system view <code class="literal">ALL_MVIEWS</code>). As this
+				request can slow down the retrieval performance, this feature can be turned off. If for
+				any reason the <code class="literal">ALL_MVIEWS</code> view cannot be accessed, this feature
+				will be turned off until you re-connect to the database.
+			</p><p>Default value: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-oracle-char-semantics-fix">Fix type display for VARCHAR columns in Oracle</h4></div></div></div><p>Property: <code class="literal">workbench.db.oracle.fixcharsemantics</code></p><p>
+			  The Oracle driver does not report the size of VARCHAR2 columns correctly
+			  if the character semantic has been set to "char". The JDBC driver always returns
+			  the length in bytes.
+			  When this property is set to true, the length for those columns will
+			  be displayed correctly in the DbExplorer. As this means SQL Workbench/J
+			  is using it's own query to retrieve the table definition, this might not
+			  always yield the same results as the original statement from the Oracle driver.
+			  If your table definitions are not displayed correcly, set this value
+			  to <code class="literal">false</code> so that the original driver methods are used.
+			  The statement used by SQL Workbench/J is a bit faster then then original
+			  Oracle statement, as it does not use a <code class="literal">LIKE</code> predicate
+			  (which is required to comply with the JDBC specs).
+		  </p><p>Default value: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-oracle-nvarchar-fix">Fix type display for NVARCHAR2 columns in Oracle</h4></div></div></div><p>Property: <code class="literal">workbench.db.oracle.fixnvarchartype</code></p><p>
+			  The Oracle driver does not report the type of NVARCHAR2 columns correctly. They
+				are returned as Types.OTHER. If this property is enabled, than SQL Workbench/J
+				is also using it's own SELECT statement to retrieve the table definition.
+		  </p><p>Default value: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-libdir">Defining a base directory for JDBC libraries</h4></div></div></div><p>Property: <code class="literal">workbench.libdir</code></p><p>
+				A directory that contains the .jar files for the <a class="link" href="jdbc-setup.html#jdbc-lib-dir" title="5.3.&nbsp;Specifying a library directory">JDBC drivers</a>.
+				The value of this property can be referenced using <code class="literal">%LibDir%</code>
+				in the driver's definition. The value for this can also be specified
+				<a class="link" href="install.html#cmdline-parameter-libdir" title="4.9.2.&nbsp;Specify a base directory for JDBC driver libraries">on the commandline</a>.
+		  </p><p>No default</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-date-keywords">Defining keywords for date or timestamp input</h4></div></div></div><p>Property: <code class="literal">workbench.db.keyword.current_date</code></p><p>
+				The "literals" that are accepted for DATE columns to identify
+				the current date. Default values are <code class="literal">current_date, today</code>
+			</p><p>Property: <code class="literal">workbench.db.keyword.current_timestamp</code></p><p>
+				The "literals" that are accepted for TIMESTAMP columns to identify
+				the current date/time. Default values are <code class="literal">current_timestamp,sysdate,systimestamp</code>
+			</p><p>Property: <code class="literal">workbench.db.keyword.current_time</code></p><p>
+				The "literals" that are accepted for TIME columns to identify
+				the current time. Default values are <code class="literal">current_time, now</code>
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-dml-savepoint">Use Savepoints to guard DML statement execution</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.sql.usesavepoint</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				Some DBMS (such as PostgreSQL) cannot continue inside a transaction
+				when an error occurs. A script with multiple DML statements can therefor
+				not run completely if one statement fails, even if you choose to ignore
+				the error.
+				If this property is set to true, SQL Workbench/J will set a savepoint
+				before executing a DML statement (<code class="literal">SELECT, INSERT</code>.
+				In case of an error the savepoint will be rolled back and the transaction can continue.
+			</p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-ddl-savepoint">Use Savepoints to guard DDL statement execution</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.ddl.usesavepoint</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				Some DBMS (such as PostgreSQL) cannot continue inside a transaction
+				when an error occurs. A script with multiple DDL statements can therefor
+				not run completely if one statement fails, even if you choose to ignore
+				the error.
+				If this property is set to true, SQL Workbench/J will set a savepoint
+				before executing a DDL statement. In case of an error the savepoint
+				will be rolled back and the transaction can continue.
+			</p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-import-savepoint">Use Savepoints for <code class="literal">update/insert</code> mode for WbImport</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.import.usesavepoint</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				Some DBMS (such as PostgreSQL) cannot continue inside a transaction
+				when an error occurs. When running WbImport in <code class="literal">update,insert</code>
+				or <code class="literal">insert,update</code> mode, the first of the two statements
+				needs to be rolled back in order to be able to continue the import.
+				If this property is set to true, SQL Workbench/J will set a savepoint
+				before executing the first (insert or update) statement. In case of an error the savepoint
+				will be rolledback and WbImport will try to execute the second statement.
+			</p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-ignore-read-errors">Ignore errors during data retrieval</h4></div></div></div><p>Property: <code class="literal">workbench.db.ignore.readerror</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				When retrieving data (e.g. using a <code class="literal">SELECT</code> statement)
+				errors that are reported by the driver will be displayed to the user.
+				The retrieval will be terminated. If you want to ignore errors and replace
+				the data that could not be retrieved with a <code class="literal">NULL</code> value,
+				set this property to <code class="literal">true</code>.
+			</p><p>
+				Using this parameter is not recommended as it might produce results
+				that do not reflect the data as it is stored in the database.
+			</p><p>Default value: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="db-custom-type-map">Customizing data type mapping</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.typemap</code></p><p>
+				When using the <code class="literal">-createTarget</code> parameter for
+				<a class="link" href="command-copy.html" title="15.&nbsp;Copy data across databases">WbCopy</a>, the type mapping from the JDBC driver might
+				not be sufficient or correct. With this setting you can define your own type mapping
+				for a specific dbms. The entry is a list of mappings that map the numeric value
+				of a JDBC datatype (as defined in <a class="ulink" href="http://java.sun.com/javase/6/docs/api/java/sql/Types.html" target="_top">java.sql.Types</a>)
+				to a real data type name for the DBMS. The numeric JDBC datatype value and the
+				DBMS specific datatype name are separated with a colon. Each pair is separated
+				by a semicolon.
+			</p><p>
+				The following entry maps the JDBC datatype with the value 3 (NUMERIC) to the target
+				datatype <code class="literal">double</code> and the value 2 (BIGINT) to the target
+				type NUMBER. The NUMBER datatypes needs uses two parameter placeholders
+				<code class="literal">$size</code> and <code class="literal">$digits</code>. The last mapping
+				maps the JDBC value -1 (LONGVARCHAR) to the DBMS type <code class="literal">VARCHAR</code>
+				using only the <code class="literal">$size</code> parameter
+			</p><pre class="programlisting">workbench.db.[some_db].typemap=3:DOUBLE;2:NUMBER($size,$digits);-1:VARCHAR($size)</pre><p>
+				JDBC 4.0 defines the following constants:
+				<div class="itemizedlist"><ul type="disc" compact><li>BIGINT = -5</li><li>BINARY = -2</li><li>BIT = -7</li><li>BLOB = 2004</li><li>BOOLEAN = 16</li><li>CHAR = 1</li><li>NCHAR = -15</li><li>CLOB = 2005</li><li>NCLOB = 2011</li><li>DATE = 91</li><li>DECIMAL = 3</li><li>DOUBLE = 8</li><li>FLOAT = 6</li><li>INTEGER = 4</li><li>LONGVARBINARY = -4</li><li>LONGVARCHAR = -1</li><li>LONGNVARCHAR = -16</li><li>NUMERIC = 2</li><li>REAL = 7</li><li>SMALLINT = 5</li><li>TIME = 92</li><li>TIMESTAMP = 93</li><li>TINYINT = -6</li><li>VARBINARY = -3</li><li>VARCHAR = 12</li><li>NVARCHAR = -9</li><li>ROWID = -8</li><li>SQLXML = 2009</li></ul></div>
+			</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="sql-execution-settings">23.7.&nbsp;SQL Execution related settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="options-max-script-size">Maximum script size for in-memory script execution</h4></div></div></div><p>Property: <code class="literal">workbench.sql.script.inmemory.maxsize</code></p><p>
+				This setting controls the size up to which files that are executed in batch
+				mode or via the <a class="link" href="wb-commands.html#command-wbinclude" title="17.9.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a> command
+				are read into memory. Files exceeding this size are not read into memory
+				but processed statement by statement. When a file is not read into memory
+				the automatic detection of the <a class="link" href="options.html#options-alternate-delimiter" title="21.2.3.&nbsp;Alternate Delimiter">alternate delimiter</a>
+				does not work any longer. The size is given in bytes.
+      </p><p>Default: <code class="literal">1048576</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-ignore-commands">Ignoring certain SQL commands</h4></div></div></div><p>Property: <code class="literal">workbench.db.ignore.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a></code></p><p>
+				For a DBMS identifier you can define a list of commands
+				that are simply ignored by SQL Workbench/J. This is useful e.g. for Oracle,
+				when you want to run scripts that are intended for SQL*Plus. If those scripts
+				contain special SQL*Plus commands (that are not understood by the Oracle server
+				as SQL*Plus executes these commands directly) they would fail in SQL Workbench/J.
+				If those commands are simply ignored and not send to the server, the scripts
+				can run without modification.
+      </p><p>Default: <code class="literal">workbench.db.ignore.oracle=prompt,exit,whenever</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="options-enable-shortinclude">Enabling short WbInclude</h4></div></div></div><p>Property: <code class="literal">workbench.db.supportshortinclude</code></p><p>
+				By default the <a class="link" href="wb-commands.html#command-wbinclude" title="17.9.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a> command
+				can be shortened using the @ sign. This behaviour is disabled for MS SQL to
+				avoid conflicts with parameter definitions in stored procedures. This property
+				contains a list of <a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID"><code class="literal">DBID</code>s</a> for which
+				this should be enabled. To enable this for all DBMS, simply use * as the value for
+				this property.
+			</p><p>Default: <code class="literal">oracle, rdb, hsqldb, postgresql, mysql, adaptive_server_anywhere, cloudscape, apache_derby</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="options-check-single-line-commands">Check for single line commands without delimiter</h4></div></div></div><p>Property: <code class="literal">workbench.db.checksinglelinecmd</code></p><p>
+				When parsing a SQL script, SQL Workbench/J supports statements that
+				are put into a single line without a delimiter. This is primarily intended
+				for compatibility with Oracle's SQL*Plus and is not enabled for other
+				database systems.
+			</p><p>Default: <code class="literal">oracle</code></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="import-export-default">23.8.&nbsp;Default settings for Export/Import</h3></div></div></div><p>
+			For some switches of the WbExport and WbImport command, you can override
+			the default values used by SQL Workbench/J in case you do not provide  the parameter.
+			The default values mentioned in this chapter apply, if no property is defined
+			in the <code class="literal">workbench.settings</code> file. The current default for
+			these properties is displayed in the help message when you run the
+			corresponding command without any parameters.
+		</p><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="export-text-header-default">Controlling header lines in text exports</h4></div></div></div><p>Property: <code class="literal">workbench.export.text.default.header</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls whether default value for the <code class="literal">-header</code>
+				parameter of the <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> command.
+			</p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="export-xml-verbose">Controlling XML export format</h4></div></div></div><p>Property: <code class="literal">workbench.export.xml.default.verbose</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls whether XML exports are done using verbose XML or
+				short tags and only basic formatting. This property sets the default
+				value of the <code class="literal">-verbosexml</code> parameter for the <a class="link" href="command-export.html" title="13.&nbsp;Export data using WbExport">WbExport</a> command.
+			</p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-continue-default">Setting default for WbImport's -continueOnError parameter</h4></div></div></div><p>Property: <code class="literal">workbench.import.default.continue</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls the default value for the parameter <code class="literal">-continueOnError</code>
+				of the <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a> command.
+			</p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-header-default">Setting a default for WbImport's -header parameter</h4></div></div></div><p>Property: <code class="literal">workbench.import.default.header</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls the default value for the parameter <code class="literal">-header</code>
+				of the <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a> command.
+			</p><p>Default: <code class="literal">true</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-text-multiline">Setting a default for WbImport's -multiLine parameter</h4></div></div></div><p>Property: <code class="literal">workbench.import.default.multilinerecord</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls the default value for the parameter <code class="literal">-multiLine</code>
+				of the <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a> command.
+			</p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="import-text-trimvalues">Setting a default for WbImport's -trimValues parameter</h4></div></div></div><p>Property: <code class="literal">workbench.import.default.trimvalues</code></p><p>Possible values: <code class="literal">true</code>, <code class="literal">false</code></p><p>
+				This property controls the default value for the parameter <code class="literal">-trimValues</code>
+				of the <a class="link" href="command-import.html" title="14.&nbsp;Import data using WbImport">WbImport</a> command.
+			</p><p>Default: <code class="literal">false</code></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="log-setting">23.9.&nbsp;Controlling the log file</h3></div></div></div><p>
+      When SQL Workbench/J initializes the logging environment, it also adds two system property that can be used to
+      define the logfile relative to the configuration or the installation directory:
+      <div class="itemizedlist"><ul type="disc" compact><li><code class="literal">workbench.config.dir</code> contains the full path to the configuration directory</li><li><code class="literal">workbench.install.dir</code> contains the full path to the directory where sqlworkbench.jar is located</li></ul></div>
+      These properties can be used to put the logfile into the directory relative to the config or installation directory without the need to hardcode
+      the directory name.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="wb-log">23.9.1.&nbsp;Configure internal logging</h4></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h5 class="title" id="settings-log-file">Log file location</h5></div></div></div><p>Property: <code class="literal">workbench.log.file</code></p><p>
+          Defines the location of the logfile. By default, the file will be named <code class="literal">workbench.log</code> and will be written
+          into the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">configuration directory</a>.
+        </p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h5 class="title" id="settings-log-level">Log level</h5></div></div></div><p>Property: <code class="literal">workbench.log.level</code></p><p>Set the log level for the log file. Valid values are
+          <div class="itemizedlist"><ul type="disc" compact><li>DEBUG</li><li>INFO</li><li>WARN</li><li>ERROR</li></ul></div>
+        </p><p>Default: <code class="literal">INFO</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h5 class="title" id="settings-log-format">Log format</h5></div></div></div><p>Property: <code class="literal">workbench.log.format</code></p><p>Define the elements that are included in log messages. The following placeholders are supported:
+          <div class="itemizedlist"><ul type="disc" compact><li>{type}</li><li>{timestamp}</li><li>{message}</li><li>{error}</li><li>{source}</li><li>{stacktrace}</li></ul></div>
+          This property does not define the layout of the message, only the elements
+          that are logged.
+        </p><p>
+          If the log level is set to DEBUG, the stacktrace will always be displayed
+          even if it is not included in the format string.
+        </p><p>
+          If you want more control over the log file and the format of the message, please
+          switch the logging to use <a class="link" href="settings.html#settings-log4j" title="23.10.&nbsp;Configure Log4J logging">Log4J</a>.
+        </p><p>Default: <code class="literal">{type} {timestamp} {message} {error}</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h5 class="title" id="options-log-console">Logging to the console</h5></div></div></div><p>Property: <code class="literal">workbench.log.console</code></p><p>
+          Defines whether SQL Workbench/J logs messages additionally to the standard error output
+        </p><p>Default: <code class="literal">false</code></p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h5 class="title" id="settings-log-metadata">Logging SQL used for retrieving metadata</h5></div></div></div><p>Property: <code class="literal">workbench.dbmetadata.logsql</code></p><p>
+          If this is set to <code class="literal">true</code> the SQL queries used to
+          retrieve DBMS specific meta data (such as view/procedure/trigger source,
+          defined triggers/views) will be logged with level INFO.
+        </p><p>
+          This can be used to debug customized SQL statements
+          for DBMS's which are not (yet) preconfigured.
+        </p><p>Default: <code class="literal">false</code></p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="settings-log4j">23.10.&nbsp;Configure Log4J logging</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-log4j-init">23.10.1.&nbsp;Turn on Log4J logging</h4></div></div></div><p>Property: <code class="literal">workbench.log.log4j</code></p><p>
+        If you need more control over the logfile (e.g. for batch processing) you can delegate logging
+        to Log4j. You can turn on Log4j logging in two different ways:
+				<div class="itemizedlist"><ul type="disc" compact><li>The value of the property is <code class="literal">true</code></li><li>The value of the property points to an existing file</li></ul></div>
+			</p><p>
+				If you just pass <code class="literal">true</code> as the value for this property, the Log4j configuration file
+				must be accessible to Log4j through the usual ways (please refer to the Log4j manual for details).
+				If you specify a configuration file, this will be "passed" to Log4j by setting the system property
+				<code class="literal">log4j.configuration</code> to contain the correct "file URL" needed by Log4j.
+			</p><p>
+        When passing a configuration file through this property, you can use a system property as part of the filename
+        (e.g. <code class="literal">${user.home}/sqlworkbench.log</code>). If the filename denotes a relative filename
+        (e.g. <code class="literal">log4j.xml</code> without any path information), then it is assumed to be relative to the
+        <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">configuration directory</a>.
+      </p><p>
+        When you turn on Log4J logging, you must copy copy the Logg4J library as <code class="literal">log4j.jar</code> into the directory
+        where <code class="literal">sqlworbkench.jar</code> is located. Do not include the version number in the filename.
+      </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        The jar file must be named <span class="bold"><strong>log4j.jar</strong></span>
+      </p></td></tr></table></div><p>
+        If the Log4J classes are not found, the built-in logging will be used (see above)
+      </p><p>
+        When Log4J logging is enabled, none of the logging properties described in the previous section will be used.
+        You have to configure everything through <code class="literal">log4j.xml</code>.
+      </p><p>
+        When using <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">Show log file</span> with Log4J enabled,
+        and you have configured Log4J to write to multiple files, only the first file will be shown.
+       </p><p>
+        When SQL Workbench/J initializes the logging environment, it also adds two system property that can be used to
+        define the logfile relative to the configuration or the installation directory:
+				<div class="itemizedlist"><ul type="disc" compact><li><code class="literal">workbench.config.dir</code> contains the full path to the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">configuration directory</a></li><li><code class="literal">workbench.install.dir</code> contains the full path to the directory where sqlworkbench.jar is located</li></ul></div>
+        These properties can be used to put the logfile into the directory relative to the config or installation directory without the need to hardcode
+        the directory name in <code class="literal">log4j.xml</code>
+      </p><p>
+        A sample <code class="literal">log4j.xml</code> can be found in the <code class="literal">scripts</code> directory of the
+        SQL Workbench/J distribution.
+      </p><p>
+        The system properties that are set by SQL Workbench/J to point to the configuration and installation directory (see above) can also
+        be used in the <code class="literal">log4j.xml</code> file.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="setting-sql-generation">23.11.&nbsp;Settings related to SQL statement generation</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-db-ignoreschema">Controlling schema usage in generated SQL statements</h4></div></div></div><p>Property: <code class="literal">workbench.sql.ignoreschema.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>=schema1,...</code></p><p>
+				Define a list of schemas that should be ignored for the <a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">DB ID</a>
+				When SQL Workbench/J creates DML statements and the current table is reported
+				to belong to any of the schemas listed in this property, the schema will not
+				be used to qualify the table. To ignore all schemas use a *, e.g.
+				<code class="literal">workbench.sql.ignoreschema.rdb=*</code>. In this case, table names
+				will never be prefixed with the schema name reported by the JDBC driver.
+				The values specified in this property are case sensitiv.
+			</p><p>
+				Note that for Oracle, tables that are owned by the current user will never
+				be prefixed with the owner.
+			</p><p>
+				Default values:
+				<table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">.oracle=PUBLIC</code></td></tr><tr><td><code class="literal">.postgresql=public</code></td></tr><tr><td><code class="literal">.rdb=*</code></td></tr></table>
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="create-table-types">Defining CREATE TABLE templates for WbCopy</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.create.table.[typename]</code></p><p>
+        This defines a complete <code class="literal">CREATE TABLE</code> statement that is used by
+        <a class="link" href="command-copy.html#copy-create-type"><code class="literal">WbCopy</code></a> to create the target table.
+        The <code class="literal">typename</code> value is the value that has to be used for the
+        <code class="literal">-tableType</code> parameter of the <code class="literal">WbCopy</code> command.
+      </p><p>
+       The following placeholders are supported in the template
+				<table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">%fq_table_name%</code> replaced with the fully qualified table name</td></tr><tr><td><code class="literal">%table_name%</code> replaced with the specified table name (without schema or catalog)</td></tr><tr><td><code class="literal">%columnlist%</code> replaced with the column definitions (for all columns)</td></tr><tr><td><code class="literal">%pk_definition%</code> replaced with the primary key definition.</td></tr></table>
+			</p><p>
+        The placeholder <code class="literal">%pk_definition%</code> can be used if the DBMS does not support defining a primary
+        key using an ALTER TABLE on the created table. If this placeholder is present in the template and the table
+        has a primary key, the placeholder will replaced with an approriate <code class="literal">PRIMARY KEY (col1, ...)</code>
+        expression. Note that the template must <span class="bold"><strong>not</strong></span> contain the needed
+        comma for the <code class="literal">PRIMARY KEY</code>. The comma will be added by SQL Workbench/J if a primary key
+        is defined. If the table has no primary key, the placeholder will automatically be removed.
+      </p><p>
+				Default values:
+				<table summary="Simple list" border="0" class="simplelist"><tr><td><code class="literal">.postgresql.create.table.temp=CREATE LOCAL TEMPORARY TABLE %fq_table_name% ( %columnlist% ) ON COMMIT DROP</code></td></tr><tr><td><code class="literal">.oracle.create.table.globaltemp=CREATE GLOBAL TEMPORARY TABLE %fq_table_name% ( %columnlist% ) ON COMMIT DELETE ROWS</code></td></tr><tr><td><code class="literal">.h2.create.table.temp=CREATE LOCAL TEMPORARY TABLE %fq_table_name% ( %columnlist% )</code></td></tr><tr><td><code class="literal">.informix_dynamic_server.create.table.temp_nolog=CREATE TEMP TABLE %fq_table_name% ( %columnlist% %pk_definition% ) WITH NO LOG</code></td></tr></table>
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="manual-setting-system-names">System generated names for contraints</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.constraints.systemname</code></p><p>
+				Defines a regular expression to identify system generated constraint names.
+				If a constraint name is identified as beeing system generated, it is treated
+				as if no name was defined, when e.g. creating the SQL for a table.
+				Whether or not SQL Workbench/J then generates a name for the constraint can
+				be controlled in the options for the <a class="link" href="options.html#dbexp-options-gen-pk" title="21.11.15.&nbsp;Generate PK constraint name">DbExplorer</a>.
+			</p><p>Default values:
+        <table summary="Simple list" border="0" class="simplelist"><tr><td>oracle: <code class="literal">^SYS_.*</code></td></tr><tr><td>mysql: <code class="literal">PRIMARY</code></td></tr></table>
+      </p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-sync-chunk-size">Controlling the chunk size for WbDataDiff</h4></div></div></div><p>Property: <code class="literal">workbench.sql.sync.chunksize</code></p><p>
+				Controls the number of rows that are retrieved from the target table
+				when running <a class="link" href="compare-commands.html#command-data-diff" title="16.2.&nbsp;Compare data across databases - WbDataDiff"><code class="literal">WbDataDiff</code></a>
+				or <a class="link" href="command-copy.html#copy-sync-delete"><code class="literal">WbCopy</code></a> with the
+				<code class="literal">-syncDelete=true</code> parameter.
+			</p><p>Default value: <code class="literal">25</code></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="settings-table-source-retrieval">23.12.&nbsp;Customize table source retrieval</h3></div></div></div><p>
+      SQL Workbench/J re-generates the source of a table based on the information
+      about the table's metadata returned by the driver. In some cases the driver might
+      not return the correct information, or not all the information that is necessary
+      to build the correct syntax for the DBMS. In those cases, a SQL query can be configured
+      that can use the built-in functionality of the DBMS to return a table's definition.
+    </p><p>
+      This DBMS specific retrieval of the table source is defined by two properties in
+      <code class="literal">workbench.settings</code>.
+    </p><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-table-source-query">Defining the SQL statement</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.retrieve.create.table.query</code></p><p>
+        This property defines the SQL query that should be executed. It must be a statement that
+        returns a result set. The statement may contain three placeholders: <code class="literal">%catalog%</code>,
+        <code class="literal">%schema%</code> and <code class="literal">%table_name%</code> that are replaced with the values of
+        the actual table before running the statement.
+			</p></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="settings-table-source-colindex">Defining the result column</h4></div></div></div><p>Property: <code class="literal">workbench.db.<a class="link" href="settings.html#dbid" title="23.2.&nbsp;DBID">[dbid]</a>.retrieve.create.table.sourcecol</code></p><p>
+        The source of the table might not be returned in the first column of the result set. If this
+        is the case this property can be used to define the column index in which the table's source
+        is available. The first column has the index 1.
+			</p></div><p>
+      The following example configures a SQL statement to retrieve the table's source using MySQL's
+      "SHOW CREATE TABLE":
+    </p><pre class="programlisting">workbench.db.mysql.retrieve.create.table.query=show create table %catalog%.%table_name%
+workbench.db.mysql.retrieve.create.table.sourcecol=2</pre><p>
+      If an error occurs during retrieval, SQL Workbench/J will revert to the built-in table
+      source generation.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="filter-settings">23.13.&nbsp;Filter settings</h3></div></div></div><div class="simplesect" lang="en"><div class="titlepage"><div><div><h4 class="title" id="filter-picklist-size">Controlling the number of items in the pick list</h4></div></div></div><p>Property: <code class="literal">workbench.gui.filter.mru.maxsize</code></p><p>
+				When saving a filter to an external file, the pick list next to the filter
+				icon will offer a drop down that contains the most recently used filter definitions.
+				This setting will control the maximum size of that dropdown.
+			</p><p>Default value: <code class="literal">15</code></p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="shortcuts.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="ix01.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">22.&nbsp;Configuring keyboard shortcuts&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;Index</td></tr></table></div></body></html>

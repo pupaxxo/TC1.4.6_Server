@@ -1,0 +1,329 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>4.&nbsp;Installing and starting SQL Workbench/J</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="history.html" title="3.&nbsp;Change log"><link rel="next" href="jdbc-setup.html" title="5.&nbsp;JDBC Drivers"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="install.html#install-prereq" title="4.1.&nbsp;Pre-requisites"><link rel="subsection" href="install.html#first-time-install" title="4.2.&nbsp;First time installation"><link rel="subsection" href="install.html#upgrade-install" title="4.3.&nbsp;Upgrade installation"><link rel="subsection" href="install.html#starting" title="4.4.&nbsp;Starting the program from the commandline"><link rel="subsection" href="install.html#shell-using" title="4.5.&nbsp;Starting the program using the shell script"><link rel="subsection" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher"><link rel="subsection" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory"><link rel="subsection" href="install.html#install-increase-memory" title="4.8.&nbsp;Increasing the memory available to the application"><link rel="subsection" href="install.html#commandline" title="4.9.&nbsp;Command line parameters"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">4.&nbsp;Installing and starting SQL Workbench/J</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="history.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="jdbc-setup.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="install">4.&nbsp;Installing and starting SQL Workbench/J</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="install.html#install-prereq">4.1. Pre-requisites</a></span></dt><dt><span class="section"><a href="install.html#first-time-install">4.2. First time installation</a></span></dt><dt><span class="section"><a href="install.html#upgrade-install">4.3. Upgrade installation</a></span></dt><dt><span class="section"><a href="install.html#starting">4.4. Starting the program from the commandline</a></span></dt><dt><span class="section"><a href="install.html#shell-using">4.5. Starting the program using the shell script</a></span></dt><dt><span class="section"><a href="install.html#launcher-using">4.6. Starting the program using the Windows launcher</a></span></dt><dt><span class="section"><a href="install.html#config-dir">4.7. Configuration directory</a></span></dt><dt><span class="section"><a href="install.html#install-increase-memory">4.8. Increasing the memory available to the application</a></span></dt><dt><span class="section"><a href="install.html#commandline">4.9. Command line parameters</a></span></dt></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="install-prereq">4.1.&nbsp;Pre-requisites</h3></div></div></div><p>
+      To run SQL Workbench/J a <a class="ulink" href="http://java.sun.com/javase/downloads/index.jsp" target="_top">Java 6 runtime environment</a>
+      is required. You can either use a JRE ("Runtime") or a JDK ("Development Kit") to run SQL Workbench/J.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="first-time-install">4.2.&nbsp;First time installation</h3></div></div></div><p>
+      Once you have downloaded the application's distribution package, unzip the archive into a directory
+      of your choice. Apart from that, no special installation procedure is needed.
+    </p><p>
+      You will need to configure the necessary JDBC driver(s) for your database before you
+      can connect to a database. Please refer to the chapter <a class="link" href="jdbc-setup.html" title="5.&nbsp;JDBC Drivers">JDBC Drivers</a>
+      for details on how to make the JDBC driver available to SQL Workbench/J
+    </p><p>
+      When starting SQL Workbench/J for the first time, it will create a directory
+      called <code class="literal">.sqlworkbench</code> in the current user's home folder to
+      store all its configuration information.
+    </p><p>
+      The "user's home directory" is <code class="literal">$HOME</code> on a Linux or Unix based system,
+      and <code class="literal">%HOMEPATH%</code> on a Windows system. (Technically speaking
+      it is using the contents of Java system property <code class="literal">user.home</code> to
+      find the user's home directory)
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="upgrade-install">4.3.&nbsp;Upgrade installation</h3></div></div></div><p>
+      When upgrading to a newer version of SQL Workbench/J simply overwrite the old
+      <code class="literal">sqlworkbench.jar</code> and the exe launcher and shell scripts that
+      start the application.
+    </p><p>
+      Starting with build 99 the file names have changed. The jar file is now
+      named <code class="literal">sqlworkbench.jar</code> and the filename of the Windows
+      launcher is now <code class="literal">sqlworkbench.exe</code>.
+    </p><p>
+      If you are upgrading from build 98 or earlier, please delete the old files
+      <code class="literal">Workbench.jar</code> and <code class="literal">JWorkbench.exe</code>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="starting">4.4.&nbsp;Starting the program from the commandline</h3></div></div></div><p>
+      sqlworkbench.jar is a self executing JAR file. This means, that if
+      your JDK is installed properly, a double click (on the Windows&reg; platform)
+      on sqlworkbench.jar will execute the application. To run the application
+      manually use the command:
+    </p><pre class="programlisting">java -jar sqlworkbench.jar</pre><p>
+      Native executables for Windows and Mac OSX are supplied that start SQL Workbench/J by
+      using the default Java runtime installed on your system. Details on using
+      the <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher">Windows launcher</a> can be found
+      <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher">here</a>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="shell-using">4.5.&nbsp;Starting the program using the shell script</h3></div></div></div><p>
+      To run SQL Workbench/J under an Unix-type operating system, the supplied shell script
+      <code class="literal">sqlworkbench.sh</code> can be used. For Linux desktops a sample ".desktop"
+      file is available.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="jdk-shell">4.5.1.&nbsp;Specifying the Java runtime for the shell script</h4></div></div></div><p>
+        The shell scripts (and the batch files) first check if the environment variable <code class="literal">WORKBENCH_JDK</code>
+        is defined. If that variable is defined, the shell script will use <code class="literal">$WORKBENCH_JDK/bin/java</code>
+        to run the application.
+      </p><p>
+        If <code class="literal">WORKBENCH_JDK</code> is not defined, the shell script will check
+        for the environment variable <code class="literal">JAVA_HOME</code>. If that is defined, the script
+        will use <code class="literal">$JAVA_HOME/bin/java</code> to run the application.
+      </p><p>
+        If neither <code class="literal">WORKBENCH_JDK</code> nor <code class="literal">JAVA_HOME</code> is defined,
+        the shell script will simply use <code class="literal">java</code> to start the application,
+        assuming that a valid Java runtime is available on the path.
+      </p><p>
+        All parameters that are passed to the shell scripts are passed to the application, not to the
+        Java runtime. If you want to change the memory or other system settings for the JVM, you need to
+        edit the shell script.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="launcher-using">4.6.&nbsp;Starting the program using the Windows launcher</h3></div></div></div><a name="N10207" class="indexterm"></a><a name="N1020D" class="indexterm"></a><a name="N10213" class="indexterm"></a><p>
+      On a 32bit Windows&reg; platform the supplied SQLWorkbench.exe can be used to
+      start the program when using a Sun JDK. The native launcher searches for an installed
+      JDK (querying the registry) and then starts SQL Workbench/J. The file
+      sqlworkbench.jar has to be located in the same directory as the
+      SQLWorkbench.exe, otherwise it doesn't work.
+    </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        For a Windows 64bit system, you have to use <code class="literal">SQLWorkbench64.exe</code>. It will automatically search
+        for a 64bit Java installation.
+      </p></td></tr></table></div><p>
+      The launcher only works with a Sun JDK, as it directly calls the
+      JDK' dll to start the virtual machine. If you are using a different JDK
+      you cannot use the launcher to start SQL Workbench/J on Windows (unless it uses the same
+      directory layout and filenames as the Sun JDK).
+    </p><p>
+      By default the launcher increases the maximum JVM heap size to 256MB.
+      If you need more heap memory, you need to pass the appropriate JVM parameter to the launcher.
+      Please refer to <a class="link" href="install.html#install-increase-memory" title="4.8.&nbsp;Increasing the memory available to the application">Increasing the memory</a> for details
+      on how to increase the memory that is available to SQL Workbench/J
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="launcher-parameters">4.6.1.&nbsp;Parameters for the Windows launcher</h4></div></div></div><p>
+        The launcher executables are based on <a class="ulink" href="http://winrun4j.sourceforge.net/" target="_top">WinRun4J</a>, further documentation on
+        the format of the configuration file and parameters can also be found there.
+      </p><p>
+        If the launcher cannot find your installed Java runtime, you can specify the location of the JRE by creating a text file
+        named <code class="literal">SQLWorkbench.ini</code> (or <code class="literal">SQLWorkbench64.ini</code> when using the 64bit version) with the following content:
+      </p><pre class="programlisting">vm.location=c:\Program Files\Java\jdk16\jre\bin\client\jvm.dll</pre><p>
+        Note that you need to specify the full path to the <code class="literal">jvm.dll</code>, not the directory where the Java runtime is installed.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="config-dir">4.7.&nbsp;Configuration directory</h3></div></div></div><p>
+      The configuration directory is the directory where all config (<code class="literal">workbench.settings</code>,
+      <code class="literal">WbProfiles.xml</code>, <code class="literal">WbDrivers.xml</code>) files are stored.
+    </p><p>
+      If no configuration directory has been specified on the commandline,
+      SQL Workbench/J will identify the configuration directory by looking at the following places
+      <div class="orderedlist"><ol type="1"><li>The current directory</li><li>The directory where <code class="literal">sqlworkbench.jar</code> is located</li><li>
+            In the user's home direcotry
+            (e.g. <code class="literal">$HOME/.sqlworkbench</code> on Unix based systems
+            or <code class="literal">%HOMEPATH%\.sqlworkbench</code> on Windows systems)
+          </li></ol></div>
+      If the file <code class="literal">workbench.settings</code> is found in one of those directories, that
+      directory is considered the configuration directory.
+    </p><p>
+      If no configuration directory can be identified, it will be created in the user's home directory (as <code class="literal">.sqlworkbench</code>).
+    </p><p>
+      The above mentioned search can be overridden by supplying the configuration directory
+      <a class="link" href="install.html#cmdline-parameter-configdir" title="4.9.1.&nbsp;Specify the directory for configuration settings">on the commandline</a> when starting the application.
+    </p><p>The following files are stored in the configuration directory:
+      <div class="itemizedlist"><ul type="disc"><li>General configuration settings (<code class="filename">workbench.settings</code>)</li><li>Connection profiles (<code class="filename">WbProfiles.xml</code>)</li><li>JDBC Driver definitions (<code class="filename">WbDrivers.xml</code>)</li><li>Customized shortcut definitions (<code class="filename">WbShortcuts.xml</code>).
+          If you did not customize any of the shortcuts, this file does not exist</li><li>Macro definitions (<code class="filename">WbMacros.xml</code>)</li><li>Log file (<code class="filename">workbench.log</code>)</li><li>Workspace files (<code class="filename">*.wksp</code>)</li></ul></div>
+    </p><p>
+      If you want to use a different file for the connection profile than WbProfiles.xml then you can specify the
+      location of the profiles with the <code class="literal">-profilestorage</code> parameter on the commandline.
+      Thus you can create different shortcuts on your desktop pointing to different sets of profiles.
+      The different shortcuts can still use the same main configuration file.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="move-installation">4.7.1.&nbsp;Copying an installation</h4></div></div></div><p>
+        To copy an installation to a different computer, simply copy all the above
+        files to the other computer (the log file does not need to be copied).
+        When a profile is connected to a workspace, the workspace file should be specified
+        without a directory name (or using the <code class="literal">%ConfigDir%</code> placeholder).
+        In that case it is always loaded from the configuration directory.
+        If the workspace file location is given with an absolute directory, this needs to be adjusted
+        after the copying the files.
+      </p><p>
+        You will need to edit the driver definitions (stored in <code class="filename">WbDrivers.xml</code>)
+        as the full path to the driver's jar file(s) is stored in the file (unless you
+        define the location of the drivers using the <a class="link" href="settings.html#settings-libdir" title="Defining a base directory for JDBC libraries">libdir variable</a>.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="install-increase-memory">4.8.&nbsp;Increasing the memory available to the application</h3></div></div></div><p>
+      SQL Workbench/J is a Java application and thus runs inside a virtual machine (JVM).
+      The virtual machine limits the memory of the application independently from the installed
+      memory that is available to the operating system.
+    </p><p>
+      SQL Workbench/J reads the data that is returned by a <code class="literal">SELECT</code>
+      statement into the main memory. When retrieving large result sets, you might
+      get an error message, indicating that not enough memory is available. In this
+      case you need to increase the memory that the JVM requests from the operating
+      system (or change your statement to return fewer rows).
+    </p><p>
+      When you use the Windows&reg; <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher">Launcher</a> to start SQL Workbench/J
+      you need to create a configuration file named <code class="literal">SQLWorkbench.ini</code> (or <code class="literal">SQLWorkbench64.ini</code>
+      when using the 64bit launcher) with the following content:
+      <pre class="programlisting">vm.heapsize.preferred=512</pre>
+      This will increase the memory for the application to 512MB. For more options to configure the JVM, please refer to the
+      documentation of <a class="ulink" href="http://winrun4j.sourceforge.net/" target="_top">WinRun4J</a>
+    </p><p>
+      If you are running SQL Workbench/J on a non-Windows&reg; operating system or do not
+      want to use the launcher, then you need to pass this parameter directly to the JVM
+    </p><p><pre class="programlisting">java -Xmx512m -jar sqlworkbench.jar</pre></p><p>
+      If you are using the supplied shell scripts to start SQL Workbench/J, you can
+      edit the scripts and change the value for the -Xmx parameter in there.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="commandline">4.9.&nbsp;Command line parameters</h3></div></div></div><a name="N10303" class="indexterm"></a><p>
+      Command line parameters are <span class="bold"><strong>not</strong></span> case sensitive.
+      The parameters <code class="literal">-PROFILE</code> or <code class="literal">-profile</code> are
+      identical. The usage of the command line parameters is identical between
+      the launcher or starting SQL Workbench/J using the <code class="literal">java</code> command itself.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        When quoting parameters on the commandline (especially in a Windows environment) you have
+        to use single quotes, as the double quotes won't be passed to the application.
+      </p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="cmdline-parameter-configdir">4.9.1.&nbsp;Specify the directory for configuration settings</h4></div></div></div><p>
+        The parameter <code class="literal">-configDir</code> specifies the directory where
+        SQL Workbench/J will store all its settings. If this parameter is not supplied,
+        the directory where the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">default location</a> is used.
+        The placeholder <code class="literal">${user.home}</code> will be
+        replaced with the current user's home directory (as returned by the Operating System).
+        If the specified directory does not exist, it will be created.
+      </p><p>
+        If you want to control the location where SQL Workbench/J stores the configuration
+        files, you have to start the application with the parameter -configDir to specify an
+        alternate directory:<pre class="programlisting">java -jar sqlworkbench.jar -configDir=/export/configs/SQLWorkbench</pre>
+      </p><p>
+        or if you are using the Windows&reg; launcher:<pre class="programlisting">SQLWorkbench -configDir=c:\ConfigData\SQLWorkbench</pre>
+        The placeholder <code class="literal">${user.home}</code> will be replaced with the current user's home directory
+        (as returned by the Operating System), e.g.:<pre class="programlisting">java -jar sqlworkbench.jar -configDir=${user.home}/.sqlworkbench</pre>
+        If the specified directory does not exist, it will be created.
+      </p><p>
+        On the Windows platform you can use a forward slash to separate directory names in the parameter.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="cmdline-parameter-libdir">4.9.2.&nbsp;Specify a base directory for JDBC driver libraries</h4></div></div></div><p>
+        The <code class="literal">-libdir</code> parameter defines the base directory for your JDBC drivers. The value of
+        this parameter can be referenced when <a class="link" href="jdbc-setup.html#jdbc-lib-dir" title="5.3.&nbsp;Specifying a library directory">defining a driver library</a>
+        using the placholder <code class="literal">%LibDir%</code>
+        The value for this parameter can also be set in the file <a class="link" href="settings.html#settings-libdir" title="Defining a base directory for JDBC libraries"><code class="literal">workbench.settings</code></a>.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="cmdline-parameter-profilestorage">4.9.3.&nbsp;Specify the file containing connection profiles</h4></div></div></div><p>
+        SQL Workbench/J stores the connection profiles in a file called <code class="literal">WbProfiles.xml</code>.
+        If you want to use a different filename, or use different set of profiles for different purposes
+        you can define the file where the profiles are stored with the <code class="literal">-profilestorage</code>
+        parameter.
+      </p><p>
+        If the value of the parameter does not contain a path, the file will be expected (and stored) in the
+        configuration directory.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="cmdline-vardef">4.9.4.&nbsp;Defining variables</h4></div></div></div><a name="N10372" class="indexterm"></a><p>
+        With the <code class="literal">-vardef</code> parameter a definition file for
+        <a class="link" href="using-variables.html" title="10.&nbsp;Variable substitution in SQL statements">internal variables</a> can be specified.
+        Each variable has to be listed on a single line in the format <code class="literal">variable=value</code>.
+        Lines starting with a <code class="literal">#</code> character are ignored (comments).
+        the file can contain unicode sequences (e.g. <code class="literal">\u00fc</code>. Values
+        spanning multiple lines are not supported. When reading a file during startup
+        the default encoding is used. If you need to read the file in a specific encoding
+        please use the <a class="link" href="wb-commands.html#command-vardef" title="17.4.&nbsp;Define a script variable - WbVarDef"><code class="literal">WbVarDef</code></a>
+        command with the <code class="literal">-file</code> and <code class="literal">-encoding</code> parameter.
+      </p><pre class="programlisting">#Define some values
+var_id=42
+person_name=Dent
+another_variable=24</pre><p>
+        If the above file was saved under the name <code class="literal">vars.txt</code>, you can use those
+        variables by starting SQL Workbench/J using the following commandline:
+      </p><pre class="programlisting">java -jar sqlworkbench.jar -vardef=vars.txt</pre><p>
+        You can also define a list of variables with this parameter. In this case, the first
+        character after the = sign, has to be # (hash sign) to flag the value as a variable list:
+        <pre class="programlisting">java -jar sqlworkbench.jar -vardef=#var_id=42,person_name=Dent</pre>
+      </p><p>
+        Defining variable values in this way can also be used when running in
+        <a class="link" href="using-scripting.html" title="11.&nbsp;Using SQL Workbench/J in batch files">batch mode</a>.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="nosettings-commandline">4.9.5.&nbsp;Prevent updating the .settings file</h4></div></div></div><p>
+        If the <code class="literal">-nosettings</code> parameter is specified, SQL Workbench/J will not write
+        its settings to the file <code class="literal">workbench.settings</code> when it's beeing closed. Note
+        that in <a class="link" href="using-scripting.html" title="11.&nbsp;Using SQL Workbench/J in batch files">batch mode</a>, this file is never written.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        If this parameter is supplied, the workspace will not be saved automatically as well!
+      </p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="commandline-connect-profile">4.9.6.&nbsp;Connect using a pre-defined connection profile</h4></div></div></div><a name="N103CF" class="indexterm"></a><p>
+        You can specify the name of an already created <a class="link" href="profiles.html" title="6.&nbsp;Connecting to the database">connection
+        profile</a> on the commandline with the <code class="literal">-profile=&lt;profile name&gt;</code>
+        parameter. The name has to be passed exactly like it appears in the profile dialog
+        (case sensitiv!). If the name contains spaces or dashes, it has to be enclosed in
+        quotations marks. If you have more than one profile with the same name but in different
+        profile groups, you have to specify the desired profile group using the <code class="literal">-profilegroup</code>
+        parameter, otherwise the first profile matching the passed name will be selected.
+      </p><p>Example (on one line):</p><pre class="programlisting">java -jar sqlworkbench.jar
+     -profile='PostgreSQL - Test'
+     -script='test.sql'</pre><p>
+        In this case the file <code class="literal">WbProfiles.xml</code> must be in the current
+        (working) directory of the application. If this is not the case, please specify the
+        location of the profile using either the <a class="link" href="install.html#cmdline-parameter-profilestorage" title="4.9.3.&nbsp;Specify the file containing connection profiles"><code class="literal">-profilestorage</code></a> or
+        <a class="link" href="install.html#cmdline-parameter-configdir" title="4.9.1.&nbsp;Specify the directory for configuration settings"><code class="literal">-configDir</code></a> parameter.
+      </p><p>
+        If you have two profiles with the names <code class="literal">"Oracle - Test"</code> you will
+        need to specify the profile group as well (in one line):
+      </p><pre class="programlisting">java -jar sqlworkbench.jar
+     -profile='PostgreSQL - Test'
+     -profilegroup='Local'
+     -script='test.sql'</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="commandline-connect-noprofile">4.9.7.&nbsp;Connect without a profile</h4></div></div></div><a name="N10407" class="indexterm"></a><p>
+        You can also specify the full connection parameters on the commandline, if
+        you don't want to create a profile only for executing a batch file.
+        The advantage of this method is, that SQL Workbench/J does not need the files
+        <code class="filename">WbProfiles.xml</code>, <code class="filename">WbDrivers.xml</code> to be
+        able to connect to the database.
+      </p><p>The connection can be specified with the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col><col></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">Parameter</th><th style="border-bottom: 1px solid ; ">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-url</td><td style="border-bottom: 1px solid ; " valign="top">The JDBC connection URL</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-username</td><td style="border-bottom: 1px solid ; " valign="top">Specify the username for the DBMS</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-password</td><td style="border-bottom: 1px solid ; " valign="top">Specify the password for the user</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-driver</td><td style="border-bottom: 1px solid ; " valign="top">Specify the full class name of the JDBC driver</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-driverJar</td><td style="border-bottom: 1px solid ; " valign="top">Specify the full pathname to the .jar file containing the JDBC driver</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-autocommit</td><td style="border-bottom: 1px solid ; " valign="top">Set the autocommit property for this connection. You can also
+	control the autocommit mode from within your script by using the
+    <a class="link" href="wb-commands.html#command-set-autocommit" title="17.16.2.&nbsp;AUTOCOMMIT">
+      <code class="literal">SET AUTOCOMMIT</code>
+    </a> command.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-rollbackOnDisconnect</td><td style="border-bottom: 1px solid ; " valign="top">If this parameter is set to true, a
+    <code class="literal">ROLLBACK</code> will
+	be sent to the DBMS before the connection is closed. This setting is
+	also available in the <a class="link" href="profiles.html#profile-rollback-before-disconnect" title="6.5.4.&nbsp;Rollback before disconnect">connection profile</a>.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-checkUncommitted</td><td style="border-bottom: 1px solid ; " valign="top">
+    If this parameter is set to true, SQL Workbench/J will try to <a class="link" href="profiles.html#profile-open-trans" title="6.5.13.&nbsp;Check for uncommitted changes">detect uncommitted changes</a>
+    in the current transaction when the main window (or an editor panel) is closed. If the DBMS
+    does not support this, this argument is ignored. It also has no effect when running in batch or
+    console mode.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-trimCharData</td><td style="border-bottom: 1px solid ; " valign="top">
+		Turns on right-trimming of values retrieved from
+    <code class="literal">CHAR</code>
+		columns. See the
+    <a class="link" href="profiles.html#profile-trim-char-data" title="6.5.11.&nbsp;Trim CHAR data">description</a> of the
+		profile properties for details.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-removeComments</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-remove-comments" title="6.5.9.&nbsp;Remove comments">Remove comments</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-fetchSize</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-fetch-size">Fetch size</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-ignoreDropError</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-ignore-drop-error" title="6.5.3.&nbsp;Ignore DROP errors">Ignore DROP errors</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-emptyStringIsNull</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+              <a class="link" href="profiles.html#profile-empty-string-is-null" title="6.5.7.&nbsp;Empty string is NULL">Empty String is NULL</a>
+              setting of the connection profile. This will only be needed when editing a result set in GUI mode.
+              </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-connectionProperties</td><td style="border-bottom: 1px solid ; " valign="top">
+                <p>
+                  This parameter can be used to pass <a class="link" href="profiles.html#profile-extended-properties" title="6.4.&nbsp;Extended properties for the JDBC driver">extended connection properties</a> if
+                  the driver does not support them e.g. in the JDBC URL. The values are passed as key=value pairs,
+                  e.g. <code class="literal">-connectionProperties=someProp=42</code>
+                </p>
+                <p>
+                  If either a comma or an equal sign occurs in a parameter's value, it must be quoted.
+                  This means, when passing multiple properties the whole expression needs to be quoted:
+                  <code class="literal">-connectionProperties='someProp=42,otherProp=24'</code>.
+                </p>
+                <p>
+                  As an alternative, a colon can be used instead of the equals sign,
+                  e.g <code class="literal">-connectionProperties=someProp:42,otherProp:24</code>. In this
+                  case no quoting is needed (because no delimiter is part of the parameters value).
+                </p>
+                <p>
+                  If any of the property values contain a comma or an equal sign, then the whole parameter value needs to be quoted again, even
+                  when using a colon.
+                  <code class="literal">-connectionProperties='someProp:"answer=42",otherProp:"2,4"'</code> will define the value <code class="literal">answer=42</code> for the
+                  property <code class="literal">someProp</code> and the value 2,4 for the property <code class="literal">otherProp</code>.
+                 </p>
+              </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-altDelim</td><td style="border-bottom: 1px solid ; " valign="top">
+                The <a class="link" href="using.html#understand-alternate-delim" title="8.5.&nbsp;Creating stored procedures and triggers">alternate delimiter</a> to be used for this connection.
+                To define a single line delimiter append the characters :nl to the parameter value:
+                e.g. <code class="literal">-altDelimiter=GO:nl</code> to define a SQL Server like GO as the
+                alternate delimiter. Note that when running in batchmode you can also override
+                the default delimiter by specifying the
+                <a class="link" href="using-scripting.html#scripting-delimiter" title="11.4.&nbsp;Specifying a delimiter"><code class="literal">-delimiter</code></a> parameter.
+              </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-separateConnection</td><td style="border-bottom: 1px solid ; " valign="top">If this parameter is set to true, and SQL Workbench/J is run in GUI mode,
+              each SQL tab will use it's own connection to the database server. This setting is
+              also available in the <a class="link" href="profiles.html#profile-separate-connection" title="6.5.2.&nbsp;Separate connection per tab">connection profile</a>.
+              The default is <code class="literal">true</code>.
+              </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-connectionName</td><td style="border-bottom: 1px solid ; " valign="top">
+                When specifying a connection without a profile (only using <code class="literal">-username</code>, <code class="literal">-password</code>
+                and so on) then the name of the connection can be defined using this parameter. The connection name
+                will be shown in the title of the main window if SQL Workbench/J is started in GUI mode.
+                The parameter does not have any visible effect when running in batch or console mode.
+              </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-workspace</td><td style="border-bottom: 1px solid ; " valign="top">The workspace file to be loaded. If the file specification does not
+              include a directory, the workspace will be loaded from the
+              <a class="link" href="install.html#cmdline-parameter-configdir" title="4.9.1.&nbsp;Specify the directory for configuration settings">configuration directory</a>. If this parameter
+              is not specified, the default workspace (<code class="literal">Default.wksp</code>) will be loaded.
+              </td></tr><tr><td style="border-right: 1px solid ; " valign="top">-readOnly</td><td style="" valign="top">
+                Puts the connection into <a class="link" href="profiles.html#profile-readonly" title="6.5.6.&nbsp;Read only">read-only mode</a>.
+              </td></tr></tbody></table></div><p>
+        If a value for one of the parameters contains a dash or a space, you will
+        need to quote the parameter value.
+      </p><p>
+        A disadvantage of this method is, that the password is displayed in plain text
+        on the command line. If this is used in a batch file, the password will be stored
+        in plain text in the batch file. If you don't want to expose the password,
+        you can use a connection profile and <a class="link" href="options.html#options-encrypt-password" title="21.1.6.&nbsp;Encrypt passwords">enable password encryption</a>
+        for connection profiles.
+      </p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="history.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="jdbc-setup.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">3.&nbsp;Change log&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;5.&nbsp;JDBC Drivers</td></tr></table></div></body></html>

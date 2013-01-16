@@ -1,0 +1,198 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>12.&nbsp;Using SQL Workbench/J in console mode</title><link href="html-publish.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="using-scripting.html" title="11.&nbsp;Using SQL Workbench/J in batch files"><link rel="next" href="command-export.html" title="13.&nbsp;Export data using WbExport"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="console-mode.html#console-running-sql" title="12.1.&nbsp;Entering statements"><link rel="subsection" href="console-mode.html#console-exit" title="12.2.&nbsp;Exiting console mode"><link rel="subsection" href="console-mode.html#console-mode-connection" title="12.3.&nbsp;Setting or changing the connection"><link rel="subsection" href="console-mode.html#console-resultset-display" title="12.4.&nbsp;Displaying result sets"><link rel="subsection" href="console-mode.html#console-wbrun" title="12.5.&nbsp;Running SQL scripts that produce a result"><link rel="subsection" href="console-mode.html#console-maxrows" title="12.6.&nbsp;Controlling the number of rows displayed"><link rel="subsection" href="console-mode.html#console-timeouts" title="12.7.&nbsp;Controlling the query timeout"><link rel="subsection" href="console-mode.html#console-manage-profiles" title="12.8.&nbsp;Managing connection profiles"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">12.&nbsp;Using SQL Workbench/J in console mode</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="using-scripting.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="command-export.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both" id="console-mode">12.&nbsp;Using SQL Workbench/J in console mode</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="console-mode.html#console-running-sql">12.1. Entering statements</a></span></dt><dt><span class="section"><a href="console-mode.html#console-exit">12.2. Exiting console mode</a></span></dt><dt><span class="section"><a href="console-mode.html#console-mode-connection">12.3. Setting or changing the connection</a></span></dt><dt><span class="section"><a href="console-mode.html#console-resultset-display">12.4. Displaying result sets</a></span></dt><dt><span class="section"><a href="console-mode.html#console-wbrun">12.5. Running SQL scripts that produce a result</a></span></dt><dt><span class="section"><a href="console-mode.html#console-maxrows">12.6. Controlling the number of rows displayed</a></span></dt><dt><span class="section"><a href="console-mode.html#console-timeouts">12.7. Controlling the query timeout</a></span></dt><dt><span class="section"><a href="console-mode.html#console-manage-profiles">12.8. Managing connection profiles</a></span></dt></dl></div><p>
+		SQL Workbench/J can also be used from the commandline without starting the GUI, e.g. when
+		you only have a console window (Putty, SSH) to access the database. In that case you can either
+		run scripts using the <a class="link" href="using-scripting.html" title="11.&nbsp;Using SQL Workbench/J in batch files">batch mode</a>, or start SQL Workbench/J
+		in console mode, where you can run statements interactively, similar to the GUI mode (but of course with
+		less comfortable editing possibilities).
+	</p><p>
+		When using SQL Workbench/J in console mode, you
+		<span class="bold"><strong>cannot</strong></span> use the <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows launcher">Windows launcher</a>.
+		Please use the supplied scripts <code class="literal">sqlwbconsole.cmd</code> (Windows batch file) or
+		<code class="literal">sqlwbconsole.sh</code> (Unix shell script) to start the console.
+		On Windows you can also use the <code class="literal">sqlwbconsole.exe</code> program to start the console mode.
+	</p><p>
+		When starting SQL Workbench/J in console mode, you can define the connection
+		using a <a class="link" href="install.html#commandline-connect-profile" title="4.9.6.&nbsp;Connect using a pre-defined connection profile">profile name</a> or specifying the connection
+		properties <a class="link" href="install.html#commandline-connect-noprofile" title="4.9.7.&nbsp;Connect without a profile">directly </a>.
+		Additionally you can specify all parameters that can be used in <a class="link" href="using-scripting.html" title="11.&nbsp;Using SQL Workbench/J in batch files">batch mode</a>.
+	</p><p>
+		The following batch mode parameters will be ignored in console mode:
+		<table summary="Simple list" border="0" class="simplelist"><tr><td>
+				<code class="literal">script</code> - you cannot specify a script to be run during startup.
+				If you want to run a script in console mode, use the command <a class="link" href="wb-commands.html#command-wbinclude" title="17.9.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a>.
+			</td></tr><tr><td><code class="literal">encoding</code> - as you cannot specify a script, the encoding parameter is ignored as well</td></tr><tr><td><code class="literal">displayResult</code> - always true in console mode</td></tr><tr><td><code class="literal">cleanupSuccess</code> and <code class="literal">cleanupError</code>- as no script is run, there is no "end of script" after which a "cleanup" is necessary</td></tr><tr><td><code class="literal">abortOnError</code></td></tr></table>
+	</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-running-sql">12.1.&nbsp;Entering statements</h3></div></div></div><p>
+			After starting the console mode, SQL Workbench/J displays the prompt <code class="literal">SQL&gt;</code> where
+			you can enter SQL statements. The statement will not be sent to the database until it is either
+			terminated with the standard semicolon, or with the alternate delimiter (that can be specified either
+			in the used connection profile or on the commandline when starting the console mode).
+		</p><p>
+			As long as a statement is not complete, the prompt will change to <code class="literal">..&gt;</code>. Once
+			a delimiter is identified the statement(s) are sent to the database.
+		</p><pre class="screen">SQL&gt; SELECT *<span class="keycap"><strong>&lt;ENTER&gt;</strong></span>
+..&gt;FROM person;
+</pre><p>
+			A delimiter is only recognized at the end of the input line, thus you can enter more than one
+			statement on a line (or multiple lines) if the intermediate delimiter is not at the end of one
+			of the input lines:
+		</p><pre class="screen">SQL&gt; DELETE FROM person; rollback;
+DELETE executed successfully
+4 row(s) affected.
+
+ROLLBACK executed successfully
+SQL&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-exit">12.2.&nbsp;Exiting console mode</h3></div></div></div><p>
+			To exit the application in console mode, enter <code class="literal">exit</code> when the default prompt is displayed.
+			If the "continuation prompt" (<code class="literal">..&gt;</code>) is displayed, this will not terminate the application.
+			The keyword <code class="literal">exit</code> may not be terminated with a semicolon.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-mode-connection">12.3.&nbsp;Setting or changing the connection</h3></div></div></div><p>
+			If you did not specify a connection on the commandline when starting the console, you can set or
+			change the current connection in console mode using the
+			<a class="link" href="wb-commands.html#command-connect" title="17.28.&nbsp;Change the connection for a script - WbConnect"><code class="literal">WbConnect</code></a> command.
+			Using <code class="literal">WbConnect</code> in console mode will automatically close the current
+			connection, before establishing the new connection.
+		</p><p>
+			To disconnect the current connection in console mode, run the statement <code class="literal">WbDisconnect</code>.
+			Note that this statement is only available in console mode.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-resultset-display">12.4.&nbsp;Displaying result sets</h3></div></div></div><p>
+			If you are running <code class="literal">SELECT</code> statements in console mode, the result is
+			displayed on the screen in "tabular" format. Note that SQL Workbench/J reads the whole result
+			into memory in order to be to adjust the column widths to the displayed data.
+		</p><p>
+			You can disable the buffering of the results using the commandline parameter <code class="literal">bufferResults=false</code>.
+			In that case, the width of the displayed columns will not be adjusted properly. The column widths are
+			taken from the information returned by the driver which typically results is a much larger display
+			than needed.
+		</p><p>
+			The output in tabular format (if results are buffered) looks like this:
+		</p><pre class="screen">SQL&gt; select id, firstname, lastname, comment from person;
+id | firstname | lastname   | comment
+---+-----------+------------+--------------------
+1  | Arthur    | Dent       | this is a comment
+2  | Zaphod    | Beeblebrox |
+4  | Mary      | Moviestar  | comment
+3  | Tricia    | McMillian  | test1
+
+(4 Rows)
+SQL&gt;</pre><p>
+			If the size of the column values exceed the console's width the display will be wrapped, which
+			makes it hard to read. In that case, you can switch the output so that each column is printed on
+			a single line.
+		</p><p>
+			This is done by running the statement: <code class="literal">WbDisplay record</code>
+		</p><pre class="screen">SQL&gt; <span class="bold"><strong>WbDisplay record;</strong></span>
+Display changed to single record format
+Execution time: 0.0s
+SQL&gt; select id, firstname, lastname, comment from person;
+---- [Row 1] -------------------------------
+id        : 1
+firstname : Arthur
+lastname  : Dent
+comment   : this is a very long comment that would not fit onto the screen when printed as the last column
+---- [Row 2] -------------------------------
+id        : 2
+firstname : Zaphod
+lastname  : Beeblebrox
+comment   :
+---- [Row 3] -------------------------------
+id        : 4
+firstname : Mary
+lastname  : Moviestar
+comment   :
+---- [Row 4] -------------------------------
+id        : 3
+firstname : Tricia
+lastname  : McMillian
+comment   :
+
+(4 Rows)
+SQL&gt; </pre><p>
+			To switch back to the "tabular" display, use: <code class="literal">WbDisplay tab</code>.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-wbrun">12.5.&nbsp;Running SQL scripts that produce a result</h3></div></div></div><p>
+      Normally when executing a SQL script using <a class="link" href="wb-commands.html#command-wbinclude" title="17.9.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a>, the result of such a script (e.g. when it
+      contains a SELECT statement) is not displayed on the console.
+    </p><p>
+      To run such a script, use the command <code class="literal">WbRun</code> instead of <code class="literal">WbInclude</code>. If you
+      have the following SQL script (named select_person.sql):
+    </p><pre class="programlisting">SELECT *
+FROM person;</pre><p>
+      and execute that using the WbInclude command:
+    </p><pre class="screen">SQL&gt; WbInclude -file=select_person.sql;
+SQL&gt; Execution time: 0.063s</pre><p>
+      If you execute this script using <code class="literal">WbRun</code> the result of the script is displayed:
+    </p><pre class="screen">SQL&gt; WbRun select_people.sql;
+select *
+from person;
+
+id | firstname | lastname
+---+-----------+------------
+1  | Arthur    | Dent
+4  | Mary      | Moviestar
+2  | Zaphod    | Beeblebrox
+3  | Tricia    | McMillian
+
+(4 Rows)
+Execution time: 0.078s
+SQL&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-maxrows">12.6.&nbsp;Controlling the number of rows displayed</h3></div></div></div><p>
+			In the SQL Workbench/J GUI window, you can limit the reusult of a query by entering
+			a value in the "Max. Rows" field. If you want to limit the number of rows in console mode
+			you can do this by running the statement
+		</p><pre class="screen">SQL&gt; set maxrows 42;
+MAXROWS set to 42
+Execution time: 0.0s
+SQL&gt;
+</pre><p>
+			This will limit the number of rows retrieved to 42.
+		</p><p>
+			SET MAXROWS has no effect when run as a <a class="link" href="profiles.html#profile-connect-scripts" title="6.5.17.&nbsp;Connect scripts">post-connect script</a>.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-timeouts">12.7.&nbsp;Controlling the query timeout</h3></div></div></div><p>
+			To set the query timeout in console mode, you can run the following statement
+		</p><pre class="screen">SQL&gt; set timeout 42;
+TIMEOUT set to 42
+Execution time: 0.0s
+SQL&gt;</pre><p>
+			This will set a query timeout of 42 seconds. Note that not all JDBC
+			drivers support a query timout.
+		</p><p>
+			SET TIMEOUT has no effect when run as a <a class="link" href="profiles.html#profile-connect-scripts" title="6.5.17.&nbsp;Connect scripts">post-connect script</a>.
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title" id="console-manage-profiles">12.8.&nbsp;Managing connection profiles</h3></div></div></div><p>
+			Connection profiles can be managed through several commands that are only available in console
+			mode.
+		</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="console-listprofiles">12.8.1.&nbsp;List available profiles - WbListProfiles</h4></div></div></div><p>
+					The command <code class="literal">WbListProfiles</code> will display a list of all displayed
+					profiles
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="console-deleteprofiles">12.8.2.&nbsp;Delete a profile - WbDeleteProfile</h4></div></div></div><p>
+					You can delete an existing profile using the command <code class="literal">WbDeleteProfile</code>.
+					The command takes one argument, which is the name of the profile. If the name is unique across
+					all profile groups you don't have to specify a group name. If the name is not unique, you
+					need to include the group name, e.g.
+				</p><pre class="screen">SQL&gt; WbDeleteProfile {MyGroup}/SQL Server
+Do you really want to delete the profile '{MyGroup}/SQL Server'? (Yes/No) yes
+Profile '{MyGroup}/SQL Server' deleted
+SQL&gt;</pre><p>
+					As the profile name is the only parameter to this command, no quoting is necessary.
+					Everything after the keyword <code class="literal">WbDeleteProfile</code> will be assumed to be the
+					profile's name
+				</p><p>
+					All profiles are automatically saved after executing <code class="literal">WbDeleteProfile</code>.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title" id="console-saveprofile">12.8.3.&nbsp;Save the current profile - WbStoreProfile</h4></div></div></div><p>
+					Saves the currently active connection as a new connection profile. This can be used
+					when SQL Workbench/J if the connection information was passsed using individual parameters
+					(<code class="literal">-url</code>, <code class="literal">-username</code> and so on) either on the commandline
+					or through  <code class="literal">WbConnect</code>.
+				</p><pre class="screen">SQL&gt; WbStoreProfile {MyGroup}/PostgreSQL Production
+Profile '{MyGroup}/PostgreSQL Production' added
+SQL&gt; </pre><p>
+					If no parameter switch is given, everything after the keyword <code class="literal">WbDeleteProfile</code> will be assumed to be the
+					profile's name. By default the password is not saved.
+				</p><p>
+          Alternatively the command supports the parameters <code class="literal">name</code> and <code class="literal">savePassword</code>. If
+          you want to store the password in the profile, the version using parameters must be used:
+        </p><pre class="screen">SQL&gt; WbStoreProfile -name="{MyGroup}/DevelopmentServer" -savePassword=true
+Profile '{MyGroup}/DevelopmentServer' added
+SQL&gt; </pre><p>
+					If the current connection references a JDBC driver that is not already defined,
+					a new entry for the driver defintions is created referencing the library
+					that was passed on the commandline.
+				</p><p>
+					All profiles are automatically saved after executing <code class="literal">WbStoreProfile</code>.
+				</p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="using-scripting.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="command-export.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">11.&nbsp;Using SQL Workbench/J in batch files&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;13.&nbsp;Export data using WbExport</td></tr></table></div></body></html>
