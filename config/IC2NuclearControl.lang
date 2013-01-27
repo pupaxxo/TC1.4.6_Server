@@ -1,5 +1,5 @@
 # Configuration file
-# Generated on 11/01/13 21.02
+# Generated on 26/01/13 17.13
 
 ####################
 # locale
@@ -58,6 +58,7 @@ locale {
             S:msg.nc.InfoPanelOn=On
             S:msg.nc.InfoPanelOutOfRange=Out Of Range
             S:msg.nc.InfoPanelOutput=Output: %sEU/t
+            S:msg.nc.InfoPanelOutputSteam=Output: %smB/t
             S:msg.nc.InfoPanelTime=Time: %s
             S:msg.nc.InfoPanelTimeRemaining=Remaining: %s
             S:msg.nc.None=N/A
